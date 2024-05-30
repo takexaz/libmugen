@@ -1,1 +1,1 @@
-#include <mugen.hpp>
+#include <MUGEN.hpp>
