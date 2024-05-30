@@ -1,6 +1,6 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
 
-namespace Allegro {
-#include <allegro.h>
+namespace mugen20414::bg {
+
 }

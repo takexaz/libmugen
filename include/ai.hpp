@@ -44,7 +44,7 @@ namespace mugen20414::player::ai {
 	};
 	struct PlayerAi
 	{
-		uint32_t enable;
+		bool enable;
 		uint32_t aiLevel;
 		undefined4 _unknown_1[18];
 		StatedefData* currentStateDefData;

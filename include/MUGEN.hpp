@@ -1,8 +1,11 @@
 #pragma once
+#include <allegro.hpp>
+
 #include <afterimage.hpp>
 #include <ai.hpp>
 #include <anim.hpp>
 #include <arith.hpp>
+#include <array.hpp>
 #include <bg.hpp>
 #include <clipboard.hpp>
 #include <command.hpp>

@@ -3,23 +3,33 @@
 
 #include <pallete.hpp>
 using namespace mugen20414::pallete;
-
+#include <controller.hpp>
+using namespace mugen20414::state::controller;
 #include <anim.hpp>
 using namespace mugen20414::anim;
 
 namespace mugen20414::afterimage {
-	struct AfterimagePalletes
+	struct AfterimageItem {
+		int32_t currentSpriteIndex;
+		float posX;
+		float posY;
+		float scaleX;
+		float scaleY;
+		int32_t flip;
+		int32_t sprPriority;
+		undefined4 _unknown_8; // HFlipToSgn‚Ì•Ô‚è’l
+		EBPallete ebPal;
+	};
+	struct AfterimageData
 	{
-		int32_t _unknown_1;
-		undefined4 _unknown_2;
-		undefined4 _unknown_3;
-		undefined4 _unknown_4;
-		undefined4 _unknown_5;
-		undefined4 _unknown_6;
-		undefined4 _unknown_7;
-		undefined4 _unknown_8;
-		PalleteData* palletes;
-		undefined4 _unknown_9[406];
+		AfterimageItem* items;
+		int32_t length_maximum;
+		AnimUsed* anim;
+		int32_t _unknown_2;
+		int32_t _unknown_3;
+		int32_t elapsedTime;
+		uint32_t enable;
+		AfterimageParams params;
 	};
 	struct AfterimageList
 	{
@@ -27,40 +37,6 @@ namespace mugen20414::afterimage {
 		int32_t id;
 		int32_t _unknown;
 		int32_t search_id;
-	};
-	struct AfterimageData
-	{
-		AfterimagePalletes* palletes;
-		int32_t length_maximum;
-		AnimUsed* anim;
-		int32_t _unknown_2;
-		int32_t _unknown_3;
-		int32_t elapsedTime;
-		uint32_t enable;
-		int32_t time;
-		int32_t length;
-		int32_t timeGap;
-		int32_t frameGap;
-		int32_t palColor;
-		uint32_t palInvertAll;
-		int32_t palBrightR;
-		int32_t palBrightG;
-		int32_t palBrightB;
-		int32_t palContrastR;
-		int32_t palContrastG;
-		int32_t palContrastB;
-		int32_t palPostBrightR;
-		int32_t palPostBrightG;
-		int32_t palPostBrightB;
-		int32_t palAddR;
-		int32_t palAddG;
-		int32_t palAddB;
-		int32_t palMulR;
-		int32_t palMulG;
-		int32_t palMulB;
-		TransType trans;
-		int32_t transAlphaAS;
-		int32_t transAlphaD;
 	};
 	struct AfterimageInfo
 	{
@@ -76,4 +52,12 @@ namespace mugen20414::afterimage {
 		int32_t min_index;
 		int32_t max_index;
 	};
+
+	static const auto AftImgNew    = reinterpret_cast<AfterimageData* (*)(uint32_t length)>(0x401000);
+	static const auto AftImgInit   = reinterpret_cast<void (*)(AfterimageData* afterImage, uint32_t length)>(0x4010e0);
+	static const auto AftImgFree   = reinterpret_cast<void (*)(AfterimageData* afterImage)>(0x401160);
+	static const auto AftImgDeInit = reinterpret_cast<void (*)(AfterimageData * afterImage)>(0x4011c0);
+	static const auto AftImgSetup  = reinterpret_cast<void (*)(AfterimageData* afterImage, AfterimageParams* params, AnimUsed* anim)>(0x401220);
+	static const auto AftImgUpdate = reinterpret_cast<void (*)(AfterimageData* afterImage, float posX, float posY, float scaleX, float scaleY, float angle, uint32_t isFlip, uint32_t isNotHitpaused)>(0x401250);
+	static const auto AftImgDraw   = reinterpret_cast<void (*)(AfterimageData* afterImage, float posX, float posY, int32_t priority)>(0x4013b0);
 }

@@ -4,6 +4,8 @@
 using namespace mugen20414::state::trigger;
 #include <sound.hpp>
 using namespace mugen20414::sound;
+#include <anim.hpp>
+using namespace mugen20414::anim;
 
 namespace mugen20414::state::controller {
 	enum class SCtrlId {
@@ -254,5 +256,31 @@ namespace mugen20414::state::controller {
 		float YAccel;
 		PalFxParams palFX;
 		EnvShakeParams envShake;
+	};
+	struct AfterimageParams {
+		int32_t time;
+		int32_t length;
+		int32_t timeGap;
+		int32_t frameGap;
+		int32_t palColor;
+		uint32_t palInvertAll;
+		int32_t palBrightR;
+		int32_t palBrightG;
+		int32_t palBrightB;
+		int32_t palContrastR;
+		int32_t palContrastG;
+		int32_t palContrastB;
+		int32_t palPostBrightR;
+		int32_t palPostBrightG;
+		int32_t palPostBrightB;
+		int32_t palAddR;
+		int32_t palAddG;
+		int32_t palAddB;
+		int32_t palMulR;
+		int32_t palMulG;
+		int32_t palMulB;
+		TransType trans;
+		int32_t transAlphaAS;
+		int32_t transAlphaD;
 	};
 }

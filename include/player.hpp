@@ -416,4 +416,11 @@ namespace mugen20414::player {
 		Clipboard* clipboard;
 		uint32_t standBy;
 	};
+
+
+
+
+
+	static const auto PlayerSCtrlUpdateSpec = reinterpret_cast<void (*)(mugen20414::player::Player * player, int32_t stateNo, uint8_t flags)>(0x47f7d0);
+
 }

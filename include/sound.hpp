@@ -1,7 +1,7 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
 
-#include <Allegro.hpp>
+#include <allegro.hpp>
 using namespace Allegro;
 
 namespace mugen20414::sound {
