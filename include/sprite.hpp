@@ -46,7 +46,7 @@ namespace mugen20414::sprite {
 	{
 		SpriteInfo* sprInfo;
 		void* _unknown_1;
-		PalleteInfo* palInfo;
+		EBPalInfo* palInfo;
 		SpriteInfoEx* _unknown_2;
 		int32_t refCnt;
 	};

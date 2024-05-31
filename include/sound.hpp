@@ -2,7 +2,7 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <allegro.hpp>
-using namespace Allegro;
+using namespace allegro;
 
 namespace mugen20414::sound {
 	struct SoundItem

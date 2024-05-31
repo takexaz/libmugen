@@ -2,61 +2,31 @@
 #include <_MUGEN_TYPES.hpp>
 
 namespace mugen20414::pallete {
-	struct PalleteParams
+	struct Color3
 	{
-		undefined4 _unknown[9];
+		uint8_t r;
+		uint8_t g;
+		uint8_t b;
 	};
-	struct PalleteDataRGB
-	{
-		uint32_t r;
-		uint32_t g;
-		uint32_t b;
-		undefined4 _unknown; /* Alpha? Padding? */
+	struct Pal3 {
+		Color3 color[256];
 	};
-	struct PalleteData
+	struct Color4
 	{
-		undefined4 size;
-		uint32_t enable;
-		PalleteDataRGB* rgbData;
-		PalleteParams _unknown_1;
-		PalleteParams _unknown_2;
-		undefined4 _unknown_3;
-		undefined4 _unknown_4;
-		PalleteDataRGB _unknown_5[];
+		uint8_t r;
+		uint8_t g;
+		uint8_t b;
+		undefined1 _unknown; /* Alpha? Padding? */
 	};
-	struct PalleteList
-	{
-		uint32_t enable;
-		int32_t id;
-		int32_t _unknown_1;
-		int32_t _unknown_2;
-	};
-	struct PalleteInfo
-	{
-		undefined4 _unknown_1;
-		int32_t size;
-		int32_t currentPalleteCnt;
-		int32_t maxPalleteCnt;
-		int32_t nextId;
-		PalleteData* data;
-		PalleteList* list;
-		int32_t scaned_index;
-		int32_t scaned_cnt;
-		int32_t min_index;
-		int32_t max_index;
-	};
-
-	struct PalGroup
-	{
-		int32_t _unknown[5];
+	struct Pal4 {
+		Color4 color[256];
 	};
 
 	enum class EBPalFlag {
-		kUnknown1 = 1 << 0,
+		kIsDrawing   = 1 << 0,
 		kDataChanged = 1 << 1,
-		kUnknown2 = 1 << 2,
+		kUnknown2    = 1 << 2,
 	};
-
 	struct EBPalSetting {
 		int32_t colorBalance; // todo
 		int32_t palAddR; // 0x10
@@ -68,44 +38,89 @@ namespace mugen20414::pallete {
 		undefined4 _unknown_1;
 		int32_t invertAll;
 	};
-
-	// 1628
-	struct EBPallete {
+	struct EBPal
+	{
 		uint32_t numColor;
-		bool isCopiedPal;
-		PalleteData* palletes;
-		EBPalSetting setting;
-		undefined4 _unknown_3;
-		undefined4 _unknown_4;
-		undefined4 _unknown_5;
-		undefined4 _unknown_6;
-		undefined4 _unknown_7;
-		undefined4 _unknown_8;
-		undefined4 _unknown_9;
-		undefined4 _unknown_10;
-		undefined4 _unknown_11;
+		BOOL isCopiedPal;
+		Pal4* pal4Data;
+		EBPalSetting subPal;
+		EBPalSetting mainPal;
 		EBPalFlag flags; // [21]|0x54
-		undefined4 _unknown_13;
-		undefined4 _unknown_14; // [23]|0x5C
-		undefined _unknown_15[1532]; // todo
+		int32_t numDrawing;
+		uint16_t nowPal16b[256];
 	};
 
-	static const auto EBPalInit            = reinterpret_cast<bool(*)(EBPallete * ebPal, uint32_t numColor, PalleteData * palletes, bool copyPalletes)>(0x448180);
-	static const auto EBPalDeInit          = reinterpret_cast<void (*)(EBPallete * ebPal)>(0x448280);
-	static const auto EBPalReset           = reinterpret_cast<void (*)(EBPallete * ebPal)>(0x4482b0);
-	static const auto EBPalCopy            = reinterpret_cast<bool(*)(EBPallete * dest, EBPallete * src, bool copyPalletes)>(0x4482f0);
-	static const auto EBPalGenerateFPal    = reinterpret_cast<void (*)(EBPallete * ebPal)>(0x448360);
-	static const auto EBPalUpdate          = reinterpret_cast<void (*)(EBPallete * ebPal)>(0x4483c0);
-	static const auto EBPalSetDataptr      = reinterpret_cast<bool(*)(EBPallete * ebPal, uint32_t numColor, PalleteData * palletes)>(0x4484f0);
-	static const auto EBPalGetDataptr      = reinterpret_cast<PalleteData * (*)(EBPallete * ebPal)>(0x448530);
-	static const auto EBPalGetNumcols      = reinterpret_cast<uint32_t(*)(EBPallete * ebPal)>(0x448540);
-	static const auto EBPalMarkDataChanged = reinterpret_cast<void (*)(EBPallete * ebPal)>(0x448550);
+
+	struct EBPalList
+	{
+		uint32_t enable;
+		int32_t id;
+		int32_t _unknown_1;
+		int32_t _unknown_2;
+	};
+	struct EBPalInfo
+	{
+		undefined4 _unknown_1;
+		int32_t size;
+		int32_t currentPalleteCnt;
+		int32_t maxPalleteCnt;
+		int32_t nextId;
+		EBPal* datas; // 0x14 EBPal‚ªmaxPalleteCntŒÂ•À‚ñ‚Å‚é?
+		EBPalList* list; // 0x18
+		int32_t scaned_index;
+		int32_t scaned_cnt;
+		int32_t min_index;
+		int32_t max_index;
+	};
+
+	struct EBMasterPal {
+		EBPalSetting subPal;
+		EBPalSetting mainPal;
+		BOOL isDrawing;
+		int32_t numDrawing;
+		BOOL initialized;
+	};
+
+	struct PalGroup
+	{
+		int32_t _unknown[5];
+	};
+
+
+	static const auto EBPalInit            = reinterpret_cast<BOOL(*)(EBPal * ebPal, uint32_t numColor, Pal4 * palletes, BOOL copyPalletes)>(0x448180);
+	static const auto EBPalDeInit          = reinterpret_cast<void (*)(EBPal * ebPal)>(0x448280);
+	static const auto EBPalReset           = reinterpret_cast<void (*)(EBPal * ebPal)>(0x4482b0);
+	static const auto EBPalCopy            = reinterpret_cast<BOOL(*)(EBPal * dest, EBPal * src, BOOL copyPalletes)>(0x4482f0);
+	static const auto EBPalGenerateFPal    = reinterpret_cast<void (*)(EBPal * ebPal)>(0x448360);
+	static const auto EBPalUpdate          = reinterpret_cast<void (*)(EBPal * ebPal)>(0x4483c0);
+	static const auto EBPalSetDataptr      = reinterpret_cast<BOOL(*)(EBPal * ebPal, uint32_t numColor, Pal4 * palletes)>(0x4484f0);
+	static const auto EBPalGetDataptr      = reinterpret_cast<Pal4 * (*)(EBPal * ebPal)>(0x448530);
+	static const auto EBPalGetNumcols      = reinterpret_cast<uint32_t(*)(EBPal * ebPal)>(0x448540);
+	static const auto EBPalMarkDataChanged = reinterpret_cast<void (*)(EBPal * ebPal)>(0x448550);
 	static const auto EBPalSettingsReset   = reinterpret_cast<void (*)(EBPalSetting * ebPalSet)>(0x448560);
 	static const auto EBPalSettingsCopy    = reinterpret_cast<void(*)(EBPalSetting * dest, EBPalSetting * src)>(0x448590);
 	static const auto EBPalSettingsMix     = reinterpret_cast<void(*)(EBPalSetting * dest, EBPalSetting * src1, EBPalSetting * src2)>(0x4485b0);
-	static const auto EBPalSettingsAreSame = reinterpret_cast<bool(*)(EBPalSetting * ebPalSet1, EBPalSetting * ebPalSet2)>(0x448630);
-	static const auto EBPalAdd             = reinterpret_cast<void(*)(EBPallete * ebPal, uint32_t Red, uint32_t Green, uint32_t Blue)>(0x448650);
-	static const auto EBPalMul             = reinterpret_cast<void(*)(EBPallete * ebPal, uint32_t Red, uint32_t Green, uint32_t Blue)>(0x4486a0);
-	static const auto EBPalInvertAll       = reinterpret_cast<void(*)(EBPallete * ebPal, bool invert)>(0x448700);
-	static const auto EBPalColorBal        = reinterpret_cast<void(*)(EBPallete * ebPal, uint32_t colorBalance)>(0x448730);
+	static const auto EBPalSettingsAreSame = reinterpret_cast<BOOL(*)(EBPalSetting * ebPalSet1, EBPalSetting * ebPalSet2)>(0x448630);
+	static const auto EBPalAdd             = reinterpret_cast<void(*)(EBPal * ebPal, uint32_t red, uint32_t green, uint32_t blue)>(0x448650);
+	static const auto EBPalMul             = reinterpret_cast<void(*)(EBPal * ebPal, uint32_t red, uint32_t green, uint32_t blue)>(0x4486a0);
+	static const auto EBPalInvertAll       = reinterpret_cast<void(*)(EBPal * ebPal, BOOL invert)>(0x448700);
+	static const auto EBPalColorBal        = reinterpret_cast<void(*)(EBPal * ebPal, uint32_t colorBalance)>(0x448730);
+
+	static volatile const auto MasterPal = reinterpret_cast<EBMasterPal**>(0x4b5fb0);
+	static volatile const auto palupdatecount = reinterpret_cast<uint32_t*>(0x4b5fb4);
+
+	static const auto MasterPalInit           = reinterpret_cast<BOOL(*)(void)>(0x448760);
+	static const auto MasterPalDeInit         = reinterpret_cast<void(*)(void)>(0x4487e0);
+	static const auto MasterPalProcessChanges = reinterpret_cast<void(*)(void)>(0x448800);
+	static const auto MasterPalFinishedDraw   = reinterpret_cast<void(*)(void)>(0x448830);
+	static const auto MasterPalReset          = reinterpret_cast<void(*)(void)>(0x448860);
+	static const auto MasterPalAdd            = reinterpret_cast<void(*)(uint32_t red, uint32_t green, uint32_t blue)>(0x4488a0);
+	static const auto MasterPalMul            = reinterpret_cast<void(*)(uint32_t red, uint32_t green, uint32_t blue)>(0x4488f0);
+	static const auto MasterPalInvertAll      = reinterpret_cast<void(*)(BOOL invert)>(0x448940);
+	static const auto MasterPalColorBal       = reinterpret_cast<void(*)(uint32_t colorBalance)>(0x448970);
+	static const auto MasterPalConvertCol16   = reinterpret_cast<void(*)(Pal4 * palData)>(0x4489a0);
+
+	static const auto Pal3toPal4 = reinterpret_cast<void(*)(Pal4 * dest, Pal3 * src, uint32_t numCols, uint32_t alpha)>(0x448a00);
+	static const auto Pal4Copy = reinterpret_cast<void(*)(Pal4 * dest, Pal4 * src, uint32_t startCol, uint32_t numCopy)>(0x448a60);
+	static const auto Pal4SetSingle = reinterpret_cast<void(*)(Pal4 * pal4Data, uint32_t colNo, uint32_t red, uint32_t green, uint32_t blue)>(0x448aa0);
 }

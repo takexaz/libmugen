@@ -18,7 +18,7 @@ namespace mugen20414::afterimage {
 		int32_t flip;
 		int32_t sprPriority;
 		undefined4 _unknown_8; // HFlipToSgn‚Ì•Ô‚è’l
-		EBPallete ebPal;
+		EBPal ebPal;
 	};
 	struct AfterimageData
 	{

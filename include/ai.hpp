@@ -10,14 +10,14 @@ namespace mugen20414::player {
 using namespace mugen20414::player;
 
 namespace mugen20414::player::ai {
-	struct PlayerAiPlayersState
+	struct PlayerAIPlayersState
 	{
 		Player* player;
 		undefined4 _unknown;
 		int32_t stateNo;
 		StatedefInfo* stateList;
 	};
-	struct PlayerAiParams
+	struct PlayerAIParams
 	{
 		undefined4 _unknown_1;
 		undefined4 _unknown_2;
@@ -42,20 +42,20 @@ namespace mugen20414::player::ai {
 		float _unknown_10;
 		undefined4 _unknown_11[95];
 	};
-	struct PlayerAi
+	struct PlayerAI
 	{
-		bool enable;
+		BOOL enable;
 		uint32_t aiLevel;
 		undefined4 _unknown_1[18];
 		StatedefData* currentStateDefData;
 		undefined4 _unknown_2[362];
-		PlayerAiPlayersState _unknown_3[10];
+		PlayerAIPlayersState _unknown_3[10];
 		int32_t _unknown_4;
 		undefined4 _unknown_5[57];
 		StatedefInfo* _unknown_6;
 		StatedefInfo* _unknown_7;
 		undefined4 _unknown_8[64];
-		PlayerAiParams params;
+		PlayerAIParams params;
 		int32_t commands[10];
 		int32_t gametime;
 		int32_t commandHistory[10];
