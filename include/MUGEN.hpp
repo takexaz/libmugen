@@ -12,6 +12,7 @@
 #include <common.hpp>
 #include <controller.hpp>
 #include <date.hpp>
+#include <ebcommon.hpp>
 #include <font.hpp>
 #include <kbi.hpp>
 #include <pallete.hpp>
@@ -22,3 +23,4 @@
 #include <state.hpp>
 #include <system.hpp>
 #include <trigger.hpp>
+#include <txtparse.hpp>
