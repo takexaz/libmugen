@@ -13,14 +13,22 @@ add_library (
 
 target_compile_features (${PROJECT_NAME} PUBLIC cxx_std_20)
 
-# allegro
 set(DEPS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/deps")
-target_link_libraries(${PROJECT_NAME} "${DEPS_DIR}/ALLEG40.lib")
+
+# allegro
+set(ALLEGRO_DIR "${DEPS_DIR}/allegro")
+target_link_libraries(${PROJECT_NAME} "${ALLEGRO_DIR}/ALLEG40.lib")
+
+# zlib
+ set(ZLIB_DIR "${DEPS_DIR}/zlib")
+target_link_libraries(${PROJECT_NAME} "${ZLIB_DIR}/zlib.lib")
 
 target_include_directories(
 	${PROJECT_NAME}
     PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-	${DEPS_DIR}
-    ${DEPS_DIR}/allegro/include
+    ${ALLEGRO_DIR}
+    ${ALLEGRO_DIR}/include
+    ${ZLIB_DIR}
+    ${ZLIB_DIR}/include
 )

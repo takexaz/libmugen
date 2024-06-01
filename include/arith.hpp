@@ -4,9 +4,11 @@
 namespace mugen20414::state::trigger {
 	struct TrigData;
 }
-using namespace mugen20414::state::trigger;
 
 namespace mugen20414::arith {
+	using namespace mugen20414::state::trigger;
+
+
 	enum class EvalType {
 		kInteger      = 0,
 		kFloat    = 1,

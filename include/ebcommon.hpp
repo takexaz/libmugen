@@ -1,11 +1,21 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
 
+#include <zlib.hpp>
+
 namespace mugen20414::ebcommon::io {
+	using namespace zlib;
+
+	enum class MFOpenType {
+		kOpenFile = 1,
+		kOpenMemory = 2,
+		kOpenZipFile = 3
+	};
+
 	struct MFile {
 		BOOL field0_0x0;
 		FILE* fp;
-		undefined4 field2_0x8;
+		unzFile zfp;
 		void* field3_0xc;
 		undefined4 field4_0x10;
 		undefined4 field5_0x14;
@@ -40,7 +50,7 @@ namespace mugen20414::ebcommon::debug {
 	static const auto DebugErrorExit = reinterpret_cast<void (*)(const char* errMsg)>(0x4187d0); // noreturn
 }
 
-#undef ZeroMemory;
+#undef ZeroMemory
 namespace mugen20414::ebcommon::memory {
 	static volatile const auto ElecOutOfMem = reinterpret_cast<BOOL*>(0x4b5fb4);
 

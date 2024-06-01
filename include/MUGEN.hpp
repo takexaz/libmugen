@@ -1,5 +1,6 @@
 #pragma once
 #include <allegro.hpp>
+#include <zlib.hpp>
 
 #include <afterimage.hpp>
 #include <ai.hpp>

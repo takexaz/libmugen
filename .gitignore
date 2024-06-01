@@ -6,6 +6,7 @@
 
 # Build results
 [Aa]rchive/
+[Bb]uild/
 
 # User-specific files
 *.rsuser
