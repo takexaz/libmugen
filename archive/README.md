@@ -14,3 +14,16 @@ http://web.archive.org/web/20240514145738/http://ftp-osl.osuosl.org/pub/libpng/s
 http://web.archive.org/web/20051109080556/http://www.winimage.com/zLibDll/buildzlib114dll.zip
 - unzip(binary)
 http://web.archive.org/web/20051109075942/http://winimage.com:80/zLibDll/zlib114dll.zip
+
+- mini_sdk
+https://web.archive.org/web/20041217150338/http://nunzioweb.com/sawgstuff/ssold.html
+- dsp_minisdk.zip
+https://web.archive.org/web/20041217150338/http://nunzioweb.com/sawgstuff/mirror/nullsoft/dsp_minisdk.zip
+- gen_minisdk.zip
+https://web.archive.org/web/20041217150338/http://nunzioweb.com/sawgstuff/mirror/nullsoft/gen_minisdk.zip
+- in_minisdk.zip
+https://web.archive.org/web/20041217150338/http://nunzioweb.com/sawgstuff/mirror/nullsoft/in_minisdk.zip
+- out_minisdk.zip
+https://web.archive.org/web/20041217150338/http://nunzioweb.com/sawgstuff/mirror/nullsoft/out_minisdk.zip
+- vis_minisdk.zip
+https://web.archive.org/web/20041217150338/http://nunzioweb.com/sawgstuff/mirror/nullsoft/vis_minisdk.zip
