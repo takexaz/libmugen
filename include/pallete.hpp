@@ -2,9 +2,10 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <ebcommon.hpp>
-using namespace mugen20414::ebcommon::io;
 
 namespace mugen20414::pallete {
+	using namespace mugen20414::ebcommon::io;
+
 	struct Color3
 	{
 		uint8_t r;

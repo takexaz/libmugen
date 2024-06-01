@@ -2,16 +2,18 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <controller.hpp>
-using namespace mugen20414::state::controller;
 
 namespace mugen20414::player {
 	enum class StateType;
 	enum class MoveType;
 	enum class Physics;
 }
-using namespace mugen20414::player;
 
 namespace mugen20414::state {
+	using namespace mugen20414::state::controller;
+	using namespace mugen20414::player;
+
+
 	struct StatedefList
 	{
 		uint32_t enable;

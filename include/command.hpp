@@ -2,9 +2,10 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <kbi.hpp>
-using namespace mugen20414::kbi;
 
 namespace mugen20414::command {
+	using namespace mugen20414::kbi;
+
 	struct CommandData {
 		KeyState* command;
 		uint32_t paramCount;

@@ -2,13 +2,14 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <pallete.hpp>
-using namespace mugen20414::pallete;
 #include <controller.hpp>
-using namespace mugen20414::state::controller;
 #include <anim.hpp>
-using namespace mugen20414::anim;
 
 namespace mugen20414::afterimage {
+	using namespace mugen20414::pallete;
+	using namespace mugen20414::state::controller;
+	using namespace mugen20414::anim;
+
 	struct AfterimageItem {
 		int32_t currentSpriteIndex;
 		float posX;

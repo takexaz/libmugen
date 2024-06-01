@@ -2,33 +2,33 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <date.hpp>
-using namespace mugen20414::date;
 #include <command.hpp>
-using namespace mugen20414::command;
 #include <state.hpp>
-using namespace mugen20414::state;
 #include <sprite.hpp>
-using namespace mugen20414::sprite;
 #include <anim.hpp>
-using namespace mugen20414::anim;
 #include <sound.hpp>
-using namespace mugen20414::sound;
 #include <projectile.hpp>
-using namespace mugen20414::projectile;
 #include <kbi.hpp>
-using namespace mugen20414::kbi;
 #include <controller.hpp>
-using namespace mugen20414::state::controller;
 #include <afterimage.hpp>
-using namespace mugen20414::afterimage;
 #include <pallete.hpp>
-using namespace mugen20414::pallete;
 #include <ai.hpp>
-using namespace mugen20414::player::ai;
 #include <clipboard.hpp>
-using namespace mugen20414::clipboard;
 
 namespace mugen20414::player {
+	using namespace mugen20414::date;
+	using namespace mugen20414::command;
+	using namespace mugen20414::state;
+	using namespace mugen20414::sprite;
+	using namespace mugen20414::anim;
+	using namespace mugen20414::sound;
+	using namespace mugen20414::projectile;
+	using namespace mugen20414::kbi;
+	using namespace mugen20414::afterimage;
+	using namespace mugen20414::pallete;
+	using namespace mugen20414::player::ai;
+	using namespace mugen20414::clipboard;
+
 
 	enum class ProjContactType {
 		kNone = 0,
@@ -407,6 +407,7 @@ namespace mugen20414::player {
 		int32_t parentId;
 		Player* parent;
 		Player* root;
+		uint32_t playerType;
 		PlayerAI ai;
 		Player* p2Enemy;
 		Player* enemynear;

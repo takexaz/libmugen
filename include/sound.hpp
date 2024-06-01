@@ -2,9 +2,11 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <allegro.hpp>
-using namespace allegro;
 
 namespace mugen20414::sound {
+	using namespace allegro;
+
+
 	struct SoundItem
 	{
 		int32_t groupNo;

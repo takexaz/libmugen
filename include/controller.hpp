@@ -1,13 +1,14 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
 #include <trigger.hpp>
-using namespace mugen20414::state::trigger;
 #include <sound.hpp>
-using namespace mugen20414::sound;
 #include <anim.hpp>
-using namespace mugen20414::anim;
-
 namespace mugen20414::state::controller {
+	using namespace mugen20414::state::trigger;
+	using namespace mugen20414::sound;
+	using namespace mugen20414::anim;
+
+
 	enum class SCtrlId {
 		kNull               = 0,
 		kChangeState        = 1,

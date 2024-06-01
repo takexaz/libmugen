@@ -2,14 +2,15 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <state.hpp>
-using namespace mugen20414::state;
 
 namespace mugen20414::player {
 	struct Player;
 }
-using namespace mugen20414::player;
 
 namespace mugen20414::player::ai {
+	using namespace mugen20414::state;
+	using namespace mugen20414::player;
+
 	struct PlayerAIPlayersState
 	{
 		Player* player;

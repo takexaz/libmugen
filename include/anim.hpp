@@ -2,9 +2,10 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <sprite.hpp>
-using namespace mugen20414::sprite;
 
 namespace mugen20414::anim {
+	using namespace mugen20414::sprite;
+
 	enum class TransType {
 		kDefault     = -1,
 		kNone        = 0,

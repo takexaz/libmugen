@@ -1,15 +1,17 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
 #include <controller.hpp>
-using namespace mugen20414::state::controller;
 #include <anim.hpp>
-using namespace mugen20414::anim;
 #include <afterimage.hpp>
-using namespace mugen20414::afterimage;
 #include <sprite.hpp>
-using namespace mugen20414::sprite;
 
 namespace mugen20414::projectile {
+	using namespace mugen20414::state::controller;
+	using namespace mugen20414::anim;
+	using namespace mugen20414::afterimage;
+	using namespace mugen20414::sprite;
+
+
 	struct ProjectileList
 	{
 		uint32_t enable;

@@ -2,9 +2,11 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <pallete.hpp>
-using namespace mugen20414::pallete;
 
 namespace mugen20414::sprite {
+	using namespace mugen20414::pallete;
+
+
 	struct SpriteData
 	{
 		int32_t width;

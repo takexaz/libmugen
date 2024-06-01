@@ -2,9 +2,10 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <arith.hpp>
-using namespace mugen20414::arith;
 
 namespace mugen20414::state::trigger {
+	using namespace mugen20414::arith;
+
 	enum class TriggerId {
 		kTime              = 0,
 		kAnimTime          = 1,
