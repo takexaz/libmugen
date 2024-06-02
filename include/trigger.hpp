@@ -202,7 +202,7 @@ namespace mugen20414::state::trigger {
 		EvalComparator compareStyle;
 		uint32_t isFloat;
 		EvalType trigArgs[6];
-		char* trigStrArg;
+		const char* trigStrArg;
 	};
 	struct TrigList {
 		uint32_t enable;

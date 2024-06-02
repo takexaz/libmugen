@@ -15,6 +15,7 @@
 #include <date.hpp>
 #include <ebcommon.hpp>
 #include <font.hpp>
+#include <game.hpp>
 #include <kbi.hpp>
 #include <pallete.hpp>
 #include <player.hpp>

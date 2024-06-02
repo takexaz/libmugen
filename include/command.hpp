@@ -9,8 +9,8 @@ namespace mugen20414::command {
 	struct CommandData {
 		KeyState* command;
 		uint32_t paramCount;
-		uint32_t time;
-		uint32_t bufferTime;
+		int32_t time;
+		int32_t bufferTime;
 		uint32_t nameIdx;
 		uint32_t nameIdxNo;
 	};
