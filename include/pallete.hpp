@@ -138,7 +138,7 @@ namespace mugen20414::pallete {
 	static const auto Pal4ColorBal       = reinterpret_cast<void(*)(Pal4 * src, Pal4 * dest, uint32_t colorBalance, uint32_t startIndex, size_t length)> (0x448e40);
 	static const auto Pal4InvertAll      = reinterpret_cast<void(*)(Pal4 * src, Pal4 * dest, uint32_t startIndex, size_t length)> (0x448ff0);
 	static const auto Pal4Read3File      = reinterpret_cast<BOOL(*)(Pal4 * pal4Data, const char* filename)> (0x449040);
-	static const auto Pal4Read3FilePtr   = reinterpret_cast<BOOL(*)(Pal4 * Pal4Data, MFILE * mfp)> (0x4490d0);
+	static const auto Pal4Read3FilePtr   = reinterpret_cast<BOOL(*)(Pal4 * Pal4Data, MFile * mfp)> (0x4490d0);
 	static const auto Pal4ToFpal         = reinterpret_cast<void(*)(Pal4 * pal4Data, FPal * fpalData, uint32_t startIndex, size_t length)> (0x449160);
 	static const auto Pal4SettingsToFpal = reinterpret_cast<void(*)(Pal4 * pal4Data, EBPalSetting * ebPalSet, FPal * fpalData, uint32_t startIndex, size_t length)> (0x4491c0);
 

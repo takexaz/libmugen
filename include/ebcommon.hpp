@@ -64,7 +64,7 @@ namespace mugen20414::ebcommon::io {
 		kOpenMemory = 2,
 		kOpenZipFile = 3
 	};
-	struct MFILE {
+	struct MFile {
 		MFOpenType mfOpenType;
 		FILE* fp;
 		unzFile zfp; // unz_s*
@@ -75,20 +75,20 @@ namespace mugen20414::ebcommon::io {
 		BOOL isVAlloc;
 		BOOL memEOF;
 	};
-	static const auto MFgetc      = reinterpret_cast<char (*)(MFILE * mfp)>(0x418850);
-	static const auto MFfgets     = reinterpret_cast<char* (*)(const char* str, int count, MFILE * mfp)>(0x418890);
-	static const auto MFfread     = reinterpret_cast<size_t(*)(void* buffer, size_t size, size_t count, MFILE * mfp)>(0x418910);
-	static const auto MFfeof      = reinterpret_cast<BOOL(*)(MFILE * mfp)>(0x4189b0);
-	static const auto MFfopenFile = reinterpret_cast<MFILE * (*)(const char* filename, const char* mode)>(0x4189e0);
+	static const auto MFgetc      = reinterpret_cast<char (*)(MFile * mfp)>(0x418850);
+	static const auto MFfgets     = reinterpret_cast<char* (*)(const char* str, int count, MFile * mfp)>(0x418890);
+	static const auto MFfread     = reinterpret_cast<size_t(*)(void* buffer, size_t size, size_t count, MFile * mfp)>(0x418910);
+	static const auto MFfeof      = reinterpret_cast<BOOL(*)(MFile * mfp)>(0x4189b0);
+	static const auto MFfopenFile = reinterpret_cast<MFile * (*)(const char* filename, const char* mode)>(0x4189e0);
 	static const auto MFfopenMem  = reinterpret_cast<void (*)(void* memory, size_t size)>(0x418a30);
-	static const auto MFzopen     = reinterpret_cast<undefined4(*)(MFILE * mfp, const char* filename)>(0x418a70);
-	static const auto MFzclose    = reinterpret_cast<void (*)(MFILE * mfp)>(0x418b70);
-	static const auto MFfopenZip  = reinterpret_cast<MFILE * (*)(const char* filename, const char* mode)>(0x418b90);
-	static const auto MFfclose    = reinterpret_cast<uint32_t(*)(MFILE * mfp)>(0x418bf0);
-	static const auto MFfseek     = reinterpret_cast<int (*)(MFILE * mfp, long offset, uint32_t origin)>(0x418cb0);
-	static const auto MFftell     = reinterpret_cast<int (*)(MFILE * mfp)>(0x418d20);
-	static const auto MFigetw     = reinterpret_cast<uint16_t(*)(MFILE * mfp)>(0x418d50);
-	static const auto MFigetl     = reinterpret_cast<uint32_t(*)(MFILE * mfp)>(0x418de0);
+	static const auto MFzopen     = reinterpret_cast<undefined4(*)(MFile * mfp, const char* filename)>(0x418a70);
+	static const auto MFzclose    = reinterpret_cast<void (*)(MFile * mfp)>(0x418b70);
+	static const auto MFfopenZip  = reinterpret_cast<MFile * (*)(const char* filename, const char* mode)>(0x418b90);
+	static const auto MFfclose    = reinterpret_cast<uint32_t(*)(MFile * mfp)>(0x418bf0);
+	static const auto MFfseek     = reinterpret_cast<int (*)(MFile * mfp, long offset, uint32_t origin)>(0x418cb0);
+	static const auto MFftell     = reinterpret_cast<int (*)(MFile * mfp)>(0x418d20);
+	static const auto MFigetw     = reinterpret_cast<uint16_t(*)(MFile * mfp)>(0x418d50);
+	static const auto MFigetl     = reinterpret_cast<uint32_t(*)(MFile * mfp)>(0x418de0);
 }
 
 namespace mugen20414::ebcommon::math {
