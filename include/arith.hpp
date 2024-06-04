@@ -2,7 +2,7 @@
 #include <_MUGEN_TYPES.hpp>
 
 namespace mugen20414::state::trigger {
-	struct TrigData;
+	struct EvalTrigger;
 }
 
 namespace mugen20414::arith {
@@ -64,7 +64,7 @@ namespace mugen20414::arith {
 		int32_t i;
 		float f;
 		EvalOperator op;
-		TrigData* trig;
+		EvalTrigger* trig;
 	};
 	union EvalNode {
 		int32_t i;

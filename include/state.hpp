@@ -16,7 +16,7 @@ namespace mugen20414::state {
 
 	struct Statedef
 	{
-		Array<SCtrl>* states;
+		SCtrlArray* states;
 		StateType type;
 		MoveType moveType;
 		Physics physics;
@@ -36,6 +36,6 @@ namespace mugen20414::state {
 	};
 
 	struct StatedefArray {
-		Array<Statedef>* statedefs;
+		Array<Statedef>* statedefArray;
 	};
 }

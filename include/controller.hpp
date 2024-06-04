@@ -104,7 +104,7 @@ namespace mugen20414::state::controller {
 	};
 
 	struct SCtrl {
-		TriggerArray triggers;
+		TriggerArray* triggerArray;
 		uint32_t triggerCnt;
 		int32_t persistent;
 		int32_t ignorehitpause;
@@ -113,6 +113,8 @@ namespace mugen20414::state::controller {
 		EvalValue params[6];
 		void* paramsEx;
 	};
+
+	using SCtrlArray = Array<SCtrl>;
 
 	struct EnvShakeParams
 	{

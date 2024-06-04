@@ -59,9 +59,8 @@ namespace mugen20414::pallete {
 		int32_t numDrawing;
 		FPal nowPal;
 	};
-	struct EBPalArray {
-		Array<EBPal>* ebPals;
-	};
+
+	using EBPalArray = Array<EBPal>;
 
 	struct EBMasterPal {
 		EBPalSetting subPal;

@@ -47,20 +47,19 @@ namespace mugen20414::anim {
 		ClsnInfo* clsn2;
 	};
 
-	struct AnimElemArray {
-		Array<AnimElem>* animElems;
-	};
+	using  AnimElemArray = Array<AnimElem>;
 
 	struct Anim
 	{
-		AnimElemArray animElem;
+		AnimElemArray* animElem;
 		int32_t totalElems;
 		int32_t totalFrames;
 		int32_t loopStartFrame;
+		undefined4 _unknown_1;
 	};
 	struct AnimArray
 	{
-		Array<Anim>* info;
+		Array<Anim>* animArray;
 		int32_t totalAnims;
 	};
 
@@ -70,7 +69,7 @@ namespace mugen20414::anim {
 		Sprite* sprite;
 		undefined4 _unknown_1;
 		int32_t currentAnimIndex;
-		AnimElemArray currentAnimElem;
+		AnimElemArray* currentAnimElemArray;
 		int32_t currentAnimElemIndex;
 		int32_t totalElapsedFrames;
 		int32_t currentFrame;

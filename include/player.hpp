@@ -65,14 +65,7 @@ namespace mugen20414::player {
 
 	struct Player;
 
-	struct TargetList
-	{
-		uint32_t enable;
-		int32_t id;
-		undefined4 _unknown_1;
-		undefined4 _unknown_2;
-	};
-	struct TargetData
+	struct Target
 	{
 		Player* player;
 		int32_t airJuggle;
@@ -83,20 +76,7 @@ namespace mugen20414::player {
 		int32_t bindTime;
 		int32_t preBindTime;
 	};
-	struct TargetInfo
-	{
-		undefined4 _unknown;
-		int32_t size;
-		int32_t currentTargetCnt;
-		int32_t maxTargetCnt;
-		int32_t nextId;
-		TargetData* targetData;
-		TargetList* targetList;
-		int32_t scaned_index;
-		int32_t scaned_cnt;
-		int32_t min_index;
-		int32_t max_index;
-	};
+	using  TargetArray = Array<Target>;
 
 	struct Constants {
 		int32_t data_life;
@@ -247,11 +227,11 @@ namespace mugen20414::player {
 		int32_t charsIdx;
 		Constants consts;
 		CommandElem commands;
-		StatedefArray* stateList;
-		Sprite* sprite;
-		AnimArray* anim;
+		StatedefArray* statedefArray;
+		SpriteArray* spriteArray;
+		AnimArray* animArray;
 		int32_t volume;
-		SoundArray* sound;
+		SoundArray* soundArray;
 		char ai_filepath[512];
 		void* _unknown_3;
 		void* _unknown_4;
@@ -316,7 +296,7 @@ namespace mugen20414::player {
 		ProjContactType projContactType;
 		int32_t projContactTime;
 		ProjectileArray* projectiles;
-		TargetInfo* targets;
+		TargetArray* targets;
 		float cornerPushVel; // Hitdef
 		float _unknown_2; //
 		float _unknown_3; // cornerŠÖ˜A(4441f9)
@@ -328,8 +308,8 @@ namespace mugen20414::player {
 		undefined4 _unknown_8;
 		KBIState kbiState;
 		CommandInfo commandInfo;
-		StatedefArray* usingStateList;
-		StatedefArray* enforcedStateList;
+		StatedefArray* usingStatedefs;
+		StatedefArray* enforcedStatedefs;
 		uint32_t enforcedStateListBy;
 		int32_t stateNo;
 		int32_t prevStateNo;
@@ -387,18 +367,18 @@ namespace mugen20414::player {
 		TransType trans;
 		int32_t alphaAS;
 		int32_t alphaD;
-		AfterimageData* afterImage;
+		Afterimage* afterImage;
 		int32_t internalHitCount;
 		int32_t hitCount;
 		int32_t uniqHitCount;
 		undefined4 _unknown_26;
 		undefined4 _unknown_27;
-		Sprite* sprite;
-		Sprite* personalPalleteSff;
-		Sprite* commonPalleteSff;
-		Sprite* personalPalleteSff_;
+		SpriteArray* spriteArray;
+		SpriteArray* personalPalleteSpriteArray;
+		SpriteArray* commonPalleteSpriteArray;
+		SpriteArray* personalPalleteSpritesArray_;
 		AnimUsed* anim;
-		AnimArray* enforcedAnim;
+		AnimArray* enforcedAnimArray;
 		int32_t palNo;
 		undefined reserved1[0x1200]; /* Maybe unused */
 		PalGroup palGroup;

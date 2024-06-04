@@ -76,12 +76,12 @@ namespace mugen20414::projectile {
 		undefined4 _unknown_19;
 		int32_t superMoveTime;
 		int32_t pauseMoveTime;
-		AfterimageData* afterImage;
+		Afterimage* afterImage;
 	};
 	struct ProjectileArray
 	{
-		Array<Projectile>* projInfo;
-		AnimArray* animInfo;
-		Sprite* sffInfo;
+		Array<Projectile>* projArray;
+		AnimArray* animArray;
+		SpriteArray* spriteArray;
 	};
 }

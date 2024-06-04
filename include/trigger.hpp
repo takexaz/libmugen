@@ -197,17 +197,16 @@ namespace mugen20414::state::trigger {
 		kInvisible      = 24
 	};
 
-	struct Trigger {
+	struct EvalTrigger {
 		TriggerId trigID;
 		RedirectId redirectID;
 		EvalValue redirectArg;
 		EvalComparator compareStyle;
 		uint32_t isFloat;
-		EvalType trigArgs[6];
+		EvalNode trigArgs[6];
 		const char* trigStrArg;
 	};
 
-	struct TriggerArray {
-		Array<Trigger>* triggers;
-	};
+	using TriggerArray = Array<EvalValue>;
+
 }

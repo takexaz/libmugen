@@ -16,8 +16,8 @@ namespace mugen20414::array {
 		int32_t numData;
 		size_t maxNumData;
 		uint32_t nextID;
-		T* dataArray;
-		ArrayList* dataArrayList;
+		T* datas;
+		ArrayList* list;
 		int32_t scanedIdx;
 		int32_t scanedCnt;
 		int32_t minIndex;

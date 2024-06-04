@@ -28,9 +28,9 @@ namespace mugen20414::sprite {
 
 	struct SpriteArray
 	{
-		Array<Sprite>* sprInfo;
+		Array<Sprite>* spriteArray;
 		void* _unknown_1;
-		EBPalArray palInfo;
+		EBPalArray* palleteArray;
 		void* _unknown_2;
 		int32_t refCnt;
 	};

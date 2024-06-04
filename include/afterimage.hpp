@@ -21,7 +21,7 @@ namespace mugen20414::afterimage {
 		undefined4 _unknown_8; // HFlipToSgn‚Ì•Ô‚è’l
 		EBPal ebPal;
 	};
-	struct AfterimageData
+	struct Afterimage
 	{
 		AfterimageItem* items;
 		int32_t length_maximum;
@@ -33,11 +33,11 @@ namespace mugen20414::afterimage {
 		AfterimageParams params;
 	};
 
-	static const auto AftImgNew    = reinterpret_cast<AfterimageData* (*)(uint32_t length)>(0x401000);
-	static const auto AftImgInit   = reinterpret_cast<void (*)(AfterimageData* afterImage, uint32_t length)>(0x4010e0);
-	static const auto AftImgFree   = reinterpret_cast<void (*)(AfterimageData* afterImage)>(0x401160);
-	static const auto AftImgDeInit = reinterpret_cast<void (*)(AfterimageData * afterImage)>(0x4011c0);
-	static const auto AftImgSetup  = reinterpret_cast<void (*)(AfterimageData* afterImage, AfterimageParams* params, AnimUsed* anim)>(0x401220);
-	static const auto AftImgUpdate = reinterpret_cast<void (*)(AfterimageData* afterImage, float posX, float posY, float scaleX, float scaleY, float angle, uint32_t isFlip, uint32_t isNotHitpaused)>(0x401250);
-	static const auto AftImgDraw   = reinterpret_cast<void (*)(AfterimageData* afterImage, float posX, float posY, int32_t priority)>(0x4013b0);
+	static const auto AftImgNew    = reinterpret_cast<Afterimage * (*)(uint32_t length)>(0x401000);
+	static const auto AftImgInit   = reinterpret_cast<void (*)(Afterimage * afterImage, uint32_t length)>(0x4010e0);
+	static const auto AftImgFree   = reinterpret_cast<void (*)(Afterimage * afterImage)>(0x401160);
+	static const auto AftImgDeInit = reinterpret_cast<void (*)(Afterimage * afterImage)>(0x4011c0);
+	static const auto AftImgSetup  = reinterpret_cast<void (*)(Afterimage * afterImage, AfterimageParams* params, AnimUsed* anim)>(0x401220);
+	static const auto AftImgUpdate = reinterpret_cast<void (*)(Afterimage * afterImage, float posX, float posY, float scaleX, float scaleY, float angle, uint32_t isFlip, uint32_t isNotHitpaused)>(0x401250);
+	static const auto AftImgDraw   = reinterpret_cast<void (*)(Afterimage * afterImage, float posX, float posY, int32_t priority)>(0x4013b0);
 }
