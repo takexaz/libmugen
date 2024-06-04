@@ -1,9 +1,11 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
+#include <array.hpp>
 #include <trigger.hpp>
 #include <sound.hpp>
 #include <anim.hpp>
 namespace mugen20414::state::controller {
+	using namespace mugen20414::array;
 	using namespace mugen20414::state::trigger;
 	using namespace mugen20414::sound;
 	using namespace mugen20414::anim;
@@ -101,14 +103,8 @@ namespace mugen20414::state::controller {
 		kTagOut             = 10052
 	};
 
-	struct SCtrlList {
-		uint32_t enable;
-		int32_t id;
-		SCtrlId scID;
-		int32_t laterLabelNo;
-	};
-	struct SCtrlData {
-		TrigInfo* triggers;
+	struct SCtrl {
+		TriggerArray triggers;
 		uint32_t triggerCnt;
 		int32_t persistent;
 		int32_t ignorehitpause;
@@ -116,19 +112,6 @@ namespace mugen20414::state::controller {
 		undefined4 _unknown_1;
 		EvalValue params[6];
 		void* paramsEx;
-	};
-	struct SCtrlInfo {
-		undefined4 _unknown;
-		int32_t size;
-		int32_t currentSCCnt;
-		int32_t maxSCCnt;
-		int32_t nextId;
-		SCtrlData* scData;
-		SCtrlList* scList;
-		int32_t scaned_index;
-		int32_t scaned_cnt;
-		int32_t min_index;
-		int32_t max_index;
 	};
 
 	struct EnvShakeParams

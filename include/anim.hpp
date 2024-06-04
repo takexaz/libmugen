@@ -1,9 +1,11 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
 
+#include <array.hpp>
 #include <sprite.hpp>
 
 namespace mugen20414::anim {
+	using namespace mugen20414::array;
 	using namespace mugen20414::sprite;
 
 	enum class TransType {
@@ -29,7 +31,7 @@ namespace mugen20414::anim {
 		ClsnData* data;
 	};
 
-	struct AnimElemData
+	struct AnimElem
 	{
 		int32_t startFrame;
 		int32_t displayTime;
@@ -44,69 +46,31 @@ namespace mugen20414::anim {
 		ClsnInfo* clsn1;
 		ClsnInfo* clsn2;
 	};
-	struct AnimElemList
-	{
-		uint32_t enable;
-		int32_t id;
-		int32_t _unknown;
-		int32_t elemNo;
-	};
-	struct AnimElemInfo
-	{
-		uint32_t enable;
-		int32_t size;
-		int32_t currentElemCnt;
-		int32_t maxElemCnt;
-		int32_t nextId;
-		AnimElemData* data;
-		AnimElemList* list;
-		int32_t scaned_index;
-		int32_t scaned_cnt;
-		int32_t min_index;
-		int32_t max_index;
+
+	struct AnimElemArray {
+		Array<AnimElem>* animElems;
 	};
 
-	struct AnimData
+	struct Anim
 	{
-		AnimElemInfo* info;
+		AnimElemArray animElem;
 		int32_t totalElems;
 		int32_t totalFrames;
 		int32_t loopStartFrame;
 	};
-	struct AnimList
+	struct AnimArray
 	{
-		uint32_t enable;
-		int32_t id;
-		int32_t _unknown_1;
-		int32_t animNo;
-	};
-	struct AnimInfo
-	{
-		undefined4 _unknown;
-		int32_t size;
-		int32_t maxAnimIndex;
-		int32_t currentAnimCnt;
-		int32_t nextId;
-		AnimData* data;
-		AnimList* list;
-		int32_t scaned_index;
-		int32_t scaned_cnt;
-		int32_t min_index;
-		int32_t max_index;
-	};
-	struct AnimInfoEx
-	{
-		AnimInfo* info;
+		Array<Anim>* info;
 		int32_t totalAnims;
 	};
 
 	struct AnimUsed
 	{
-		AnimInfoEx* useAnimInfoEx;
-		SpriteInfoEx* sff;
+		AnimArray* useAnimArray;
+		Sprite* sprite;
 		undefined4 _unknown_1;
 		int32_t currentAnimIndex;
-		AnimElemData* currentAnimElem;
+		AnimElemArray currentAnimElem;
 		int32_t currentAnimElemIndex;
 		int32_t totalElapsedFrames;
 		int32_t currentFrame;
@@ -114,7 +78,7 @@ namespace mugen20414::anim {
 		int32_t transAlphaAS;
 		int32_t transAlphaD;
 		int32_t currentSpriteIndex;
-		SpriteInfoEx* spritesLayer; /* Ontop == 0: g->prioritySpritesLayer1, Otherwise: NULL */
+		Sprite* spritesLayer; /* Ontop == 0: g->prioritySpritesLayer1, Otherwise: NULL */
 		int32_t sprPriority;
 	};
 }

@@ -3,7 +3,6 @@
 
 #include <zlib.hpp>
 
-
 namespace mugen20414::ebcommon::debug {
 	enum class ErrorCode {
 		kLoadFonts = 1,
@@ -51,12 +50,12 @@ namespace mugen20414::ebcommon::io {
 	static const auto strimatch     = reinterpret_cast<BOOL(*)(const char* string1, const char* string2)>(0x418470);
 	static const auto strimatchlen  = reinterpret_cast<BOOL(*)(const char* string1, const char* string2, int32_t length)>(0x4184c0);
 	static const auto strmatchlen   = reinterpret_cast<BOOL(*)(const char* string1, const char* string2, int32_t length)>(0x418520);
-	static const auto strtoupper    = reinterpret_cast<void (*)(char* dest, const char* src)>(0x418560);
-	static const auto splitdirfile  = reinterpret_cast<void (*)(const char* path, char* dir, char* filename)>(0x418590);
-	static const auto joindirfile   = reinterpret_cast<void (*)(const char* path, char* dir, char* filename)>(0x418620);
+	static const auto strtoupper    = reinterpret_cast<void (*)(const char* dest, const char* src)>(0x418560);
+	static const auto splitdirfile  = reinterpret_cast<void (*)(const char* path, const char* dir, const char* filename)>(0x418590);
+	static const auto joindirfile   = reinterpret_cast<void (*)(const char* path, const char* dir, const char* filename)>(0x418620);
 	static const auto isabsolutedir = reinterpret_cast<BOOL(*)(const char* path)>(0x4186e0);
 	static const auto ffilelength   = reinterpret_cast<int32_t(*)(FILE * fp)>(0x418710);
-	static const auto strcpyslash   = reinterpret_cast<void (*)(char* dest, const char* src)>(0x418750);
+	static const auto strcpyslash   = reinterpret_cast<void (*)(const char* dest, const char* src)>(0x418750);
 	static const auto getfileonly   = reinterpret_cast<char* (*)(const char* path)>(0x418f50);
 
 	enum class MFOpenType {
@@ -85,7 +84,7 @@ namespace mugen20414::ebcommon::io {
 	static const auto MFzclose    = reinterpret_cast<void (*)(MFile * mfp)>(0x418b70);
 	static const auto MFfopenZip  = reinterpret_cast<MFile * (*)(const char* filename, const char* mode)>(0x418b90);
 	static const auto MFfclose    = reinterpret_cast<uint32_t(*)(MFile * mfp)>(0x418bf0);
-	static const auto MFfseek     = reinterpret_cast<int (*)(MFile * mfp, long offset, uint32_t origin)>(0x418cb0);
+	static const auto MFfseek     = reinterpret_cast<int (*)(MFile * mfp, int32_t offset, uint32_t origin)>(0x418cb0);
 	static const auto MFftell     = reinterpret_cast<int (*)(MFile * mfp)>(0x418d20);
 	static const auto MFigetw     = reinterpret_cast<uint16_t(*)(MFile * mfp)>(0x418d50);
 	static const auto MFigetl     = reinterpret_cast<uint32_t(*)(MFile * mfp)>(0x418de0);

@@ -3,4 +3,5 @@
 
 namespace allegro {
 #include <allegro.h>
+#include <jgmod.h>
 }

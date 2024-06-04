@@ -1,25 +1,20 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
+#include <array.hpp>
 #include <controller.hpp>
 #include <anim.hpp>
 #include <afterimage.hpp>
 #include <sprite.hpp>
 
 namespace mugen20414::projectile {
+	using namespace mugen20414::array;
 	using namespace mugen20414::state::controller;
 	using namespace mugen20414::anim;
 	using namespace mugen20414::afterimage;
 	using namespace mugen20414::sprite;
 
 
-	struct ProjectileList
-	{
-		uint32_t enable;
-		int32_t id;
-		int32_t _unknown_1;
-		int32_t _unknown_2;
-	};
-	struct ProjectileData
+	struct Projectile
 	{
 		int32_t projId;
 		int32_t status;
@@ -83,24 +78,10 @@ namespace mugen20414::projectile {
 		int32_t pauseMoveTime;
 		AfterimageData* afterImage;
 	};
-	struct ProjectileInfo
+	struct ProjectileArray
 	{
-		undefined4 _unknown;
-		int32_t size;
-		int32_t currentProjCnt;
-		int32_t maxProjCnt;
-		uint32_t nextID;
-		ProjectileData* data;
-		ProjectileList* list;
-		int32_t scaned_index;
-		int32_t scaned_cnt;
-		int32_t min_index;
-		int32_t max_index;
-	};
-	struct ProjectileInfoEx
-	{
-		ProjectileInfo* projInfo;
-		AnimInfoEx* animInfo;
-		SpriteInfoEx* sffInfo;
+		Array<Projectile>* projInfo;
+		AnimArray* animInfo;
+		Sprite* sffInfo;
 	};
 }

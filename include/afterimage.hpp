@@ -32,27 +32,6 @@ namespace mugen20414::afterimage {
 		uint32_t enable;
 		AfterimageParams params;
 	};
-	struct AfterimageList
-	{
-		uint32_t enable;
-		int32_t id;
-		int32_t _unknown;
-		int32_t search_id;
-	};
-	struct AfterimageInfo
-	{
-		undefined4 _unknown;
-		int32_t size;
-		int32_t currentAfterImageCnt;
-		int32_t maxAfterImageCnt;
-		uint32_t nextId;
-		AfterimageData* data;
-		AfterimageList* list;
-		int32_t scaned_index;
-		int32_t scaned_cnt;
-		int32_t min_index;
-		int32_t max_index;
-	};
 
 	static const auto AftImgNew    = reinterpret_cast<AfterimageData* (*)(uint32_t length)>(0x401000);
 	static const auto AftImgInit   = reinterpret_cast<void (*)(AfterimageData* afterImage, uint32_t length)>(0x4010e0);

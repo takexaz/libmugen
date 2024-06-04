@@ -1,13 +1,15 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
 
+#include <array.hpp>
 #include <pallete.hpp>
 
 namespace mugen20414::sprite {
+	using namespace mugen20414::array;
 	using namespace mugen20414::pallete;
 
 
-	struct SpriteData
+	struct Sprite
 	{
 		int32_t width;
 		int32_t height;
@@ -23,33 +25,13 @@ namespace mugen20414::sprite {
 		void* _unknown_3;
 		int32_t palleteIndex;
 	};
-	struct SpriteList
+
+	struct SpriteArray
 	{
-		uint32_t enable;
-		int32_t id;
-		int32_t groupNo;
-		int32_t itemNo;
-	};
-	struct SpriteInfo
-	{
-		undefined4 _unknown;
-		int32_t size;
-		int32_t currentSprCnt;
-		int32_t maxSprCnt;
-		int32_t nextId;
-		SpriteData* data;
-		SpriteList* list;
-		int32_t scaned_index;
-		int32_t scaned_cnt;
-		int32_t min_index;
-		int32_t max_index;
-	};
-	struct SpriteInfoEx
-	{
-		SpriteInfo* sprInfo;
+		Array<Sprite>* sprInfo;
 		void* _unknown_1;
-		EBPalInfo* palInfo;
-		SpriteInfoEx* _unknown_2;
+		EBPalArray palInfo;
+		void* _unknown_2;
 		int32_t refCnt;
 	};
 }

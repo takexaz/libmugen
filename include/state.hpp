@@ -14,16 +14,9 @@ namespace mugen20414::state {
 	using namespace mugen20414::player;
 
 
-	struct StatedefList
+	struct Statedef
 	{
-		uint32_t enable;
-		int32_t id;
-		int32_t stateNo;
-		undefined4 _unknown;
-	};
-	struct StatedefData
-	{
-		SCtrlInfo* states;
+		Array<SCtrl>* states;
 		StateType type;
 		MoveType moveType;
 		Physics physics;
@@ -41,20 +34,8 @@ namespace mugen20414::state {
 		EvalValue anim;
 		EvalValue powerAdd;
 	};
-	struct StatedefInfo
-	{
-		undefined4 _unknown;
-		int32_t size;
-		int32_t currentDefCnt;
-		int32_t maxDefCnt;
-		int32_t nextId;
-		StatedefData* defData;
-		StatedefList* defList;
-		int32_t scaned_index;
-		int32_t scaned_cnt;
-		int32_t min_index;
-		int32_t max_index;
+
+	struct StatedefArray {
+		Array<Statedef>* statedefs;
 	};
-
-
 }

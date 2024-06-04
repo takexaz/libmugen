@@ -237,7 +237,7 @@ namespace mugen20414::player {
 		Player* player;
 	};
 
-	struct PlayerInfo {
+	struct PlayerCache {
 		char name[48];
 		char displayName[48];
 		char authorName[48];
@@ -247,18 +247,18 @@ namespace mugen20414::player {
 		int32_t charsIdx;
 		Constants consts;
 		CommandElem commands;
-		StatedefInfo** stateList;
-		SpriteInfoEx* sprite;
-		AnimInfoEx* anim;
+		StatedefArray* stateList;
+		Sprite* sprite;
+		AnimArray* anim;
 		int32_t volume;
-		SoundInfo** sound;
+		SoundArray* sound;
 		char ai_filepath[512];
 		void* _unknown_3;
 		void* _unknown_4;
 		undefined4 _unknown_5[64];
 	};
 	struct Player {
-		PlayerInfo* info;
+		PlayerCache* info;
 		int32_t playerId;
 		int32_t slotId;
 		uint32_t teamSide;
@@ -315,7 +315,7 @@ namespace mugen20414::player {
 		int32_t projContactId;
 		ProjContactType projContactType;
 		int32_t projContactTime;
-		ProjectileInfoEx* projectiles;
+		ProjectileArray* projectiles;
 		TargetInfo* targets;
 		float cornerPushVel; // Hitdef
 		float _unknown_2; //
@@ -328,8 +328,8 @@ namespace mugen20414::player {
 		undefined4 _unknown_8;
 		KBIState kbiState;
 		CommandInfo commandInfo;
-		StatedefInfo** usingStateList;
-		StatedefInfo** enforcedStateList;
+		StatedefArray* usingStateList;
+		StatedefArray* enforcedStateList;
 		uint32_t enforcedStateListBy;
 		int32_t stateNo;
 		int32_t prevStateNo;
@@ -393,12 +393,12 @@ namespace mugen20414::player {
 		int32_t uniqHitCount;
 		undefined4 _unknown_26;
 		undefined4 _unknown_27;
-		SpriteInfoEx* sprite;
-		SpriteInfoEx* personalPalleteSff;
-		SpriteInfoEx* commonPalleteSff;
-		SpriteInfoEx* personalPalleteSff_;
+		Sprite* sprite;
+		Sprite* personalPalleteSff;
+		Sprite* commonPalleteSff;
+		Sprite* personalPalleteSff_;
 		AnimUsed* anim;
-		AnimInfoEx* enforcedAnim;
+		AnimArray* enforcedAnim;
 		int32_t palNo;
 		undefined reserved1[0x1200]; /* Maybe unused */
 		PalGroup palGroup;

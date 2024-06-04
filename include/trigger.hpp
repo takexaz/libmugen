@@ -2,9 +2,11 @@
 #include <_MUGEN_TYPES.hpp>
 
 #include <arith.hpp>
+#include <array.hpp>
 
 namespace mugen20414::state::trigger {
 	using namespace mugen20414::arith;
+	using namespace mugen20414::array;
 
 	enum class TriggerId {
 		kTime              = 0,
@@ -195,7 +197,7 @@ namespace mugen20414::state::trigger {
 		kInvisible      = 24
 	};
 
-	struct TrigData {
+	struct Trigger {
 		TriggerId trigID;
 		RedirectId redirectID;
 		EvalValue redirectArg;
@@ -204,23 +206,8 @@ namespace mugen20414::state::trigger {
 		EvalType trigArgs[6];
 		const char* trigStrArg;
 	};
-	struct TrigList {
-		uint32_t enable;
-		uint32_t id;
-		int32_t triggerNo;
-		int32_t triggerSubNo;
-	};
-	struct TrigInfo {
-		undefined4 _unknown;
-		int32_t size;
-		int32_t currentTrigCnt;
-		int32_t maxTrigCnt;
-		int32_t nextId;
-		EvalValue* trigData;
-		TrigList* trigList;
-		int32_t scaned_index;
-		int32_t scaned_cnt;
-		int32_t min_index;
-		int32_t max_index;
+
+	struct TriggerArray {
+		Array<Trigger>* triggers;
 	};
 }

@@ -18,6 +18,8 @@ set(DEPS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/deps")
 # allegro
 set(ALLEGRO_DIR "${DEPS_DIR}/allegro")
 target_link_libraries(${PROJECT_NAME} "${ALLEGRO_DIR}/ALLEG40.lib")
+# jgmod
+set(JGMOD_DIR "${ALLEGRO_DIR}/jgmod")
 
 # zlib
  set(ZLIB_DIR "${DEPS_DIR}/zlib")
@@ -29,6 +31,8 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${ALLEGRO_DIR}
     ${ALLEGRO_DIR}/include
+    ${JGMOD_DIR}
+    ${JGMOD_DIR}/include
     ${ZLIB_DIR}
     ${ZLIB_DIR}/include
 )

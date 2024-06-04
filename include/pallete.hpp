@@ -1,9 +1,11 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
 
+#include <array.hpp>
 #include <ebcommon.hpp>
 
 namespace mugen20414::pallete {
+	using namespace mugen20414::array;
 	using namespace mugen20414::ebcommon::io;
 
 	struct Color3
@@ -57,28 +59,8 @@ namespace mugen20414::pallete {
 		int32_t numDrawing;
 		FPal nowPal;
 	};
-
-
-	struct EBPalList
-	{
-		uint32_t enable;
-		int32_t id;
-		int32_t _unknown_1;
-		int32_t _unknown_2;
-	};
-	struct EBPalInfo
-	{
-		undefined4 _unknown_1;
-		int32_t size;
-		int32_t currentPalleteCnt;
-		int32_t maxPalleteCnt;
-		int32_t nextId;
-		EBPal* datas; // 0x14 EBPal‚ªmaxPalleteCntŒÂ•À‚ñ‚Å‚é?
-		EBPalList* list; // 0x18
-		int32_t scaned_index;
-		int32_t scaned_cnt;
-		int32_t min_index;
-		int32_t max_index;
+	struct EBPalArray {
+		Array<EBPal>* ebPals;
 	};
 
 	struct EBMasterPal {

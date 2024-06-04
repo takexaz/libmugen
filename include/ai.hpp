@@ -1,6 +1,7 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
 
+#include <array.hpp>
 #include <state.hpp>
 
 namespace mugen20414::player {
@@ -8,6 +9,7 @@ namespace mugen20414::player {
 }
 
 namespace mugen20414::player::ai {
+	using namespace mugen20414::array;
 	using namespace mugen20414::state;
 	using namespace mugen20414::player;
 
@@ -16,7 +18,7 @@ namespace mugen20414::player::ai {
 		Player* player;
 		undefined4 _unknown;
 		int32_t stateNo;
-		StatedefInfo* stateList;
+		StatedefArray stateList;
 	};
 	struct PlayerAIParams
 	{
@@ -48,13 +50,13 @@ namespace mugen20414::player::ai {
 		BOOL enable;
 		uint32_t aiLevel;
 		undefined4 _unknown_1[18];
-		StatedefData* currentStateDefData;
+		Statedef* currentStateDefData;
 		undefined4 _unknown_2[362];
 		PlayerAIPlayersState _unknown_3[10];
 		int32_t _unknown_4;
 		undefined4 _unknown_5[57];
-		StatedefInfo* _unknown_6;
-		StatedefInfo* _unknown_7;
+		StatedefArray _unknown_6;
+		StatedefArray _unknown_7;
 		undefined4 _unknown_8[64];
 		PlayerAIParams params;
 		int32_t commands[10];

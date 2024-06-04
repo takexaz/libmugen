@@ -8,6 +8,8 @@
 #include <arith.hpp>
 #include <array.hpp>
 #include <bg.hpp>
+#include <bgm.hpp>
+#include <charsel.hpp>
 #include <clipboard.hpp>
 #include <command.hpp>
 #include <common.hpp>
