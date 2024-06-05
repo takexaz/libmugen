@@ -3,7 +3,7 @@
 
 namespace mugen20414::system {
 	enum class GameType {
-		Versus = 0,		// VS
-		Melee  = 1		// MATCHES? MISSION?(beat'em up)
+		kVersus = 0,		// VS
+		kMelee  = 1		// MATCHES? MISSION?(beat'em up)
 	};
 }

@@ -51,7 +51,7 @@ namespace mugen20414::anim {
 
 	struct Anim
 	{
-		AnimElemArray* animElem;
+		AnimElemArray* animElemArray;
 		int32_t totalElems;
 		int32_t totalFrames;
 		int32_t loopStartFrame;

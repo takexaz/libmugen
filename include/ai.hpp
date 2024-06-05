@@ -1,7 +1,6 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
 
-#include <array.hpp>
 #include <state.hpp>
 
 namespace mugen20414::player {
@@ -9,7 +8,6 @@ namespace mugen20414::player {
 }
 
 namespace mugen20414::player::ai {
-	using namespace mugen20414::array;
 	using namespace mugen20414::state;
 	using namespace mugen20414::player;
 

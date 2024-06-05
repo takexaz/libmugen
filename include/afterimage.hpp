@@ -24,7 +24,7 @@ namespace mugen20414::afterimage {
 	struct Afterimage
 	{
 		AfterimageItem* items;
-		int32_t length_maximum;
+		int32_t maxLength;
 		AnimUsed* anim;
 		int32_t _unknown_2;
 		int32_t _unknown_3;
