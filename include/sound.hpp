@@ -9,7 +9,7 @@ namespace mugen20414::sound {
 	using namespace array;
 
 
-	struct SoundItem
+	struct SoundParam
 	{
 		int32_t groupNo;
 		int32_t itemNo;

@@ -2,7 +2,7 @@
 #include <_MUGEN_TYPES.hpp>
 
 namespace mugen20414::font {
-	struct FontItem
+	struct FontParam
 	{
 		int32_t fontNo;
 		int32_t fontBank;

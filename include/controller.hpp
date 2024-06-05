@@ -168,9 +168,9 @@ namespace mugen20414::state::controller {
 		int32_t p2HitPauseTime;
 		int32_t p1HitPauseTime;
 		int32_t numHits;
-		SoundItem hitSound;
+		SoundParam hitSound;
 		uint32_t hitSoundFlag; /* S: 0, F: 1 */
-		SoundItem guardSound;
+		SoundParam guardSound;
 		uint32_t guardSoundFlag; /* S: 0, F: 1 */
 		uint32_t guardFlag;
 		uint32_t hitFlag;

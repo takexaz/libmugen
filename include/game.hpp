@@ -6,6 +6,7 @@
 #include <font.hpp>
 #include <ebcommon.hpp>
 #include <bgm.hpp>
+#include <charsel.hpp>
 
 namespace mugen20414::game {
 	using namespace mugen20414::date;
@@ -13,29 +14,32 @@ namespace mugen20414::game {
 	using namespace mugen20414::font;
 	using namespace mugen20414::ebcommon::io;
 	using namespace mugen20414::bgm;
+	using namespace mugen20414::charsel;
+
+
 
 	// 0xc948(51528)
 	struct GameVar {
 		char currentDir[512];
 		char currentDirPath[512];
 		undefined4 _unknown_1;
-		BOOL isExistTMPFile;
+		BOOL fileOverWritable;
 		MDY versionDate;
 		char extraStageDefPath[512];
 		char pathInCharParam[512];
 
-		struct TitleInfo {
+		struct MotifTitleInfo {
 			int32_t fadeinTime;
 			int32_t fadeoutTime;
-			SoundItem cursorMoveSnd;
-			SoundItem cursorDoneSnd;
-			SoundItem cancelSnd;
+			SoundParam cursorMoveSnd;
+			SoundParam cursorDoneSnd;
+			SoundParam cancelSnd;
 			struct Menu {
 				int32_t menuPosX;
 				int32_t menuPosY;
 				struct Item {
-					FontItem font;
-					FontItem activeFont;
+					FontParam font;
+					FontParam activeFont;
 					int32_t spacingWidth;
 					int32_t spacingHeight;
 				} item;
@@ -64,16 +68,16 @@ namespace mugen20414::game {
 					int32_t coordsY2;
 				} boxCursor;
 			} menu;
-		} titleInfo;
+		} motifTitleInfo;
 
 		undefined4 field_0x09dc;
 		undefined4 field_0x09e0;
 
-		struct OptionInfo {
-			SoundItem cursorMoveSnd;
-			SoundItem cursorDoneSnd;
-			SoundItem cancelSnd;
-		} optionInfo;
+		struct MotifOptionInfo {
+			SoundParam cursorMoveSnd;
+			SoundParam cursorDoneSnd;
+			SoundParam cancelSnd;
+		} motifOptionInfo;
 
 		struct Stage {
 			BOOL resetBG;
@@ -134,6 +138,95 @@ namespace mugen20414::game {
 			BGM music;
 		} stage;
 
-		undefined4 field_0x0ccc;
+		CharInfo* charInfo; // 0xcd0
+		int32_t numChars;
+		int32_t numCharCached;
+		int32_t numCharRegistable;
+
+		ArcadeList* arcadeList;
+
+		undefined4 field_0x0ce4;
+		undefined4 field_0x0ce8;
+		undefined4 field_0x0cec;
+		struct SelectOption {
+			int32_t arcadeMaxMatches[10];
+			int32_t teamMaxMatches[10];
+		} selectOption;
+
+		BOOL precache;
+		HANDLE field_0x0d44;
+		BOOL isWorkingPrecacheThread;
+		undefined4 field_0x0d4c;
+		BOOL field_0x0d50;
+		BOOL field_0x0d54;
+		int32_t cacheQueue[5];
+
+		CharselConfig slct;
+
+
+		char motifFilesLogoStoryBoard[512];
+		char motifFilesIntroStoryBoard[512];
+
+		undefined4 field_0x1d30;
+
+		struct MotifEndCredits {
+			uint32_t enabled;
+			char storyBoard[512];
+		} motifEndCredits;
+		struct MotifDefaultEnding {
+			uint32_t enabled;
+			char storyBoard[512];
+		} motifDefaultCredits;
+		struct MotifWinScreen {
+			uint32_t enabled;
+			SysExplod winText;
+			int32_t pose_time;
+			int32_t fadeIn_time;
+			int32_t fadeOut_time;
+		} motifWinScreen;
+		struct MotifSurvivalResultsScreen {
+			uint32_t enabled;
+			SysExplod winsText;
+			int32_t show_time;
+			int32_t fadeIn_time;
+			int32_t fadeOut_time;
+			int32_t roundsToWin;
+		} motifSurvivalResultsScreen;
+		struct MotifContinueScreen {
+			uint32_t enabled;
+			char storyBoard[512];
+		} motifContinueScreen;
+		struct MotifGameOverScreen {
+			uint32_t enabled;
+			char storyBoard[512];
+		} motifGameOverScreen;
+		struct MotifVSScreen {
+			int32_t time;
+			int32_t fadeInTime;
+			int32_t fadeOutTime;
+			int32_t p1PosX;
+			int32_t p1PosY;
+			FontParam p1NameFont;
+			int32_t p1NamePosX;
+			int32_t p1NamePosY;
+			int32_t p1Facing;
+			float p1ScaleX;
+			float p1ScaleY;
+			int32_t p2PosX;
+			int32_t p2PosY;
+			FontParam p2NameFont;
+			int32_t p2NamePosX;
+			int32_t p2NamePosY;
+			int32_t p2Facing;
+			float p2ScaleX;
+			float p2ScaleY;
+		} motifVSScreen;
+
+		ExtraStage* selectExtraStage; // 0x269C
+		int32_t numExtraStage;
+
+		SelectMode selectMode; // 0x26A4
+
 	};
+	static volatile const auto g = reinterpret_cast<GameVar**>(0x4b5b4c);
 }

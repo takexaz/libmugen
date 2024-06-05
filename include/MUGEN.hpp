@@ -16,6 +16,7 @@
 #include <controller.hpp>
 #include <date.hpp>
 #include <ebcommon.hpp>
+#include <explod.hpp>
 #include <font.hpp>
 #include <game.hpp>
 #include <kbi.hpp>

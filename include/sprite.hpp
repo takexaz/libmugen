@@ -8,6 +8,10 @@ namespace mugen20414::sprite {
 	using namespace mugen20414::array;
 	using namespace mugen20414::pallete;
 
+	struct SpriteParam {
+		int32_t groupNo;
+		int32_t itemNo;
+	};
 
 	struct Sprite
 	{
