@@ -37,7 +37,9 @@ namespace mugen20414::state {
 		EvalValue powerAdd;
 	};
 
-	struct StatedefArray {
-		Array<Statedef>* statedefArray;
+	using StatedefArray = Array<Statedef>;
+
+	struct StatedefArrayEx {
+		StatedefArray* statedefArray;
 	};
 }

@@ -78,10 +78,13 @@ namespace mugen20414::projectile {
 		int32_t pauseMoveTime;
 		Afterimage* afterImage;
 	};
-	struct ProjectileArray
+
+	using ProjectileArray = Array<Projectile>;
+
+	struct ProjectileArrayEx
 	{
-		Array<Projectile>* projArray;
-		AnimArray* animArray;
-		SpriteArray* spriteArray;
+		ProjectileArray* projArray;
+		AnimArrayEx* animArrayEx;
+		SpriteArrayEx* spriteArrayEx;
 	};
 }

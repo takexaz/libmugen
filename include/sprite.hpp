@@ -26,12 +26,16 @@ namespace mugen20414::sprite {
 		int32_t palleteIndex;
 	};
 
-	struct SpriteArray
+	using SpriteArray = Array<Sprite>;
+
+	struct SpriteArrayEx
 	{
-		Array<Sprite>* spriteArray;
+		SpriteArray* spriteArray;
 		void* _unknown_1;
 		EBPalArray* palleteArray;
 		void* _unknown_2;
 		int32_t refCnt;
+		int32_t _unknown_3;
+		int32_t _unknown_4;
 	};
 }

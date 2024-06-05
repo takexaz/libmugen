@@ -227,11 +227,11 @@ namespace mugen20414::player {
 		int32_t charsIdx;
 		Constants consts;
 		CommandElem commands;
-		StatedefArray* statedefArray;
-		SpriteArray* spriteArray;
-		AnimArray* animArray;
+		StatedefArrayEx* statedefArray;
+		SpriteArrayEx* spriteArrayEx;
+		AnimArrayEx* animArrayEx;
 		int32_t volume;
-		SoundArray* soundArray;
+		SoundArrayEx* soundArrayEx;
 		char aiPath[512];
 		void* _unknown_3;
 		void* _unknown_4;
@@ -295,7 +295,7 @@ namespace mugen20414::player {
 		int32_t projContactId;
 		ProjContactType projContactType;
 		int32_t projContactTime;
-		ProjectileArray* projectiles;
+		ProjectileArrayEx* projectiles;
 		TargetArray* targets;
 		float cornerPushVel; // Hitdef
 		float _unknown_2; //
@@ -308,8 +308,8 @@ namespace mugen20414::player {
 		undefined4 _unknown_8;
 		KBIState kbiState;
 		CommandInfo commandInfo;
-		StatedefArray* usingStatedefs;
-		StatedefArray* enforcedStatedefs;
+		StatedefArrayEx* usingStatedefs;
+		StatedefArrayEx* enforcedStatedefs;
 		uint32_t enforcedStateListBy;
 		int32_t stateNo;
 		int32_t prevStateNo;
@@ -373,12 +373,12 @@ namespace mugen20414::player {
 		int32_t uniqHitCount;
 		undefined4 _unknown_26;
 		undefined4 _unknown_27;
-		SpriteArray* spriteArray;
-		SpriteArray* personalPalleteSpriteArray;
-		SpriteArray* commonPalleteSpriteArray;
-		SpriteArray* personalPalleteSpritesArray_;
+		SpriteArrayEx* spriteArrayEx;
+		SpriteArrayEx* personalPalleteSpriteArrayEx;
+		SpriteArrayEx* commonPalleteSpriteArrayEx;
+		SpriteArrayEx* personalPalleteSpritesArray_;
 		AnimUsed* anim;
-		AnimArray* enforcedAnimArray;
+		AnimArrayEx* enforcedAnimArrayEx;
 		int32_t palNo;
 		undefined reserved1[0x1200]; /* Maybe unused */
 		PalGroup palGroup;

@@ -16,7 +16,7 @@ namespace mugen20414::player::ai {
 		Player* player;
 		undefined4 _unknown;
 		int32_t stateNo;
-		StatedefArray* statedefArray;
+		StatedefArrayEx* statedefArray;
 	};
 	struct PlayerAIParams
 	{
@@ -53,8 +53,8 @@ namespace mugen20414::player::ai {
 		PlayerAIPlayersState _unknown_3[10];
 		int32_t _unknown_4;
 		undefined4 _unknown_5[57];
-		StatedefArray* _unknown_6;
-		StatedefArray* _unknown_7;
+		StatedefArrayEx* _unknown_6;
+		StatedefArrayEx* _unknown_7;
 		undefined4 _unknown_8[64];
 		PlayerAIParams params;
 		int32_t commands[10];

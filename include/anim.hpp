@@ -57,15 +57,18 @@ namespace mugen20414::anim {
 		int32_t loopStartFrame;
 		undefined4 _unknown_1;
 	};
-	struct AnimArray
+
+	using AnimArray = Array<Anim>*;
+
+	struct AnimArrayEx
 	{
-		Array<Anim>* animArray;
+		AnimArray* AnimArrayEx;
 		int32_t totalAnims;
 	};
 
 	struct AnimUsed
 	{
-		AnimArray* useAnimArray;
+		AnimArrayEx* useAnimArrayEx;
 		Sprite* sprite;
 		undefined4 _unknown_1;
 		int32_t currentAnimIndex;

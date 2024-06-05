@@ -18,7 +18,10 @@ namespace mugen20414::sound {
 	{
 		SAMPLE* sound;
 	};
-	struct SoundArray {
-		Array<Sound>* soundArray;
+
+	using SoundArray = Array<Sound>;
+
+	struct SoundArrayEx {
+		SoundArray* soundArrayEx;
 	};
 }
