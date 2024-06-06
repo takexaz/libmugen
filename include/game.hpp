@@ -7,6 +7,8 @@
 #include <ebcommon.hpp>
 #include <bgm.hpp>
 #include <charsel.hpp>
+#include <main.hpp>
+#include <sprite.hpp>
 
 namespace mugen20414::game {
 	using namespace mugen20414::date;
@@ -15,6 +17,8 @@ namespace mugen20414::game {
 	using namespace mugen20414::ebcommon::io;
 	using namespace mugen20414::bgm;
 	using namespace mugen20414::charsel;
+	using namespace mugen20414::main;
+	using namespace mugen20414::sprite;
 
 	// 0xc948(51528)
 	struct GameVar {
@@ -222,6 +226,68 @@ namespace mugen20414::game {
 		int32_t numExtraStage;
 
 		SelectMode selectMode; // 0x26A4
+
+		int32_t field_0x26a8; // ContinueScreen, Demo関係？
+		int32_t field_0x26ac;
+
+		undefined4 field_0x26b0;
+		undefined4 field_0x26b4;
+
+		int32_t menuTeamSelectPlayer;
+		int32_t menuSurvivalSelectPlayer;
+
+		GameMode gameMode;
+		BOOL isMenuSelectByP2;
+
+		ScreenMode screenMode; // 0x26c4
+
+		// todo
+		struct Turns {
+			int32_t numDefeated; // 何体撃破されたか
+			int32_t numIcons;
+			int32_t numTurns;
+			struct CharSet {
+				BOOL isSimul;
+				undefined4 _unknown_1;
+				int32_t simulEntries;       /* simul->2, otherwise->1 */
+				struct CharData {
+					uint32_t slotID;
+					uint32_t charIndex;
+					uint32_t palNo;
+					BOOL aiFlag;
+					BOOL isControlByP2;
+				} firstPlayer;
+				CharData secondPlayer;
+				CharData thirdPlayer;
+				CharData fourthPlayer;
+			} charSet[4]; // Turnsのキャラ数分
+			struct PersistIndex {
+				int32_t var[60];
+				float fvar[40];
+			} persistIndex[4][4]; // Player数*キャラ数
+			int32_t minLifeBack; // (100-(試合経過時間/TicksPerSecond)*0.01 = BaseLifeBack
+			float timeBonusLifeBackBase; // BaseLifeBack*timeBonusLifeBackBase = TimeBonusLifeBack
+			float raitoBasedLifeBackMul; // ((enemyLifeRaito*raitoBasedLifeBackMul)+(1.0-raitoBasedLifeBackMul)) = EnemyRaitBasedLifeBackMul
+			// TimeBonusLifeBack*EnemyRaitBasedLifeBackMul = LifeBack
+			BOOL undefined_4; 
+			float maxLifeMul;
+			int32_t teamMatchWins; // 勝利に必要な勝利数(Match.Winsとは別)
+			int32_t teamMaxDrawGame;
+			float enemyLifeRaito;
+		} p1Turns;
+		Turns p2Turns;
+
+		Turns::CharSet p1CurrentTurn;
+		Turns::CharSet p2CurrentTurn;
+
+		// todo
+		BOOL isEscToSelectScreen; // 一部のモードでセレクト画面に戻るかMenuに戻るかに関係
+		BOOL escFlag; // 不明 Ecsフラグ？
+
+		SpriteArrayEx* screenBuffer1;
+		SpriteArrayEx* pauseBuffer;
+		SpriteArrayEx* screenBuffer2;
+		SpriteArrayEx* currentScreenBuffer;
 	};
 
 

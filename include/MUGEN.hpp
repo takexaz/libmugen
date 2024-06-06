@@ -20,6 +20,7 @@
 #include <font.hpp>
 #include <game.hpp>
 #include <kbi.hpp>
+#include <main.hpp>
 #include <pallete.hpp>
 #include <player.hpp>
 #include <projectile.hpp>
