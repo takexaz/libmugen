@@ -16,8 +16,6 @@ namespace mugen20414::game {
 	using namespace mugen20414::bgm;
 	using namespace mugen20414::charsel;
 
-
-
 	// 0xc948(51528)
 	struct GameVar {
 		char currentDir[512];
@@ -70,10 +68,9 @@ namespace mugen20414::game {
 			} menu;
 		} motifTitleInfo;
 
-		undefined4 field_0x09dc;
-		undefined4 field_0x09e0;
-
 		struct MotifOptionInfo {
+			undefined4 field_0x09dc;
+			undefined4 field_0x09e0;
 			SoundParam cursorMoveSnd;
 			SoundParam cursorDoneSnd;
 			SoundParam cancelSnd;
@@ -154,15 +151,14 @@ namespace mugen20414::game {
 		} selectOption;
 
 		BOOL precache;
-		HANDLE field_0x0d44;
+		HANDLE mutexHandle;
 		BOOL isWorkingPrecacheThread;
-		undefined4 field_0x0d4c;
+		BOOL donePrecahce;
 		BOOL field_0x0d50;
 		BOOL field_0x0d54;
 		int32_t cacheQueue[5];
 
 		CharselConfig slct;
-
 
 		char motifFilesLogoStoryBoard[512];
 		char motifFilesIntroStoryBoard[512];
@@ -226,7 +222,8 @@ namespace mugen20414::game {
 		int32_t numExtraStage;
 
 		SelectMode selectMode; // 0x26A4
-
 	};
+
+
 	static volatile const auto g = reinterpret_cast<GameVar**>(0x4b5b4c);
 }

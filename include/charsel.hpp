@@ -16,6 +16,12 @@ namespace mugen20414::charsel {
 		kWatch = 2,
 		kTraining = 3,
 	};
+	enum class TeamMode {
+		kSingle = 0,
+		kSimul = 1,
+		kTurns = 2,
+	};
+	
 
 	// 0xe30
 	struct CharInfo {
@@ -163,10 +169,10 @@ namespace mugen20414::charsel {
 				int32_t TeamMenuValueSpacingX;
 				int32_t TeamMenuValueSpacingY;
 				SysExplod TeamMenuValueEmptyIcon;
-				undefined4 unknown1;
-				undefined4 unknown2;
-			} teamMenuP1;
-			TeamMenu teamMenuP2; // 0x18B8
+				TeamMode teamMode;
+				int32_t turnsNumChar;
+			} p1TeamMenu;
+			TeamMenu p2TeamMenu; // 0x18B8
 		} motifSelectInfo;
 		SelectScreenMatrix* matrix; // g+0x192C|slct+0xbc0(rows*column)
 	};
@@ -176,7 +182,6 @@ namespace mugen20414::charsel {
 		char name[80];
 		uint32_t includeStage; //Å@CharInfoÇÃincludeStageÇ™3Ç»ÇÁä‹ÇﬂÇÈ
 	};
-
 
 	static volatile const auto cellRows = reinterpret_cast<int32_t**>(0x4b54c0);
 	static volatile const auto cellCols = reinterpret_cast<int32_t*>(0x4b54c4);
