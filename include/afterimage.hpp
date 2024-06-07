@@ -9,6 +9,7 @@ namespace mugen20414::afterimage {
 	using namespace mugen20414::pallete;
 	using namespace mugen20414::state::controller;
 	using namespace mugen20414::anim;
+	using namespace mugen20414::array;
 
 	struct AfterimageItem {
 		int32_t currentSpriteIndex;
@@ -32,6 +33,8 @@ namespace mugen20414::afterimage {
 		uint32_t enable;
 		AfterimageParams params;
 	};
+
+	using AfterimageArray = Array<Afterimage>;
 
 	static const auto AftImgNew    = reinterpret_cast<Afterimage * (*)(uint32_t length)>(0x401000);
 	static const auto AftImgInit   = reinterpret_cast<void (*)(Afterimage * afterImage, uint32_t length)>(0x4010e0);

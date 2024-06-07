@@ -4,11 +4,13 @@
 #include <trigger.hpp>
 #include <sound.hpp>
 #include <anim.hpp>
+#include <pallete.hpp>
 namespace mugen20414::state::controller {
 	using namespace mugen20414::array;
 	using namespace mugen20414::state::trigger;
 	using namespace mugen20414::sound;
 	using namespace mugen20414::anim;
+	using namespace mugen20414::pallete;
 
 
 	enum class SCtrlId {
@@ -102,7 +104,6 @@ namespace mugen20414::state::controller {
 		kTagIn              = 10051,
 		kTagOut             = 10052
 	};
-
 	struct SCtrl {
 		TriggerArray* triggerArray;
 		uint32_t triggerCnt;
@@ -113,7 +114,6 @@ namespace mugen20414::state::controller {
 		EvalValue params[6];
 		void* paramsEx;
 	};
-
 	using SCtrlArray = Array<SCtrl>;
 
 	struct EnvShakeParams
@@ -265,8 +265,23 @@ namespace mugen20414::state::controller {
 		int32_t palMulR;
 		int32_t palMulG;
 		int32_t palMulB;
-		TransType trans;
+		DrawType trans;
 		int32_t transAlphaAS;
 		int32_t transAlphaD;
+	};
+
+
+	enum class PauseType {
+		kNone = -1,
+		kPause = 0,
+		kSuperPause = 1,
+	};
+	struct PauseParams
+	{
+		PalGroupFlags palGroupFlags;
+		BOOL darken;
+		int32_t time;
+		BOOL pauseBG;
+		int32_t endCmdBufTime;
 	};
 }

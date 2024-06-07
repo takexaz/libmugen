@@ -9,6 +9,16 @@
 #include <charsel.hpp>
 #include <main.hpp>
 #include <sprite.hpp>
+#include <anim.hpp>
+#include <afterimage.hpp>
+#include <explod.hpp>
+#include <bg.hpp>
+#include <controller.hpp>
+#include <system.hpp>
+#include <kbi.hpp>
+#include <joystick.hpp>
+#include <player.hpp>
+#include <clipboard.hpp>
 
 namespace mugen20414::game {
 	using namespace mugen20414::date;
@@ -19,6 +29,21 @@ namespace mugen20414::game {
 	using namespace mugen20414::charsel;
 	using namespace mugen20414::main;
 	using namespace mugen20414::sprite;
+	using namespace mugen20414::anim;
+	using namespace mugen20414::afterimage;
+	using namespace mugen20414::explod;
+	using namespace mugen20414::bg;
+	using namespace mugen20414::state::controller;
+	using namespace mugen20414::system;
+	using namespace mugen20414::kbi;
+	using namespace mugen20414::joystick;
+	using namespace mugen20414::player;
+	using namespace mugen20414::clipboard;
+
+
+
+
+
 
 	// 0xc948(51528)
 	struct GameVar {
@@ -288,6 +313,599 @@ namespace mugen20414::game {
 		SpriteArrayEx* pauseBuffer;
 		SpriteArrayEx* screenBuffer2;
 		SpriteArrayEx* currentScreenBuffer;
+
+		Font* systemFont_01;
+		Font* systemFont_02;
+
+		AnimArrayEx* persistentAnimArray;
+		SpriteArrayEx* prioritySpritesLayer1;
+
+		PalGroupArray* palGroupArray;
+		AfterimageArray* afterimageArray;
+
+		int32_t stageInfoZOffset;
+		int32_t currentZOffset;
+		int32_t stageInfoZOffSetLink;
+
+		BOOL vRet;
+
+		BOOL envColorUnder;
+		uint32_t envColorValue;
+		int32_t envColorTime;
+
+		struct Fight {
+			struct Files {
+				SpriteArrayEx* fightFxSff;
+				AnimArrayEx* fightFxAir;
+				SpriteArrayEx* fightSff;
+				AnimArrayEx* fightAir;
+				Font* font[10];
+				SoundArrayEx* snd;
+				SoundArrayEx* commonSnd;
+			} files;
+
+			struct FightData {
+				int32_t posX;
+				int32_t posY;
+				int32_t rangeX;
+				int32_t rangeY;
+				undefined4 unknown_1;
+				SysExplod bg0;
+				SysExplod bg1;
+				SysExplod bg2;
+				SysExplod mid;
+				SysExplod front;
+			} lifebar[2];
+			FightData simulLifebar[4];
+			FightData turnsLifebar[4];
+
+			FightData powerbar[2];
+			SysExplod p1CounterText;
+			SysExplod p2CounterText;
+			int32_t powerbarLevelSndGroupNo[10];
+			int32_t powerbarLevelSndItemNo[10];
+			
+			struct FaceData {
+				SysExplod p1Bg;
+				SysExplod p1Face;
+				SysExplod p2Bg;
+				SysExplod p2Face;
+				SysExplod p3Bg;
+				SysExplod p3Face;
+				SysExplod p4Bg;
+				SysExplod p4Face;
+				int32_t p1PosX;
+				int32_t p2PosX;
+				int32_t p3PosX;
+				int32_t p4PosX;
+				int32_t p1PosY;
+				int32_t p2PosY;
+				int32_t p3PosY;
+				int32_t p4PosY;
+				int32_t p1FaceFacing;
+				int32_t p2FaceFacing;
+				int32_t p3FaceFacing;
+				int32_t p4FaceFacing;
+			} face;
+			FaceData simulFace;
+			struct TurnsFaceData {
+				FaceData face;
+				struct TeamMate {
+					SysExplod teamMateBg;
+					SysExplod teamMateFace;
+					SysExplod teamMateKo;
+					int32_t teamMatePosX;
+					int32_t teamMatePosY;
+					undefined4 unknown_1;
+					int32_t teamMateSpacingX;
+					int32_t teamMateSpacingY;
+				} p1;
+				TeamMate p2;
+			} turnsFace;
+
+			struct NameData {
+				SysExplod p1Bg;
+				SysExplod p2Bg;
+				SysExplod p3Bg;
+				SysExplod p4Bg;
+				SysExplod p1Name;
+				SysExplod p2Name;
+				SysExplod p3Name;
+				SysExplod p4Name;
+				int32_t p1PosX;
+				int32_t p2PosX;
+				int32_t p3PosX;
+				int32_t p4PosX;
+				int32_t p1PosY;
+				int32_t p2PosY;
+				int32_t p3PosY;
+				int32_t p4PosY;
+			} name;
+			NameData simulName;
+			NameData turnsName;
+
+			struct TimeData
+			{
+				SysExplod bg;
+				SysExplod counterText;
+				int32_t posX;
+				int32_t posY;
+				int32_t framesPerCount;
+			} time;
+			struct ComboData
+			{
+				int32_t posX;
+				int32_t posY;
+				int32_t startX;
+				int32_t displayTime;
+				int32_t counterFontFontNo;
+				int32_t counterFontFontBank;
+				uint32_t counterShake;
+				int32_t textFontFontNo;
+				int32_t textFontFontBank;
+				int32_t textOffsetX;
+				int32_t textOffsetY;
+				char textText[32];
+			} combo;
+			struct RoundData
+			{
+				int32_t matchWins;
+				int32_t matchMaxDrawGames;
+				int32_t startWaitTime;
+				int32_t introTime;
+				int32_t posX;
+				int32_t posY;
+				SysExplod roundDefaultText;
+				SysExplod roundNText[10];
+				int32_t roundTime;
+				int32_t roundSndTime;
+				int32_t roundNSndGroupNo[10];
+				int32_t roundNSndItemNo[10];
+				SysExplod fightAnim;
+				int32_t fightTime;
+				int32_t fightSndTime;
+				SoundParam fightSnd;
+				SysExplod koAnim;
+				SysExplod dkoText;
+				SysExplod toText;
+				undefined4 unknown_1;
+				int32_t koSndTime;
+				SoundParam koSnd;
+				SoundParam dkoSnd;
+				SoundParam toSnd;
+				SysExplod winText;
+				SysExplod win2Text;
+				SysExplod drawText;
+				SoundParam winSnd;
+				SoundParam win2Snd;
+				SoundParam drawSnd;
+				int32_t winTime;
+				int32_t ctrlTime;
+				int32_t slowTime;
+				int32_t overWaitTime;
+				int32_t overHitTime;
+				int32_t overWinTime;
+				int32_t overTime;
+			} round;
+			struct WinIconData
+			{
+				SysExplod p1Counter;
+				SysExplod p2Counter;
+				SysExplod p1N;
+				SysExplod p1S;
+				SysExplod p1H;
+				SysExplod p1C;
+				SysExplod p1T;
+				SysExplod p1Throw;
+				SysExplod p1Suicide;
+				SysExplod p1TeamMate;
+				SysExplod p1Perfect;
+				SysExplod p2N;
+				SysExplod p2S;
+				SysExplod p2H;
+				SysExplod p2C;
+				SysExplod p2T;
+				SysExplod p2Throw;
+				SysExplod p2Suicide;
+				SysExplod p2TeamMate;
+				SysExplod p2Perfect;
+				int32_t p1PosX;
+				int32_t p2PosX;
+				int32_t p1PosY;
+				int32_t p2PosY;
+				int32_t p1IconOffsetX;
+				int32_t p2IconOffsetX;
+				int32_t p1IconOffsetY;
+				int32_t p2IconOffsetY;
+				int32_t useIconUpTo;
+			} winIcon;
+		} motifFilesFight;
+		SpriteArrayEx* p1TurnsPortraits[4]; // Turnsのときのちっさいポトレ
+		SpriteArrayEx* p2TurnsPortraits[4];
+		BOOL isDisplayGameBars; // 0xa2e0
+
+		ExplodArray* explodArray;
+		ExplodArray* sysExplodArray;
+
+		struct Motif {
+			char filename[512];
+			char directory[512];
+			struct Files {
+				SpriteArrayEx* sprArray;
+				char spr[512];
+				SoundArrayEx* sndArray;
+				char snd[512];
+				AnimArrayEx* airArray;
+				Font* font[10];
+			} files;
+			BGArrayEx* versusBGArray;
+			BGArrayEx* titleBGArray;
+			BGArrayEx* selectBGArray;
+			BGArrayEx* optionBGArray;
+			struct Music {
+				char titleBGM[512];
+				BOOL titleBGMLoop;
+				char vsBGM[512];
+				BOOL vsBGMLoop;
+				char selectBGM[512];
+				BOOL selectBGMLoop;
+			} music;
+		} motif;
+
+		BGArrayEx* stageBG;
+
+		PalFxParams bgPalFX;
+		PalFxParams allPalFX;
+
+		struct ConfigSoundVolume {
+			BOOL sound;
+			int32_t wavVolume;
+			int32_t masterWavVolume;
+			int32_t cdaVolume;
+			int32_t midiVolume;
+			int32_t mp3Volume;
+			int32_t modVolume;
+		} configSoundVolume;
+
+		BGM optionBGM;
+
+		int32_t gameTime;
+		int32_t skipFrame;
+		int32_t skipCnt;
+		BOOL skip;
+		BOOL field_0xb40c; // Pause中のサウンド関係
+		BOOL isPause;
+
+		int32_t randSeed;
+
+		BOOL isLifeSaving;
+		BOOL isScreenFading;
+		int32_t screenFading;
+		int32_t screenFadingGoal;
+
+		float fStageAxisX;
+		float fStageAxisY;
+		int32_t iStageAxisX;
+		int32_t iStageAxisY;
+		float fStageAxisX2; /* Always same as the fStageAxisX? */
+		float fStageAxisY2; /* Always same as the fStageAxisY? */
+		int32_t shake_axisX;
+		int32_t shake_axisY;
+		EnvShakeParams envShake;
+
+		struct ConfigRules {
+			GameType gameType;
+			float defaultAttackLifeToPowerMul;
+			float defaultGetHitLifeToPowerMul;
+			float superTargetDefenceMul;
+		} configRules;
+		ConfigKeyCodes configP1Keys;
+		ConfigKeyCodes configP2Keys;
+		ConfigKeyCodes p1KeyInput;
+		ConfigKeyCodes p2KeyInput;
+		ConfigKeyCodes configP1Joystick;
+		ConfigKeyCodes configP2Joystick;
+		ConfigKeyCodes configP1WinJoystick;
+		ConfigKeyCodes configP2WinJoystick;
+
+		struct ConfigInput {
+			BOOL p1UseKeyboard;
+			BOOL p2UseKeyboard;
+			BOOL p1JoystickEnable;
+			BOOL p2JoystickEnable;
+			JoystickType p1JoystickType;
+			JoystickType p2JoystickType;
+			BOOL forceFeedback;
+			int32_t psxDelay;
+		} configInput;
+
+		IntCircBuf intCircBuf;
+
+		int32_t numSlots;
+		int32_t numHelperSlots;
+		int32_t numPlayerSlots;
+		int32_t numEnablePlayers;
+
+		PlayerCache* playerCache[64];
+		Player* player[64];
+		BOOL playerEnable[64];
+		int32_t firstPlayerIndex;
+		int32_t lastPlayerIndex;
+
+		Player* playerArray[65];
+		int32_t playerArrayLength;
+		int32_t nextPlayerId;
+
+		BOOL isRunnableSlot[64];
+		BOOL isHelperSummoned;
+
+		BOOL field_0xbb68; // 内部AI停止フラグ？
+		BOOL field_0xbb6c; // 攻撃判定停止フラグ？
+
+		int32_t nextAttackNo;
+		BOOL takeScreenShot;
+
+		struct GameSpecialFlag {
+			uint8_t intro;
+			uint8_t roundNotOver;
+			uint8_t noKO;
+			uint8_t noKOSnd;
+			uint8_t noKOSlow;
+			uint8_t noKOMusic;
+			uint8_t globalNoShadow;
+			uint8_t timerFreeze;
+			uint8_t noBarDisplay;
+			uint8_t noBG;
+			uint8_t noFG;
+			undefined1 _padding;
+		} specialFlags;
+
+		undefined4 field_0xbb84;
+		undefined4 field_0xbb88;
+
+		BOOL isPlayingDemo;
+		struct MotifDemoMode {
+			int32_t introWaitCycles;
+			int32_t titleWaitTime;
+			BOOL selectEnabled;
+			BOOL selectVsScreenEnabled;
+			int32_t fightEndTime;
+			uint32_t fightPlayBGM;
+			uint32_t fightBarsDisplay;
+			BOOL debugInfo;
+		} motifDemoMode;
+		int32_t demoElapsedTime;
+		int32_t currentWaitCycles;
+
+		PauseType pauseType;
+		PauseParams pauseParam;
+		PauseParams superPauseParam;
+
+		int32_t roundNo;
+		int32_t p1Wins;
+		int32_t p2Wins;
+
+		BOOL isWinsAllotted;
+		int32_t draws;
+
+		int32_t leftKOSlowCnt;
+		int32_t maxKOSlowTime;
+		int32_t koSlowTime;
+
+		int32_t introElapsedTime;    /* The elapsed time between rs1-rs2. */
+		int32_t overWaitElapsedTime; /* The elapsed time between rs3-rs4. */
+		int32_t overTime;
+
+		int32_t roundState;
+		uint32_t winTeam;
+		enum class SettledType {
+			kNone = 0,
+			kKO = 1,
+			kDoubleKO = 2,
+			kTimeOver = 3,
+		} settledType;
+
+		int32_t currentStateElapsedTime;
+		int32_t roundTimer;
+		int32_t fightElapsedTime; /* The elapsed time between rs2-rs3. */
+
+		BOOL introSkipFlag;
+		BOOL roundOverFlag;
+
+		enum class WinType {
+			kNormal = 0,
+			kSpecial = 1,
+			kHyper = 2,
+			kThrow = 3,
+			kTimeOver = 4,
+			kCheese = 5,
+			kSuicide = 6,
+			kTeamSuicide = 7,
+			kPerfect = 8,
+		} p1WinType[10];
+		WinType p2WinType[10];
+		WinType p1SubWinType[10]; // Perfect
+		WinType p2SubWinType[10];
+
+		undefined4 field_0xbcf0; // コンボ関係？
+		undefined4 field_0xbcf4;
+
+		int32_t matchNo;
+		int32_t totalMatchNo;
+
+		int32_t gameMatchWinner;
+		BOOL matchCancelFlag;
+
+		struct ComboCount
+		{
+			int32_t displayTime;
+			int32_t internalComboCnt;
+			undefined4 _unknown_1;
+			int32_t comboCnt;
+			int32_t posX;
+			undefined4 _unknown_2;
+		} p1ComboCount;
+		ComboCount p2ComboCount;
+
+		struct ConfigVideoWin {
+			int32_t width;
+			int32_t height;
+			int32_t depth;     /* depth? always 32 */
+			uint32_t dxMode;   /* "f*": DXSA, "h*": DXAC, "n*": GDIB, "o*": DXOV, "s*": DXSO, "w*": DXWN */
+			uint32_t blitMode; /* "n*": 0, "p*": 1, "t*": 2 */
+			BOOL stretch;
+			int32_t doubleRes;
+			uint32_t vRetrace; /* 0 */
+		} configVideoWin;
+		struct ConfigSoundWin {
+			int32_t wavDevice;  /* -1: AUTO, 0: NONE, "DXA "-"DXJ ": DX0-DX9, "AXA "-"AXJ ": DXA0-DXA9, "WOA ": WAVEOUTA, "WOB ": WAVEOUTB */
+			int32_t midiDevice; /* -1: AUTO, 0: NONE, "W32M": MAPPER, "W32A"-"W32J": MID0-MID9, "DIGI": DIGMID */
+			int32_t wavChannels;
+			int32_t modVoices;
+			undefined4 _unknown; /* reverseStereo? */
+			BOOL playMP3;
+			BOOL playMIDI;
+			BOOL playMOD;
+			BOOL playCDA;
+			char cdaDevice[32];
+			uint32_t stereoEffects;
+			int32_t panningWidth;
+			int32_t pauseBGMOnDefocus;
+		} configSoundWin;
+		struct ConfigConfig {
+			int32_t gameSpeed;
+			int32_t drawShadows;
+			int32_t afterImageMax;
+			int32_t layeredSpriteMax;
+			int32_t explodMax;
+			int32_t sysExplodMax;
+			int32_t helperMax;
+			int32_t playerProjectileMax;
+			int32_t playerPalMax;
+			BOOL firstRun;
+		} configConfig;
+		struct ConfigMisc
+		{
+			int32_t playerCache;
+			BOOL precache;
+			BOOL bufferedRead;
+			BOOL unloadSystem;
+			BOOL pauseOnDefocus;
+		} configMisc;
+		struct ConfigArcade
+		{
+			BOOL aiRandomColor;
+			BOOL aiCheat;
+			int32_t arcadeAIrampStartMatch;
+			int32_t arcadeAIrampStartDiff;
+			int32_t arcadeAIrampEndMatch;
+			int32_t arcadeAIrampEndDiff;
+			int32_t teamAIrampStartMatch;
+			int32_t teamAIrampStartDiff;
+			int32_t teamAIrampEndMatch;
+			int32_t teamAIrampEndDiff;
+			int32_t survivalAIrampStartMatch;
+			int32_t survivalAIrampStartDiff;
+			int32_t survivalAIrampEndMatch;
+			int32_t survivalAIrampEndDiff;
+		} configArcade;
+
+		BOOL isLogMatch;
+		char matchLogPath[512];
+
+		undefined4 commandLineFlag[17]; // コマンドライン関連？ 0x0042B5C1のEDIの0xFFFFFFFF部分
+
+		struct ConfigOptions {
+			int32_t difficulty;
+			int32_t life;
+			int32_t time;
+			int32_t gameSpeed;
+			int32_t wavVolume;
+			int32_t midiVolume;
+			undefined4 _unknown_1[16];
+			int32_t team1vs2life;
+			uint32_t teamLoseOnKO;
+			undefined4 _unknown_2;
+			undefined4 _unknown_3;
+			char motif[512];
+		} configOptions;
+
+		struct TrainingMenu {
+			int32_t selectedLine;
+			int32_t selectedInValue;
+			BOOL isTrainingMenu;
+
+			enum class DummyControl {
+				kCooperative = 0,
+				kAI = 1,
+				kManual = 2,
+			} dummyControl;
+
+			int32_t unknown_1; // page?
+			enum class GuardMode {
+				kNone = 0,
+				kAuto = 1,
+			} guardMode;
+			enum class DummyMode {
+				kStand = 0,
+				kCrouch = 1,
+				kJump = 2,
+				kWJump = 3,
+			} dummyMode;
+			enum class Distance {
+				kAny = 0,
+				kClose = 1,
+				kMedium = 2,
+				kFar = 3,
+			} distance;
+			enum class ButtonJam {
+				kNone = 0,
+				kA = 1,
+				kB = 2,
+				kC = 3,
+				kX = 4,
+				kY = 5,
+				kZ = 6,
+				kStart = 7,
+			} buttonJam;
+
+			int32_t unknown_2; // page?
+			int32_t aiLevel;
+
+			int32_t unknown_3; // page?
+		} trainingMenu;
+
+		char defaultStagePath[512];
+
+		float bgLoadTimeUs;
+		float player1LoadTimeUs;
+		float player2LoadTimeUs;
+		undefined4 field_0xc508;
+		undefined4 field_0xc50c;
+		float totalLoadTimeUs;
+		int32_t palGroupsInBackGround;
+
+		int32_t debugShowSlot;
+		BOOL field_0xc51c; // デバッグ関係のなにか
+
+		uint32_t debug;
+		uint32_t allowDebugMode;
+		uint32_t allowDebugKeys;
+		enum class ClsnDebugMode {
+			kNone = 0,
+			kBoxFrame = 1,
+			kRectangle = 2,
+		} clsnDebugMode;
+		Clipboard* warningClipboard;
+		char errorMessage[1024];
+
+		BOOL speedup;
+		int32_t field_0xc938; // speedupと関係？
+
+		BOOL resetRound; // F4
+		BOOL reloadMatch; // Shift+F4
+
+		undefined4 field_0xc944; // speedupと関係？
 	};
 
 

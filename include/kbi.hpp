@@ -185,4 +185,12 @@ namespace mugen20414::kbi {
 		KeyState pushedArrowKeys;
 		KeyState simulPushedKeys;
 	};
+
+	struct IntCircBuf
+	{
+		int32_t* buf;
+		int32_t requiredIdx;
+		int32_t currentIdx;
+		int32_t length;
+	};
 }

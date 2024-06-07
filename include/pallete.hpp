@@ -70,10 +70,27 @@ namespace mugen20414::pallete {
 		BOOL initialized;
 	};
 
+	struct PalGroupFlags {
+		int32_t _unknown_1;
+		int32_t _unknown_2;
+		int32_t _unknown_3;
+		int32_t _unknown_4;
+		int32_t _unknown_5;
+	};
+
 	struct PalGroup
 	{
-		int32_t _unknown[5];
+		EBPal* ebPal;
+		PalGroupFlags flags;
 	};
+
+	struct PalGroupArray
+	{
+		PalGroup* palGroups;
+		int32_t maxPalGroups;
+		int32_t numPalGroups;
+	};
+
 
 
 	static const auto EBPalInit            = reinterpret_cast<BOOL(*)(EBPal * ebPal, uint32_t numColor, Pal4 * palletes, BOOL copyPalletes)>(0x448180);

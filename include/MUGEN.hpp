@@ -19,6 +19,7 @@
 #include <explod.hpp>
 #include <font.hpp>
 #include <game.hpp>
+#include <joystick.hpp>
 #include <kbi.hpp>
 #include <main.hpp>
 #include <pallete.hpp>

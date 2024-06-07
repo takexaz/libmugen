@@ -8,12 +8,14 @@ namespace mugen20414::anim {
 	using namespace mugen20414::array;
 	using namespace mugen20414::sprite;
 
-	enum class TransType {
-		kDefault     = -1,
-		kNone        = 0,
-		kAddition    = 1,
-		kSubtraction = 2,
-		kAlpha       = 3,
+	enum class DrawType {
+		kError          = -2,
+		kDefault        = -1,
+		kNone           = 0,
+		kAdd            = 1,
+		kSub            = 2,
+		kAdd1           = 3,
+		kAddAlpha       = 3,
 	};
 
 	struct ClsnData
@@ -40,7 +42,7 @@ namespace mugen20414::anim {
 		int32_t axisX;
 		int32_t axisY;
 		uint32_t inverse; /* &1: H, &2: V */
-		TransType trans;
+		DrawType trans;
 		int32_t transAlphaAS;
 		int32_t transAlphaD;
 		ClsnInfo* clsn1;
@@ -76,7 +78,7 @@ namespace mugen20414::anim {
 		int32_t currentAnimElemIndex;
 		int32_t totalElapsedFrames;
 		int32_t currentFrame;
-		TransType trans;
+		DrawType trans;
 		int32_t transAlphaAS;
 		int32_t transAlphaD;
 		int32_t currentSpriteIndex;
