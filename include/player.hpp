@@ -381,7 +381,7 @@ namespace mugen20414::player {
 		AnimArrayEx* enforcedAnimArrayEx;
 		int32_t palNo;
 		undefined reserved1[0x1200]; /* Maybe unused */
-		PalGroup palGroup;
+		PalGroupFlags palGroupFlags;
 		PalFxParams palFx;
 		int32_t helperId;
 		int32_t parentId;
