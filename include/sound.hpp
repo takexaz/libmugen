@@ -22,6 +22,6 @@ namespace mugen20414::sound {
 	using SoundArray = Array<Sound>;
 
 	struct SoundArrayEx {
-		SoundArray* soundArrayEx;
+		SoundArray* soundArray;
 	};
 }

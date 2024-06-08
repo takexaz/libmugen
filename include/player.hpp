@@ -224,7 +224,7 @@ namespace mugen20414::player {
 		MDY versionDate;
 		MDY mugenVersion;
 		undefined _unknown_1[512];
-		int32_t charsIdx;
+		int32_t charsIndex;
 		Constants consts;
 		CommandElem commands;
 		StatedefArrayEx* statedefArray;
@@ -237,6 +237,8 @@ namespace mugen20414::player {
 		void* _unknown_4;
 		undefined4 _unknown_5[64];
 	};
+
+	// 0x3464(13412)
 	struct Player {
 		PlayerCache* info;
 		int32_t playerId;
@@ -276,7 +278,7 @@ namespace mugen20414::player {
 		float velZ;
 		int32_t offsetX;
 		int32_t offsetY;
-		int32_t offsetZ;
+		int32_t offsetZ; // ではない可能性あり
 		int32_t sprPriority;
 		int32_t leftAirJumpNum;
 		int32_t leftBounds;
@@ -329,7 +331,7 @@ namespace mugen20414::player {
 		int32_t gameTime;
 		MoveContactType moveContactType;
 		int32_t moveContactTime;
-		undefined4 _unknown_13;
+		uint32_t attackHitTime; // 攻撃を当てた時間？ コンボ表示に使われている(0x443e04)
 		uint32_t hasValidStateNo;
 		int32_t var[60];
 		float fvar[40];
@@ -380,7 +382,7 @@ namespace mugen20414::player {
 		AnimUsed* anim;
 		AnimArrayEx* enforcedAnimArrayEx;
 		int32_t palNo;
-		undefined reserved1[0x1200]; /* Maybe unused */
+		undefined reserved1[0x1200]; // 未使用
 		PalGroupFlags palGroupFlags;
 		PalFxParams palFx;
 		int32_t helperId;

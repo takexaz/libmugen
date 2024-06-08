@@ -67,7 +67,7 @@ namespace mugen20414::explod {
 		uint32_t layerNo;
 		uint32_t inverse; /* &1: facing, &2: vfacing */
 		undefined4 _unknown_1;
-		undefined4 _unknown_2;
+		BOOL enableEnvShake;
 		uint32_t shadow;
 		uint32_t removeOnGetHit;
 		uint32_t ignoreHitPause;

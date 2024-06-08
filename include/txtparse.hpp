@@ -69,5 +69,5 @@ namespace mugen20414::txtparse {
 	static const auto TPDeleteAllLines   = reinterpret_cast<void (*)(TPFile * tpf)>(0x484a90);
 
 	static const auto strgetto = reinterpret_cast<void (*)(const char* dest, const char* src, int length, char sentinel)>(0x484b00);
-	static const auto vsscanf = reinterpret_cast<int32_t(*)(const char* buffer, const char* format, va_list arg_ptr)>(0x484b50);
+	static const auto vsscanf  = reinterpret_cast<int32_t(*)(const char* buffer, const char* format, va_list arg_ptr)>(0x484b50);
 }
