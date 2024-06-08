@@ -2,6 +2,7 @@ libmugen
 ============================
 mugenの構造体、グローバル変数、関数などを定義したC++用のライブラリ
 
+
 ## Requirements
 
 ## Installation
@@ -10,19 +11,18 @@ mugenの構造体、グローバル変数、関数などを定義したC++用の
 * [MIT](LICENSE)
 
 ## Credits
+- [mugen.h](https://halkaze.fc2.net/) / Halkaze
+- [アドレス一覧とか.txt](https://ryorikunn.blog.fc2.com/) / Ryori
+- [５１２オーバーフローバグ表(自分用).txt](http://minormugen.blog.fc2.com/) / Minor
+- [アドレスメモ](http://lunatic284.blog90.fc2.com/blog-entry-15493.html) / lunatic
+
 - [Allegro 4.0](https://liballeg.org/)
     - [The giftware license](https://liballeg.org/license)
 - [JGMOD](http://www.geocities.com/jeffery_guan/jgmod) / Guan Foo Wah
 
-## Special Thanks
+## Contributor
 <table id='credit'>
     <tr>
-        <td id='HalkazeMUGEN'>
-            <a href="https://github.com/HalkazeMUGEN">
-                <img src="https://github.com/HalkazeMUGEN.png" width='140px'>
-            </a>
-            <h4 align='center'><a href='https://twitter.com/i/user/1411391549502492679'>Halkaze</a></h4>
-        </td>
         <td id='Minor2CCh'>
             <a href="https://github.com/Minor2CCh">
                 <img src="https://github.com/Minor2CCh.png" width='140px'>
