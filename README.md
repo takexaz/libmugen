@@ -11,10 +11,11 @@ mugenの構造体、グローバル変数、関数などを定義したC++用の
 * [MIT](LICENSE)
 
 ## Credits
-- [mugen.h](https://halkaze.fc2.net/) / Halkaze
-- [アドレス一覧とか.txt](https://ryorikunn.blog.fc2.com/) / Ryori
-- [５１２オーバーフローバグ表(自分用).txt](http://minormugen.blog.fc2.com/) / Minor
-- [アドレスメモ](http://lunatic284.blog90.fc2.com/blog-entry-15493.html) / lunatic
+- MUGEN Address Table
+    - [mugen.h](https://halkaze.fc2.net/) / Halkaze
+    - [アドレス一覧とか.txt](https://ryorikunn.blog.fc2.com/) / Ryori
+    - [５１２オーバーフローバグ表(自分用).txt](http://minormugen.blog.fc2.com/) / Minor
+    - [アドレスメモ](http://lunatic284.blog90.fc2.com/blog-entry-15493.html) / lunatic
 
 - [Allegro 4.0](https://liballeg.org/)
     - [The giftware license](https://liballeg.org/license)
