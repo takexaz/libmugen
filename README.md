@@ -21,7 +21,7 @@ mugenの構造体、グローバル変数、関数などを定義したC++用の
     - [The giftware license](https://liballeg.org/license)
 - [JGMOD](http://www.geocities.com/jeffery_guan/jgmod) / Guan Foo Wah
 
-## Contributor
+## Collaborators
 <table id='credit'>
     <tr>
         <td id='Minor2CCh'>
