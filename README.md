@@ -24,6 +24,12 @@ mugenの構造体、グローバル変数、関数などを定義したC++用の
 ## Collaborators
 <table id='credit'>
     <tr>
+        <td id='Choon'>
+            <a href="https://github.com/Pikachuun">
+                <img src="https://github.com/Pikachuun.png" width='140px'>
+            </a>
+            <h4 align='center'><a href='https://twitter.com/i/user/2865628257'>Choon</a></h4>
+        </td>
         <td id='Minor2CCh'>
             <a href="https://github.com/Minor2CCh">
                 <img src="https://github.com/Minor2CCh.png" width='140px'>
