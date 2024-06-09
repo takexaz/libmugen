@@ -11,6 +11,7 @@
 #include <bgm.hpp>
 #include <charsel.hpp>
 #include <clipboard.hpp>
+#include <clsn.hpp>
 #include <command.hpp>
 #include <common.hpp>
 #include <controller.hpp>

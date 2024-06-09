@@ -33,8 +33,8 @@ namespace mugen20414::charsel {
 		char defDir[512];
 		char stagePath[512];
 		char bgmPath[512];
-		int32_t includeStage; // 0なら0，1なら3
-		SpriteArrayEx* portrait; // bitフラグ
+		int32_t includeStage; // =0なら0，=1なら3が入った
+		SpriteArrayEx* portrait;
 		int32_t enableColor; // bitフラグ
 		int32_t palDefaults[4];
 		int32_t order;
@@ -145,30 +145,30 @@ namespace mugen20414::charsel {
 			Name p2Name;
 			BOOL teamMenuMoveWrapping;
 			struct TeamMenu {
-				int32_t TeamMenuPosX;
-				int32_t TeamMenuPosY;
-				SysExplod TeamMenuBg;
-				SysExplod TeamMenuSelfTitle;
-				SysExplod TeamMenuEnemyTitle;
-				SoundParam TeamMenuMoveSnd;
-				SoundParam TeamMenuValueSnd;
-				SoundParam TeamMenuDoneSnd;
-				int32_t TeamMenuItemOffsetX;
-				int32_t TeamMenuItemOffsetY;
-				int32_t TeamMenuItemFonrFontNo;
-				int32_t TeamMenuItemActiveFontFontNo;
-				int32_t TeamMenuItemActive2FontFontNo;
-				int32_t TeamMenuItemFontColorsNo;
-				int32_t TeamMenuIitemActiveFontColorsNo;
-				int32_t TeamMenuItemActive2FontColors;
-				int32_t TeamMenuItemFontAlignment;
-				int32_t TeamMenuItemSpacingX;
-				int32_t TeamMenuItemSpacingY;
-				SysExplod TeamMenuItemCursor;
-				SysExplod TeamMenuValueIcon;
-				int32_t TeamMenuValueSpacingX;
-				int32_t TeamMenuValueSpacingY;
-				SysExplod TeamMenuValueEmptyIcon;
+				int32_t posX;
+				int32_t posY;
+				SysExplod bg;
+				SysExplod selfTitle;
+				SysExplod enemyTitle;
+				SoundParam moveSnd;
+				SoundParam valueSnd;
+				SoundParam doneSnd;
+				int32_t itemOffsetX;
+				int32_t itemOffsetY;
+				int32_t itemFonrFontNo;
+				int32_t itemActiveFontFontNo;
+				int32_t itemActive2FontFontNo;
+				int32_t itemFontColorsNo;
+				int32_t itemActiveFontColorsNo;
+				int32_t itemActive2FontColors;
+				int32_t itemFontAlignment;
+				int32_t itemSpacingX;
+				int32_t itemSpacingY;
+				SysExplod itemCursor;
+				SysExplod valueIcon;
+				int32_t valueSpacingX;
+				int32_t valueSpacingY;
+				SysExplod valueEmptyIcon;
 				TeamMode teamMode;
 				int32_t turnsNumChar;
 			} p1TeamMenu;

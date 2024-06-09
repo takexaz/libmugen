@@ -3,10 +3,12 @@
 
 #include <array.hpp>
 #include <sprite.hpp>
+#include <clsn.hpp>
 
 namespace mugen20414::anim {
 	using namespace mugen20414::array;
 	using namespace mugen20414::sprite;
+	using namespace mugen20414::clsn;
 
 	enum class DrawType {
 		kError          = -2,
@@ -16,21 +18,6 @@ namespace mugen20414::anim {
 		kSub            = 2,
 		kAdd1           = 3,
 		kAddAlpha       = 3,
-	};
-
-	struct ClsnData
-	{
-		undefined4 _unknown;
-		int32_t x_back;
-		int32_t y_bottom;
-		int32_t x_front;
-		int32_t x_upper;
-	};
-	struct ClsnInfo
-	{
-		uint32_t enable;
-		int32_t clsn_cnt;
-		ClsnData* data;
 	};
 
 	struct AnimElem
@@ -45,8 +32,8 @@ namespace mugen20414::anim {
 		DrawType trans;
 		int32_t transAlphaAS;
 		int32_t transAlphaD;
-		ClsnInfo* clsn1;
-		ClsnInfo* clsn2;
+		ClsnArray* clsn1;
+		ClsnArray* clsn2;
 	};
 
 	using  AnimElemArray = Array<AnimElem>;
@@ -85,4 +72,7 @@ namespace mugen20414::anim {
 		Sprite* spritesLayer; /* Ontop == 0: g->prioritySpritesLayer1, Otherwise: NULL */
 		int32_t sprPriority;
 	};
+
+
+	BOOL
 }
