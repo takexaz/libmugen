@@ -26,7 +26,7 @@ namespace mugen20414::afterimage {
 	{
 		AfterimageItem* items;
 		int32_t maxLength;
-		AnimUsed* anim;
+		Anim* anim;
 		int32_t _unknown_2;
 		int32_t _unknown_3;
 		int32_t elapsedTime;

@@ -55,7 +55,7 @@ namespace mugen20414::projectile {
 		int32_t projStageBoundRight;
 		int32_t projHeightBoundBottom;
 		HitdefParams projHitDefParams;
-		AnimUsed* anim;
+		Anim* anim;
 		undefined4 sff;
 		undefined4 _unknown_4;
 		undefined4 _unknown_5;
@@ -84,7 +84,7 @@ namespace mugen20414::projectile {
 	struct ProjectileArrayEx
 	{
 		ProjectileArray* projArray;
-		AnimArrayEx* animArrayEx;
+		AnimRCArrayEx* animArrayEx;
 		SpriteArrayEx* spriteArrayEx;
 	};
 }

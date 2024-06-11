@@ -41,10 +41,6 @@ namespace mugen20414::game {
 	using namespace mugen20414::clipboard;
 
 
-
-
-
-
 	// 0xc948(51528)
 	struct GameVar {
 		char currentDir[512];
@@ -317,7 +313,7 @@ namespace mugen20414::game {
 		Font* systemFont_01;
 		Font* systemFont_02;
 
-		AnimArrayEx* persistentAnimArray;
+		AnimRCArrayEx* persistentAnimArray;
 		SpriteArrayEx* prioritySpritesLayer1;
 
 		PalGroupArray* palGroupArray;
@@ -336,9 +332,9 @@ namespace mugen20414::game {
 		struct Fight {
 			struct Files {
 				SpriteArrayEx* fightFxSff;
-				AnimArrayEx* fightFxAir;
+				AnimRCArrayEx* fightFxAir;
 				SpriteArrayEx* fightSff;
-				AnimArrayEx* fightAir;
+				AnimRCArrayEx* fightAir;
 				Font* font[10];
 				SoundArrayEx* snd;
 				SoundArrayEx* commonSnd;
@@ -535,7 +531,7 @@ namespace mugen20414::game {
 				char spr[512];
 				SoundArrayEx* sndArray;
 				char snd[512];
-				AnimArrayEx* airArray;
+				AnimRCArrayEx* airArray;
 				Font* font[10];
 			} files;
 			BGArrayEx* versusBGArray;

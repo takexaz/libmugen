@@ -71,7 +71,7 @@ namespace mugen20414::explod {
 		uint32_t shadow;
 		uint32_t removeOnGetHit;
 		uint32_t ignoreHitPause;
-		AnimUsed* anim;
+		Anim* anim;
 		DrawType trans;
 		int32_t transAlphaAS;
 		int32_t transAlphaD;
