@@ -200,14 +200,14 @@ namespace mugen20414::game {
 		} motifDefaultCredits;
 		struct MotifWinScreen {
 			uint32_t enabled;
-			SysExplod winText;
+			ExplodStub winText;
 			int32_t pose_time;
 			int32_t fadeIn_time;
 			int32_t fadeOut_time;
 		} motifWinScreen;
 		struct MotifSurvivalResultsScreen {
 			uint32_t enabled;
-			SysExplod winsText;
+			ExplodStub winsText;
 			int32_t show_time;
 			int32_t fadeIn_time;
 			int32_t fadeOut_time;
@@ -346,30 +346,30 @@ namespace mugen20414::game {
 				int32_t rangeX;
 				int32_t rangeY;
 				undefined4 unknown_1;
-				SysExplod bg0;
-				SysExplod bg1;
-				SysExplod bg2;
-				SysExplod mid;
-				SysExplod front;
+				ExplodStub bg0;
+				ExplodStub bg1;
+				ExplodStub bg2;
+				ExplodStub mid;
+				ExplodStub front;
 			} lifebar[2];
 			FightData simulLifebar[4];
 			FightData turnsLifebar[4];
 
 			FightData powerbar[2];
-			SysExplod p1CounterText;
-			SysExplod p2CounterText;
+			ExplodStub p1CounterText;
+			ExplodStub p2CounterText;
 			int32_t powerbarLevelSndGroupNo[10];
 			int32_t powerbarLevelSndItemNo[10];
 			
 			struct FaceData {
-				SysExplod p1Bg;
-				SysExplod p1Face;
-				SysExplod p2Bg;
-				SysExplod p2Face;
-				SysExplod p3Bg;
-				SysExplod p3Face;
-				SysExplod p4Bg;
-				SysExplod p4Face;
+				ExplodStub p1Bg;
+				ExplodStub p1Face;
+				ExplodStub p2Bg;
+				ExplodStub p2Face;
+				ExplodStub p3Bg;
+				ExplodStub p3Face;
+				ExplodStub p4Bg;
+				ExplodStub p4Face;
 				int32_t p1PosX;
 				int32_t p2PosX;
 				int32_t p3PosX;
@@ -387,9 +387,9 @@ namespace mugen20414::game {
 			struct TurnsFaceData {
 				FaceData face;
 				struct TeamMate {
-					SysExplod teamMateBg;
-					SysExplod teamMateFace;
-					SysExplod teamMateKo;
+					ExplodStub teamMateBg;
+					ExplodStub teamMateFace;
+					ExplodStub teamMateKo;
 					int32_t teamMatePosX;
 					int32_t teamMatePosY;
 					undefined4 unknown_1;
@@ -400,14 +400,14 @@ namespace mugen20414::game {
 			} turnsFace;
 
 			struct NameData {
-				SysExplod p1Bg;
-				SysExplod p2Bg;
-				SysExplod p3Bg;
-				SysExplod p4Bg;
-				SysExplod p1Name;
-				SysExplod p2Name;
-				SysExplod p3Name;
-				SysExplod p4Name;
+				ExplodStub p1Bg;
+				ExplodStub p2Bg;
+				ExplodStub p3Bg;
+				ExplodStub p4Bg;
+				ExplodStub p1Name;
+				ExplodStub p2Name;
+				ExplodStub p3Name;
+				ExplodStub p4Name;
 				int32_t p1PosX;
 				int32_t p2PosX;
 				int32_t p3PosX;
@@ -422,8 +422,8 @@ namespace mugen20414::game {
 
 			struct TimeData
 			{
-				SysExplod bg;
-				SysExplod counterText;
+				ExplodStub bg;
+				ExplodStub counterText;
 				int32_t posX;
 				int32_t posY;
 				int32_t framesPerCount;
@@ -451,27 +451,27 @@ namespace mugen20414::game {
 				int32_t introTime;
 				int32_t posX;
 				int32_t posY;
-				SysExplod roundDefaultText;
-				SysExplod roundNText[10];
+				ExplodStub roundDefaultText;
+				ExplodStub roundNText[10];
 				int32_t roundTime;
 				int32_t roundSndTime;
 				int32_t roundNSndGroupNo[10];
 				int32_t roundNSndItemNo[10];
-				SysExplod fightAnim;
+				ExplodStub fightAnim;
 				int32_t fightTime;
 				int32_t fightSndTime;
 				SoundParam fightSnd;
-				SysExplod koAnim;
-				SysExplod dkoText;
-				SysExplod toText;
+				ExplodStub koAnim;
+				ExplodStub dkoText;
+				ExplodStub toText;
 				undefined4 unknown_1;
 				int32_t koSndTime;
 				SoundParam koSnd;
 				SoundParam dkoSnd;
 				SoundParam toSnd;
-				SysExplod winText;
-				SysExplod win2Text;
-				SysExplod drawText;
+				ExplodStub winText;
+				ExplodStub win2Text;
+				ExplodStub drawText;
 				SoundParam winSnd;
 				SoundParam win2Snd;
 				SoundParam drawSnd;
@@ -485,26 +485,26 @@ namespace mugen20414::game {
 			} round;
 			struct WinIconData
 			{
-				SysExplod p1Counter;
-				SysExplod p2Counter;
-				SysExplod p1N;
-				SysExplod p1S;
-				SysExplod p1H;
-				SysExplod p1C;
-				SysExplod p1T;
-				SysExplod p1Throw;
-				SysExplod p1Suicide;
-				SysExplod p1TeamMate;
-				SysExplod p1Perfect;
-				SysExplod p2N;
-				SysExplod p2S;
-				SysExplod p2H;
-				SysExplod p2C;
-				SysExplod p2T;
-				SysExplod p2Throw;
-				SysExplod p2Suicide;
-				SysExplod p2TeamMate;
-				SysExplod p2Perfect;
+				ExplodStub p1Counter;
+				ExplodStub p2Counter;
+				ExplodStub p1N;
+				ExplodStub p1S;
+				ExplodStub p1H;
+				ExplodStub p1C;
+				ExplodStub p1T;
+				ExplodStub p1Throw;
+				ExplodStub p1Suicide;
+				ExplodStub p1TeamMate;
+				ExplodStub p1Perfect;
+				ExplodStub p2N;
+				ExplodStub p2S;
+				ExplodStub p2H;
+				ExplodStub p2C;
+				ExplodStub p2T;
+				ExplodStub p2Throw;
+				ExplodStub p2Suicide;
+				ExplodStub p2TeamMate;
+				ExplodStub p2Perfect;
 				int32_t p1PosX;
 				int32_t p2PosX;
 				int32_t p1PosY;
@@ -521,7 +521,7 @@ namespace mugen20414::game {
 		BOOL isDisplayGameBars; // 0xa2e0
 
 		ExplodArray* explodArray;
-		ExplodArray* sysExplodArray;
+		ExplodArray* ExplodStubArray;
 
 		struct Motif {
 			char filename[512];
@@ -774,7 +774,7 @@ namespace mugen20414::game {
 			int32_t afterImageMax;
 			int32_t layeredSpriteMax;
 			int32_t explodMax;
-			int32_t sysExplodMax;
+			int32_t ExplodStubMax;
 			int32_t helperMax;
 			int32_t playerProjectileMax;
 			int32_t playerPalMax;
