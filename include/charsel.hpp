@@ -111,13 +111,13 @@ namespace mugen20414::charsel {
 			int32_t titleOffsetX;
 			int32_t titleOffsetY;
 			FontParam titleFont;
-			SysExplod cellBg;
-			SysExplod cellRandom; // 0x10CC
+			ExplodStub cellBg;
+			ExplodStub cellRandom; // 0x10CC
 			int32_t cellRandomSwitchTime;
-			SysExplod p1CursorActive;
-			SysExplod p2CursorActive;
-			SysExplod p1CursorDone;
-			SysExplod p2CursorDone;
+			ExplodStub p1CursorActive;
+			ExplodStub p2CursorActive;
+			ExplodStub p1CursorDone;
+			ExplodStub p2CursorDone;
 			struct Stage {
 				int32_t posX;
 				int32_t posY;
@@ -147,9 +147,9 @@ namespace mugen20414::charsel {
 			struct TeamMenu {
 				int32_t posX;
 				int32_t posY;
-				SysExplod bg;
-				SysExplod selfTitle;
-				SysExplod enemyTitle;
+				ExplodStub bg;
+				ExplodStub selfTitle;
+				ExplodStub enemyTitle;
 				SoundParam moveSnd;
 				SoundParam valueSnd;
 				SoundParam doneSnd;
@@ -164,11 +164,11 @@ namespace mugen20414::charsel {
 				int32_t itemFontAlignment;
 				int32_t itemSpacingX;
 				int32_t itemSpacingY;
-				SysExplod itemCursor;
-				SysExplod valueIcon;
+				ExplodStub itemCursor;
+				ExplodStub valueIcon;
 				int32_t valueSpacingX;
 				int32_t valueSpacingY;
-				SysExplod valueEmptyIcon;
+				ExplodStub valueEmptyIcon;
 				TeamMode teamMode;
 				int32_t turnsNumChar;
 			} p1TeamMenu;

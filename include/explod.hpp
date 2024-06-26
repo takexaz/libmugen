@@ -10,14 +10,14 @@ namespace mugen20414::explod {
 	using namespace mugen20414::sprite;
 	using namespace mugen20414::anim;
 
-	enum class SysExplodType {
+	enum class ExplodType {
 		kAnim = 1,
 		kSprite = 2,
 		kFont = 3,
 	};
-
-	struct SysExplod {
-		SysExplodType type;
+	
+	struct ExplodStub {
+		ExplodType type;
 		union {
 			int32_t anim;
 			SpriteParam sprite;
@@ -40,7 +40,7 @@ namespace mugen20414::explod {
 	struct Explod
 	{
 		uint32_t exists;
-		uint32_t visible;
+		ExplodType type;
 		uint32_t invisible;
 		int32_t ownerPlayerId;
 		int32_t id;
@@ -66,7 +66,7 @@ namespace mugen20414::explod {
 		int32_t bindTime;
 		uint32_t layerNo;
 		uint32_t inverse; /* &1: facing, &2: vfacing */
-		undefined4 _unknown_1;
+		uint32_t isScreen;
 		BOOL enableEnvShake;
 		uint32_t shadow;
 		uint32_t removeOnGetHit;
@@ -76,8 +76,11 @@ namespace mugen20414::explod {
 		int32_t transAlphaAS;
 		int32_t transAlphaD;
 		SpriteArrayEx* spriteArray;
+		int spriteID;
+		Font* font;
+		undefined4 _unknown_2;
 		undefined4 _unknown_3;
-		undefined4 _unknown_4[15];
+		char text[48];
 		undefined4 _unknown_5;
 		undefined4 _unknown_6;
 		undefined4 _unknown_7;
