@@ -113,7 +113,7 @@ namespace mugen20414::pallete {
 	static const auto EBPalColorBal        = reinterpret_cast<void(*)(EBPal * ebPal, uint32_t colorBalance)>(0x448730);
 
 	static volatile const auto MasterPal = reinterpret_cast<EBMasterPal**>(0x4b5fb0);
-	static volatile const auto palupdatecount = reinterpret_cast<uint32_t*>(0x4b5fb4);
+	static volatile const auto palupdatecount = reinterpret_cast<int32_t*>(0x4b5fb4);
 
 	static const auto MasterPalInit           = reinterpret_cast<BOOL(*)(void)>(0x448760);
 	static const auto MasterPalDeInit         = reinterpret_cast<void(*)(void)>(0x4487e0);

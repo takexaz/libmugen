@@ -11,7 +11,7 @@
 #include <bgm.hpp>
 #include <charsel.hpp>
 #include <clipboard.hpp>
-#include <clsn.hpp>
+#include <collision.hpp>
 #include <command.hpp>
 #include <common.hpp>
 #include <controller.hpp>
@@ -32,3 +32,4 @@
 #include <system.hpp>
 #include <trigger.hpp>
 #include <txtparse.hpp>
+#include <vbuf.hpp>

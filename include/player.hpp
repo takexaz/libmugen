@@ -229,7 +229,7 @@ namespace mugen20414::player {
 		CommandElem commands;
 		StatedefArrayEx* statedefArray;
 		SpriteArrayEx* spriteArrayEx;
-		AnimRCArrayEx* animArrayEx;
+		AnimRC* animArrayEx;
 		int32_t volume;
 		SoundArrayEx* soundArrayEx;
 		char aiPath[512];
@@ -369,7 +369,7 @@ namespace mugen20414::player {
 		DrawType trans;
 		int32_t alphaAS;
 		int32_t alphaD;
-		Afterimage* afterImage;
+		AfterImage* afterImage;
 		int32_t internalHitCount;
 		int32_t hitCount;
 		int32_t uniqHitCount;
@@ -380,7 +380,7 @@ namespace mugen20414::player {
 		SpriteArrayEx* commonPalleteSpriteArrayEx;
 		SpriteArrayEx* personalPalleteSpritesArray_;
 		Anim* anim;
-		AnimRCArrayEx* enforcedAnimArrayEx;
+		AnimRC* enforcedAnimArrayEx;
 		int32_t palNo;
 		undefined reserved1[0x1200]; // –¢Žg—p
 		PalGroupFlags palGroupFlags;

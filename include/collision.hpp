@@ -2,12 +2,12 @@
 #include <_MUGEN_TYPES.hpp>
 #include <txtparse.hpp>
 
-namespace mugen20414::clsn {
+namespace mugen20414::collision {
 	using namespace mugen20414::txtparse;
 
 	struct Clsn
 	{
-		undefined4 _unknown1;
+		BOOL enable;
 		int32_t x1;
 		int32_t y1;
 		int32_t x2;

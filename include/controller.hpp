@@ -243,7 +243,7 @@ namespace mugen20414::state::controller {
 		PalFxParams palFX;
 		EnvShakeParams envShake;
 	};
-	struct AfterimageParams {
+	struct AfterImageParams {
 		int32_t time;
 		int32_t length;
 		int32_t timeGap;

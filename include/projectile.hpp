@@ -55,11 +55,11 @@ namespace mugen20414::projectile {
 		int32_t projStageBoundRight;
 		int32_t projHeightBoundBottom;
 		HitdefParams projHitDefParams;
-		Anim* anim;
-		undefined4 sff;
-		undefined4 _unknown_4;
+		AnimRCArrayEx* animRCArrayEx;
+		SpriteArrayEx* spriteArrayEx;
 		undefined4 _unknown_5;
 		undefined4 _unknown_6;
+		AnimElem* currentAnimElem;
 		undefined4 _unknown_7;
 		undefined4 _unknown_8;
 		undefined4 _unknown_9;
@@ -76,7 +76,7 @@ namespace mugen20414::projectile {
 		undefined4 _unknown_19;
 		int32_t superMoveTime;
 		int32_t pauseMoveTime;
-		Afterimage* afterImage;
+		AfterImage* afterImage;
 	};
 
 	using ProjectileArray = Array<Projectile>;
@@ -84,7 +84,7 @@ namespace mugen20414::projectile {
 	struct ProjectileArrayEx
 	{
 		ProjectileArray* projArray;
-		AnimRCArrayEx* animArrayEx;
+		AnimRC* animRC;
 		SpriteArrayEx* spriteArrayEx;
 	};
 }

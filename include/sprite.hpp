@@ -22,11 +22,14 @@ namespace mugen20414::sprite {
 		int32_t colorDepth;
 		int32_t colors;
 		undefined4 _unknown_1;
-		uint32_t isAllegroBitmap;
+		BOOL isAllegroBitmap;
 		int32_t size;
 		void* image; /* If isAllegroBitmap == 1 then BITMAP*, otherwise decoded pcx data */
 		undefined4 _unknown_2;
-		void* _unknown_3;
+		struct line {
+			int32_t startPix;
+			int32_t endPix;
+		} *lines;
 		int32_t palleteIndex;
 	};
 
@@ -42,4 +45,9 @@ namespace mugen20414::sprite {
 		int32_t _unknown_3;
 		int32_t _unknown_4;
 	};
+
+	static const auto SpriteArrayAccess = reinterpret_cast<Sprite*(*)(SpriteArrayEx * sprite, int32_t index)>(0x44eeb0);
+	
+	static const auto SpriteArrayPalAccess = reinterpret_cast<EBPal * (*)(SpriteArrayEx * sprite, int32_t index)>(0x44ef60);
+
 }

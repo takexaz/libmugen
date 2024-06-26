@@ -3,12 +3,12 @@
 
 #include <array.hpp>
 #include <sprite.hpp>
-#include <clsn.hpp>
+#include <collision.hpp>
 
 namespace mugen20414::anim {
 	using namespace mugen20414::array;
 	using namespace mugen20414::sprite;
-	using namespace mugen20414::clsn;
+	using namespace mugen20414::collision;
 
 	enum class DrawType {
 		kError          = -2,
@@ -47,21 +47,21 @@ namespace mugen20414::anim {
 		undefined4 _unknown_1;
 	};
 
-	using AnimRCArray = Array<AnimRC>*;
+	using AnimRCArray = Array<AnimRC>;
 
 	struct AnimRCArrayEx
 	{
-		AnimRCArray* animArrayEx;
+		AnimRCArray* animRCArray;
 		int32_t totalAnims;
 	};
 
 	struct Anim
 	{
-		AnimRCArrayEx* useAnimRCArrayEx;
-		Sprite* sprite;
+		AnimRC* useAnimRC;
+		SpriteArrayEx* sprite;
 		BOOL isOwnSprite;
 		int32_t currentAnimIndex;
-		AnimElemArray* currentAnimElemArray;
+		AnimElem* currentAnimElem;
 		int32_t currentAnimElemIndex;
 		int32_t totalElapsedFrames;
 		int32_t currentFrame;
@@ -69,8 +69,15 @@ namespace mugen20414::anim {
 		int32_t transAlphaAS;
 		int32_t transAlphaD;
 		int32_t currentSpriteIndex;
-		Sprite* spritesLayer; /* Ontop == 0: g->prioritySpritesLayer1, Otherwise: NULL */
+		SpriteArrayEx* spritesLayer; /* Ontop == 0: g->prioritySpritesLayer1, Otherwise: NULL */
 		int32_t sprPriority;
+	};
+
+	using AnimArray = Array<Anim>*;
+
+	struct PRSprite {
+		AnimArray* animArray;
+		undefined4 _unknown_1;
 	};
 
 	static const auto AnimRCReadFile         = reinterpret_cast<AnimRCArrayEx * (*)(char* path)>(0x401770);

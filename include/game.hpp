@@ -313,11 +313,11 @@ namespace mugen20414::game {
 		Font* systemFont_01;
 		Font* systemFont_02;
 
-		AnimRCArrayEx* persistentAnimArray;
+		AnimRC* animRC;
 		SpriteArrayEx* prioritySpritesLayer1;
 
 		PalGroupArray* palGroupArray;
-		AfterimageArray* afterimageArray;
+		AfterImageArray* afterimageArray;
 
 		int32_t stageInfoZOffset;
 		int32_t currentZOffset;
@@ -332,9 +332,9 @@ namespace mugen20414::game {
 		struct Fight {
 			struct Files {
 				SpriteArrayEx* fightFxSff;
-				AnimRCArrayEx* fightFxAir;
+				AnimRC* fightFxAir;
 				SpriteArrayEx* fightSff;
-				AnimRCArrayEx* fightAir;
+				AnimRC* fightAir;
 				Font* font[10];
 				SoundArrayEx* snd;
 				SoundArrayEx* commonSnd;
@@ -531,7 +531,7 @@ namespace mugen20414::game {
 				char spr[512];
 				SoundArrayEx* sndArray;
 				char snd[512];
-				AnimRCArrayEx* airArray;
+				AnimRC* airRC;
 				Font* font[10];
 			} files;
 			BGArrayEx* versusBGArray;

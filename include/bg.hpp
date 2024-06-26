@@ -140,7 +140,7 @@ namespace mugen20414::bg {
         undefined4 field5_0x14;
         undefined4 field6_0x18;
         undefined4 field7_0x1c;
-        AnimRCArrayEx* animArray;
+        AnimRC* animRC;
         BOOL isNewAnim;
         SpriteArrayEx* spriteArray;
         BOOL isNewSprite;
