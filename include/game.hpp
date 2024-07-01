@@ -314,7 +314,7 @@ namespace mugen20414::game {
 		Font* systemFont_02;
 
 		AnimRC* animRC;
-		SpriteArrayEx* prioritySpritesLayer1;
+		PRSpriteArrayEx* prioritySpritesLayer1;
 
 		PalGroupArray* palGroupArray;
 		AfterImageArray* afterimageArray;
@@ -521,7 +521,7 @@ namespace mugen20414::game {
 		BOOL isDisplayGameBars; // 0xa2e0
 
 		ExplodArray* explodArray;
-		ExplodArray* ExplodStubArray;
+		ExplodArray* explodStubArray;
 
 		struct Motif {
 			char filename[512];
@@ -684,9 +684,9 @@ namespace mugen20414::game {
 		BOOL isWinsAllotted;
 		int32_t draws;
 
-		int32_t leftKOSlowCnt;
-		int32_t maxKOSlowTime;
-		int32_t koSlowTime;
+		int32_t koSlowFrame;
+		int32_t koSlowRate;
+		int32_t koSlowTimer;
 
 		int32_t introElapsedTime;    /* The elapsed time between rs1-rs2. */
 		int32_t overWaitElapsedTime; /* The elapsed time between rs3-rs4. */
@@ -701,7 +701,7 @@ namespace mugen20414::game {
 			kTimeOver = 3,
 		} settledType;
 
-		int32_t currentStateElapsedTime;
+		int32_t roundStateElapsedTime;
 		int32_t roundTimer;
 		int32_t fightElapsedTime; /* The elapsed time between rs2-rs3. */
 

@@ -7,6 +7,7 @@
 
 namespace mugen20414::anim {
 	using namespace mugen20414::array;
+	using namespace mugen20414::pallete;
 	using namespace mugen20414::sprite;
 	using namespace mugen20414::collision;
 
@@ -20,6 +21,32 @@ namespace mugen20414::anim {
 		kAddAlpha       = 3,
 	};
 
+	struct Trans {
+		DrawType trans;
+		int32_t transAlphaAS;
+		int32_t transAlphaD;
+	};
+
+	struct PRSprite {
+		int32_t priority;
+		Sprite* sprite;
+		int32_t curSprIdx;
+		EBPal* ebPal;
+		int32_t posX;
+		int32_t posY;
+		int32_t _unknown_01;
+		Trans trans;
+		float scaleX;
+		float scaleY;
+		float angle;
+		BOOL flip;
+	};
+	using PRSpriteArray = Array<PRSprite>;
+	struct PRSpriteArrayEx {
+		PRSpriteArray* prSprArray;
+		int32_t* indexes;
+	};
+
 	struct AnimElem
 	{
 		int32_t startFrame;
@@ -29,13 +56,10 @@ namespace mugen20414::anim {
 		int32_t axisX;
 		int32_t axisY;
 		uint32_t inverse; /* &1: H, &2: V */
-		DrawType trans;
-		int32_t transAlphaAS;
-		int32_t transAlphaD;
+		Trans trans;
 		ClsnArray* clsn1;
 		ClsnArray* clsn2;
 	};
-
 	using  AnimElemArray = Array<AnimElem>;
 
 	struct AnimRC
@@ -46,9 +70,7 @@ namespace mugen20414::anim {
 		int32_t loopStartFrame;
 		undefined4 _unknown_1;
 	};
-
 	using AnimRCArray = Array<AnimRC>;
-
 	struct AnimRCArrayEx
 	{
 		AnimRCArray* animRCArray;
@@ -65,25 +87,17 @@ namespace mugen20414::anim {
 		int32_t currentAnimElemIndex;
 		int32_t totalElapsedFrames;
 		int32_t currentFrame;
-		DrawType trans;
-		int32_t transAlphaAS;
-		int32_t transAlphaD;
+		Trans trans;
 		int32_t currentSpriteIndex;
-		SpriteArrayEx* spritesLayer; /* Ontop == 0: g->prioritySpritesLayer1, Otherwise: NULL */
+		PRSpriteArrayEx* spritesLayer; /* Ontop == 0: g->prioritySpritesLayer1, Otherwise: NULL */
 		int32_t sprPriority;
-	};
-
-	using AnimArray = Array<Anim>*;
-
-	struct PRSprite {
-		AnimArray* animArray;
-		undefined4 _unknown_1;
 	};
 
 	static const auto AnimRCReadFile         = reinterpret_cast<AnimRCArrayEx * (*)(char* path)>(0x401770);
 	static const auto AnimRCReadFileTP       = reinterpret_cast<AnimRCArrayEx * (*)(TPFile * tpf)>(0x401830);
 	static const auto AnimElemParseLine      = reinterpret_cast<BOOL(*)(char* elem, int* dest, char* group, int elemNo)>(0x4023b0);
 	static const auto AnimRCFree             = reinterpret_cast<void (*)(AnimRCArrayEx * animRCArrayEx)>(0x4026d0);
+
 	static const auto AnimNew                = reinterpret_cast<Anim * (*)(AnimRCArrayEx * animRCArrayEx, Sprite * sprite)>(0x4027a0);
 	static const auto AnimSet                = reinterpret_cast<void (*)(Anim * anim, AnimRCArrayEx * animRCArrayEx, Sprite * sprite)>(0x4027e0);
 	static const auto AnimCopy               = reinterpret_cast<void (*)(Anim * dest, Anim * src)>(0x402800);
@@ -114,4 +128,13 @@ namespace mugen20414::anim {
 	static const auto AnimGetTime            = reinterpret_cast<int32_t(*)(Anim * anim)>(0x404600);
 	static const auto AnimGetCorrectedTime   = reinterpret_cast<int32_t(*)(Anim * anim)>(0x404610);
 	static const auto AnimCurSpriteIdx       = reinterpret_cast<int32_t(*)(Anim * anim)>(0x4047b0);
+
+	static const auto PRSprArrayNew   = reinterpret_cast<PRSpriteArrayEx * (*)(size_t num)>(0x4047c0);
+	static const auto PRSprArrayFree  = reinterpret_cast<void (*)(PRSpriteArrayEx * prSpr)>(0x404870);
+	static const auto PRSprArrayClear = reinterpret_cast<void (*)(PRSpriteArrayEx * prSpr)>(0x4048a0);
+	static const auto PRSprAdd        = reinterpret_cast<BOOL(*)(PRSpriteArrayEx * prSprArray, PRSprite * prSpr)>(0x4048b0);
+	static const auto PRSprDraw       = reinterpret_cast<void (*)(PRSprite * prSpr)>(0x404940);
+	static const auto PRSprArrayDraw  = reinterpret_cast<void (*)(PRSpriteArrayEx * prSpr)>(0x404b60);
+	static const auto PRSprArrayScale = reinterpret_cast<void (*)(PRSpriteArrayEx * prSprArray, float scale)>(0x404be0);
+
 }

@@ -72,9 +72,7 @@ namespace mugen20414::explod {
 		uint32_t removeOnGetHit;
 		uint32_t ignoreHitPause;
 		Anim* anim;
-		DrawType trans;
-		int32_t transAlphaAS;
-		int32_t transAlphaD;
+		Trans trans;
 		SpriteArrayEx* spriteArray;
 		int spriteID;
 		Font* font;

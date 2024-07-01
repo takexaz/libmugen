@@ -249,7 +249,7 @@ namespace mugen20414::state::controller {
 		int32_t timeGap;
 		int32_t frameGap;
 		int32_t palColor;
-		uint32_t palInvertAll;
+		BOOL palInvertAll;
 		int32_t palBrightR;
 		int32_t palBrightG;
 		int32_t palBrightB;
@@ -265,9 +265,7 @@ namespace mugen20414::state::controller {
 		int32_t palMulR;
 		int32_t palMulG;
 		int32_t palMulB;
-		DrawType trans;
-		int32_t transAlphaAS;
-		int32_t transAlphaD;
+		Trans trans;
 	};
 
 

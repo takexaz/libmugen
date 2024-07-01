@@ -366,9 +366,7 @@ namespace mugen20414::player {
 		float angle;
 		uint32_t angleDrawFlag;
 		undefined4 _unknown_25;
-		DrawType trans;
-		int32_t alphaAS;
-		int32_t alphaD;
+		Trans trans;
 		AfterImage* afterImage;
 		int32_t internalHitCount;
 		int32_t hitCount;
