@@ -8,6 +8,12 @@ namespace mugen20414::sprite {
 	using namespace mugen20414::array;
 	using namespace mugen20414::pallete;
 
+	enum class FlipFlag {
+		kNone = 0,
+		kHorizontal = 1,
+		kVertical = 2
+	};
+
 	struct SpriteParam {
 		int32_t groupNo;
 		int32_t itemNo;

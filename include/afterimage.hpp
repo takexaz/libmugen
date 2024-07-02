@@ -3,11 +3,13 @@
 
 #include <pallete.hpp>
 #include <controller.hpp>
+#include <sprite.hpp>
 #include <anim.hpp>
 
 namespace mugen20414::afterimage {
 	using namespace mugen20414::pallete;
 	using namespace mugen20414::anim;
+	using namespace mugen20414::sprite;
 	using namespace mugen20414::state::controller;
 
 	// 0x67c
@@ -17,9 +19,9 @@ namespace mugen20414::afterimage {
 		float posY;
 		float scaleX;
 		float scaleY;
-		int32_t flip;
+		FlipFlag flip;
 		int32_t sprPriority;
-		float angle; // HFlipToSgn‚Ì•Ô‚è’l
+		float angle;
 		EBPal usedEBPal;
 		Pal4 usedPal4;
 	};
@@ -43,6 +45,6 @@ namespace mugen20414::afterimage {
 	static const auto AftImgFree   = reinterpret_cast<void (*)(AfterImage * afterImage)>(0x401160);
 	static const auto AftImgDeInit = reinterpret_cast<void (*)(AfterImage * afterImage)>(0x4011c0);
 	static const auto AftImgSetup  = reinterpret_cast<void (*)(AfterImage * afterImage, AfterImageParams* params, Anim* anim)>(0x401220);
-	static const auto AftImgUpdate = reinterpret_cast<void (*)(AfterImage * afterImage, float posX, float posY, float scaleX, float scaleY, float angle, uint32_t isFlip, uint32_t isNotHitpaused)>(0x401250);
+	static const auto AftImgUpdate = reinterpret_cast<void (*)(AfterImage * afterImage, float posX, float posY, float scaleX, float scaleY, float angle, FlipFlag flip, uint32_t isNotHitpaused)>(0x401250);
 	static const auto AftImgDraw   = reinterpret_cast<void (*)(AfterImage * afterImage, float posX, float posY, int32_t priority)>(0x4013b0);
 }

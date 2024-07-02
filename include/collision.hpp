@@ -1,8 +1,10 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
+#include <sprite.hpp>
 #include <txtparse.hpp>
 
 namespace mugen20414::collision {
+	using namespace mugen20414::sprite;
 	using namespace mugen20414::txtparse;
 
 	struct Clsn
@@ -33,5 +35,5 @@ namespace mugen20414::collision {
 	static const auto ClsnMixDetectRectHFlip1   = reinterpret_cast<BOOL(*)(ClsnArray * clsnA, ClsnArray * clsnB, int32_t posX, int32_t posY)>(0x413a00);
 	static const auto ClsnMixDetectRectHFlipAll = reinterpret_cast<BOOL(*)(ClsnArray * clsnA, ClsnArray * clsnB, int32_t posX, int32_t posY)>(0x413a90);
 	static const auto ClsnArrayDetectRect       = reinterpret_cast<BOOL(*)(ClsnArray * clsnA, ClsnArray * clsnB, int32_t posX, int32_t posY)>(0x413b20);
-	static const auto ClsnArrayDetectRectFlip   = reinterpret_cast<BOOL(*)(ClsnArray * clsnA, ClsnArray * clsnB, int32_t posX, int32_t posY, BOOL isClsnAFlip, BOOL isClsnBFlip)>(0x413c00);
+	static const auto ClsnArrayDetectRectFlip   = reinterpret_cast<BOOL(*)(ClsnArray * clsnA, ClsnArray * clsnB, int32_t posX, int32_t posY, FlipFlag clsnAFlip, FlipFlag clsnBFlip)>(0x413c00);
 }

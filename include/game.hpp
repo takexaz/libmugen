@@ -313,7 +313,7 @@ namespace mugen20414::game {
 		Font* systemFont_01;
 		Font* systemFont_02;
 
-		AnimRC* animRC;
+		AnimPersistentArrayEx* persistentAnimArray;
 		PRSpriteArrayEx* prioritySpritesLayer1;
 
 		PalGroupArray* palGroupArray;

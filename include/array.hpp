@@ -61,7 +61,7 @@ namespace mugen20414::array {
 	template <typename T>
 	static const auto ArrayIdxToItem       = reinterpret_cast<int32_t(*)(Array<T> * arrayPtr, int32_t index)>(0x4091f0);
 	template <typename T>
-	static const auto ArrayScanFirst       = reinterpret_cast<int32_t(*)(Array<T> * arrayPtr)>(0x409240);
+	static const auto ArrayScanFirst       = reinterpret_cast<T * (*)(Array<T> * arrayPtr)>(0x409240);
 	template <typename T>
-	static const auto ArrayScanNext        = reinterpret_cast<int32_t(*)(Array<T> * arrayPtr)>(0x4092b0);
+	static const auto ArrayScanNext        = reinterpret_cast<T * (*)(Array<T> * arrayPtr)>(0x4092b0);
 }
