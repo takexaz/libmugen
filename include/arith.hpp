@@ -1,22 +1,36 @@
 #pragma once
 #include <_MUGEN_TYPES.hpp>
+#include <array.hpp>
 
 namespace mugen20414::state::trigger {
-	struct EvalTrigger;
+	struct Trigger;
+}
+namespace mugen20414::player {
+	struct Player;
+	struct PlayerCache;
 }
 
+
 namespace mugen20414::arith {
+	using namespace mugen20414::array;
 	using namespace mugen20414::state::trigger;
+	using namespace mugen20414::player;
 
 
 	enum class EvalType {
-		kInteger      = 0,
+		kInteger  = 0,
 		kFloat    = 1,
 		kOperator = 2,
 		kTrigger  = 3,
-		kInvalidId  = 4
+		kInvalid  = 4
 	};
-	enum class EvalComparator {
+	enum class ExprType : char {
+		kError = 0,
+		kNumber = 0,
+		kInteger = 1,
+		kFloat = 2,
+	};
+	enum class Comparator {
 		kEqual            = 0,
 		kNotEqual         = 1,
 		kGreaterThan      = 2,
@@ -28,7 +42,7 @@ namespace mugen20414::arith {
 		kRangeOutIn       = 12,
 		kRangeOutOut      = 13
 	};
-	enum class EvalOperator {
+	enum class Operator {
 		kEqual            = 1,
 		kNotEqual         = 2,
 		kGreaterThan      = 3,
@@ -60,21 +74,48 @@ namespace mugen20414::arith {
 		kParenthesisClose = 29
 	};
 
-	union EvalExprValue {
+	union Evaluate {
 		int32_t i;
 		float f;
-		EvalOperator op;
-		EvalTrigger* trig;
+		Operator oper;
+		Trigger* trig;
 	};
-	union EvalNode {
+	union ExprValue {
 		int32_t i;
 		float f;
 		EvalType t;
 	};
-
-	struct EvalValue {
-		EvalExprValue* exprs;
+	struct Expression {
+		Evaluate* evals;
 		EvalType* types; /* 0: immediate value */
-		EvalNode value;  /* types == NULL => immediate value, otherwise length of types, exprs */
+		ExprValue value;  /* types == NULL => immediate value, otherwise length of types, exprs */
 	};
+	using ExpressionArray = Array<Expression>;
+
+
+
+	static const auto StackErrorExit = reinterpret_cast<void (*)(void)>(0x405700); // noreturn
+
+	static const auto InfToPostArray = reinterpret_cast<int32_t(*)(char* value, Evaluate * eval, ExprType * types, PlayerCache * cache, int32_t maxValue, char** parseEnd, ExprType type)>(0x405720);
+	static const auto OperCode       = reinterpret_cast<Operator(*)(char* oper)>(0x406b90);
+	static const auto InfixToPostfix = reinterpret_cast<BOOL(*)(char* value, Expression * exp, PlayerCache * cache, char** parseEnd, int32_t numValue)>(0x406d10);
+
+	static const auto FreeExpression = reinterpret_cast<void (*)(Expression * exp)>(0x406e00);
+	static const auto FreeExpNoTrig  = reinterpret_cast<void (*)(Expression * exp)>(0x406e60);
+	static const auto FreeExpArray   = reinterpret_cast<void (*)(ExpressionArray * expArray)>(0x406e90);
+
+	static const auto ConstExpI = reinterpret_cast<void (*)(Expression * exp, int value)>(0x406f20);
+	static const auto ConstExpF = reinterpret_cast<void (*)(Expression * exp, float value)>(0x406fa0);
+
+	static const auto expcpy     = reinterpret_cast<BOOL(*)(Expression * dest, Expression * src)>(0x407010);
+	static const auto expcpytrig = reinterpret_cast<BOOL(*)(Expression * dest, Expression * src)>(0x407100);
+
+	static const auto ExpMulF = reinterpret_cast<void (*)(Expression * multiplicand, float multiplier)>(0x407250);
+	static const auto ExpDivI = reinterpret_cast<void (*)(Expression * dividend, int divisor)>(0x407310);
+
+	static const auto ShowExp = reinterpret_cast<void (*)(char* buffer, Expression * exp, Player * player)>(0x4073e0);
+
+	static const auto EvalExpressionI = reinterpret_cast<int (*)(Player * player, Expression * exp, BOOL showWarn)>(0x4075e0);
+	static const auto EvalExpressionF = reinterpret_cast<float (*)(Player * player, Expression * exp)>(0x4076d0);
+	static const auto EvalExpression  = reinterpret_cast<ExprType(*)(Player * player, Expression * exp, int* i, float* f)>(0x407780);
 }

@@ -40,6 +40,8 @@ namespace mugen20414::afterimage {
 
 	using AfterImageArray = mugen20414::array::Array<AfterImage>;
 
+
+
 	static const auto AftImgNew    = reinterpret_cast<AfterImage * (*)(int32_t length)>(0x401000);
 	static const auto AftImgInit   = reinterpret_cast<BOOL (*)(AfterImage * afterImage, int32_t length)>(0x4010e0);
 	static const auto AftImgFree   = reinterpret_cast<void (*)(AfterImage * afterImage)>(0x401160);

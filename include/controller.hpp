@@ -4,8 +4,10 @@
 #include <trigger.hpp>
 #include <sound.hpp>
 #include <anim.hpp>
+#include <arith.hpp>
 #include <pallete.hpp>
 namespace mugen20414::state::controller {
+	using namespace mugen20414::arith;
 	using namespace mugen20414::array;
 	using namespace mugen20414::state::trigger;
 	using namespace mugen20414::sound;
@@ -104,17 +106,20 @@ namespace mugen20414::state::controller {
 		kTagIn              = 10051,
 		kTagOut             = 10052
 	};
+
+	template <typename T>
 	struct SCtrl {
-		TriggerArray* triggerArray;
-		uint32_t triggerCnt;
+		ExpressionArray* triggerArray;
+		int32_t triggerCnt;
 		int32_t persistent;
 		int32_t ignorehitpause;
 		SCtrlId scID;
 		undefined4 _unknown_1;
-		EvalValue params[6];
-		void* paramsEx;
+		Expression params[6];
+		T* paramsEx;
 	};
-	using SCtrlArray = Array<SCtrl>;
+	template <typename T>
+	using SCtrlArray = Array<SCtrl<T>>;
 
 	struct EnvShakeParams
 	{
@@ -267,7 +272,6 @@ namespace mugen20414::state::controller {
 		int32_t palMulB;
 		Trans trans;
 	};
-
 
 	enum class PauseType {
 		kNone = -1,

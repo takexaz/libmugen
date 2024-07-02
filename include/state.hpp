@@ -18,23 +18,23 @@ namespace mugen20414::state {
 
 	struct Statedef
 	{
-		SCtrlArray* states;
+		SCtrlArray<void>* states;
 		StateType type;
 		MoveType moveType;
 		Physics physics;
-		EvalValue juggle;
-		EvalValue faceP2;
-		EvalValue hitDefPersist;
-		EvalValue hitCountPersist;
-		EvalValue moveHitPersist;
+		Expression juggle;
+		Expression faceP2;
+		Expression hitDefPersist;
+		Expression hitCountPersist;
+		Expression moveHitPersist;
 		int sprPriorityFlag;
-		EvalValue sprPriority;
-		EvalValue velSetX;
-		EvalValue velSetY;
-		EvalValue velSetZ;
-		EvalValue ctrl;
-		EvalValue anim;
-		EvalValue powerAdd;
+		Expression sprPriority;
+		Expression velSetX;
+		Expression velSetY;
+		Expression velSetZ;
+		Expression ctrl;
+		Expression anim;
+		Expression powerAdd;
 	};
 
 	using StatedefArray = Array<Statedef>;
