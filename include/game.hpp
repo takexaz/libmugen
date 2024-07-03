@@ -527,11 +527,11 @@ namespace mugen20414::game {
 			char filename[512];
 			char directory[512];
 			struct Files {
-				SpriteArrayEx* sprArray;
+				SpriteArrayEx* sprArrayEx;
 				char spr[512];
-				SoundArrayEx* sndArray;
+				SoundArrayEx* sndArrayEx;
 				char snd[512];
-				AnimRC* airRC;
+				AnimRCArrayEx* animRCArrayEx;
 				Font* font[10];
 			} files;
 			BGArrayEx* versusBGArray;

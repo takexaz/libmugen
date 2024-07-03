@@ -35,7 +35,7 @@ namespace mugen20414::array {
 	template <typename T>
 	static const auto ArrayHasSpace        = reinterpret_cast<BOOL(*)(Array<T> * arrayPtr)>(0x408a70);
 	template <typename T>
-	static const auto ArrayAdd             = reinterpret_cast<Array<T> * (*)(Array<T> * arrayPtr, T* data, int32_t group, int32_t item)>(0x408a90);
+	static const auto ArrayAdd             = reinterpret_cast<int32_t(*)(Array<T> * arrayPtr, T* data, int32_t group, int32_t item)>(0x408a90);
 	template <typename T>
 	static const auto ArrayAddUnique       = reinterpret_cast<void (*)(Array<T> * arrayPtr, T* data, int32_t group, int32_t item)>(0x408bf0);
 	template <typename T>

@@ -91,17 +91,16 @@ namespace mugen20414::bg {
         undefined4 field14_0x4c;
         int32_t window[4];
         float windowDelta[2];
-        undefined4 field17_0x68;
-        undefined4 field18_0x6c;
-        DrawType drawType;
-        int32_t alpha[2];
+        int32_t winDeltaPosX; // round(pos X * windowDelta[0])
+        int32_t winDeltaPosY; // round(pos Y * windowDelta[1])
+        Trans trans;
         int32_t mask;
         int32_t layerNo;
         int32_t viewScale;
-        undefined4 field24_0x88;
-        undefined4 field25_0x8c;
-        undefined4 field26_0x90;
-        undefined4 field27_0x94;
+        BOOL hasBottomWidth;
+        int32_t yScaleStart; // yScaleStart * 10.0
+        int32_t scaledPosY; // posY*yScaleDelta+yScaleStart
+        float yScaleDelta; // yScaleDelta * 10.0
         undefined4 field28_0x98;
         undefined4 field29_0x9c;
         undefined4 field30_0xa0;
@@ -112,8 +111,8 @@ namespace mugen20414::bg {
         int32_t id;
         undefined4 field36_0xb8;
         undefined4 field37_0xbc;
-        undefined4 field38_0xc0;
-        undefined4 field39_0xc4;
+        int32_t field38_0xc0; // x?
+        int32_t field39_0xc4; // y?
         undefined4 field40_0xc8;
         undefined4 field41_0xcc;
         int32_t positionLink;
@@ -122,14 +121,12 @@ namespace mugen20414::bg {
             float y;
         } sin[3];
         undefined4 field44_0xec;
-        undefined4 field45_0xf0;
+        int32_t animNo;
         int32_t spriteArrayNum;
         undefined4 field47_0xf8;
         undefined4 field48_0xfc;
     };
-
     using BGArray = Array<BG>;
-
 	// 0x54
     struct BGArrayEx {
         float posX;
@@ -139,10 +136,10 @@ namespace mugen20414::bg {
         undefined4 field4_0x10;
         undefined4 field5_0x14;
         undefined4 field6_0x18;
-        undefined4 field7_0x1c;
-        AnimRC* animRC;
+        int32_t field7_0x1c;
+        AnimRCArrayEx* animRCArrayEx;
         BOOL isNewAnim;
-        SpriteArrayEx* spriteArray;
+        SpriteArrayEx* spriteArrayEx;
         BOOL isNewSprite;
         BGArray* bgArray;
         BGCtrl* bgCtrls;
@@ -154,4 +151,26 @@ namespace mugen20414::bg {
         undefined4 field19_0x4c;
         undefined4 field20_0x50;
     };
+
+    static const auto BGArrayReadFile      = reinterpret_cast<BGArrayEx * (*)(char* path, char* dir)>(0x409330);
+    static const auto BGArrayReadTP        = reinterpret_cast<BGArrayEx * (*)(char* path, char* groupName, SpriteArrayEx * sprArrayEx, AnimRCArrayEx * animRCArrayEx)>(0x409450);
+    static const auto BGArrayReadCtrlTP    = reinterpret_cast<BGArrayEx * (*)(TPFile * tpf, char* dir, char* groupName, SpriteArrayEx * sprArrayEx, AnimRCArrayEx * animRCArrayEx)>(0x409580);
+    static const auto BGArrayNew           = reinterpret_cast<BGArrayEx * (*)(size_t num, SpriteArrayEx * sprArrayEx)>(0x40a600);
+    static const auto BGArrayFree          = reinterpret_cast<void (*)(BGArrayEx * bgArrayEx)>(0x40a660);
+    static const auto BGArrayAdd           = reinterpret_cast<int32_t(*)(BGArrayEx * bgArrayEx, int32_t itemNo, BGType bgType, int32_t startX, int32_t startY, float deltaX, float deltaY, Trans trans, int32_t mask, SpriteParam spriteParam)>(0x40a7f0);
+    static const auto BGArrayAddAnim       = reinterpret_cast<int32_t(*)(BGArrayEx * bgArrayEx, int32_t itemNo, int32_t startX, int32_t startY, float deltaX, float deltaY, int32_t animNo)>(0x40a950);
+    static const auto BGArraySetViewScale  = reinterpret_cast<void (*)(BGArrayEx * bgArrayEx, int32_t scale)>(0x40aa40);
+    static const auto BGArrayMove          = reinterpret_cast<void (*)(BGArrayEx * bgArrayEx, float posX, float posY)>(0x40aa70);
+    static const auto BGArrayMoveOffset    = reinterpret_cast<void (*)(BGArrayEx * bgArrayEx, float posX, float posY, int offsetX, int offsetY)>(0x40aa90);
+    static const auto BGArrayDraw          = reinterpret_cast<void (*)(BGArrayEx * bgArrayEx)>(0x40ac50);
+    static const auto BGArrayDrawLayer     = reinterpret_cast<void (*)(BGArrayEx * bgArrayEx, int32_t layerNo)>(0x40aca0);
+    static const auto BGArrayUpdate        = reinterpret_cast<void (*)(BGArrayEx * bgArrayEx)>(0x40ad10);
+    static const auto BGArrayReset         = reinterpret_cast<void (*)(BGArrayEx * bgArrayEx)>(0x40b060);
+    static const auto BGAccess             = reinterpret_cast<BG * (*)(BGArrayEx * bgArrayEx, int32_t itemNo)>(0x40b140);
+    static const auto BGAccessID           = reinterpret_cast<BG * (*)(BGArrayEx * bgArrayEx, int32_t id)>(0x40b160);
+    static const auto BGParalSetup         = reinterpret_cast<BOOL(*)(BGArrayEx * bgArrayEx, BG * bg, int32_t scaledTopWidth, int32_t scaledBottomWidth, int32_t yScaleStart, float yScaleDelta, int32_t xTile, BOOL hasBottomWidth)>(0x40b1a0);
+    static const auto BGDraw               = reinterpret_cast<void (*)(BGArrayEx * bgArrayEx, BG * bg)>(0x40b3a0);
+    static const auto BGParalDraw          = reinterpret_cast<void (*)(BGArray * bgArrayEx, BG * bg)>(0x40ba50);
+    static const auto BGParalDrawScale     = reinterpret_cast<void (*)(BGArrayEx * bgArrayEx, BG * bg, int32_t scaled)>(0x40ba70);
+    static const auto BGParalDraw8to16Flat = reinterpret_cast<void (*)(BGArrayEx * bgArrayEx, BG * bg, int32_t scaled)>(0x40be80);
 }

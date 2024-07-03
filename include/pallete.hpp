@@ -8,6 +8,12 @@ namespace mugen20414::pallete {
 	using namespace mugen20414::array;
 	using namespace mugen20414::ebcommon::io;
 
+	struct RGB {
+		int32_t red;
+		int32_t green;
+		int32_t blue;
+	};
+
 	struct Color3
 	{
 		uint8_t r;
@@ -39,12 +45,8 @@ namespace mugen20414::pallete {
 	};
 	struct EBPalSetting {
 		int32_t colorBalance; // todo
-		int32_t palAddR; // 0x10
-		int32_t palAddG;
-		int32_t palAddB;
-		int32_t palMulR; // 0x1C
-		int32_t palMulG;
-		int32_t palMulB;
+		RGB palAdd; // 0x10
+		RGB palMul; // 0x1C
 		undefined4 _unknown_1;
 		int32_t invertAll;
 	};
@@ -107,8 +109,8 @@ namespace mugen20414::pallete {
 	static const auto EBPalSettingsCopy    = reinterpret_cast<void(*)(EBPalSetting * dest, EBPalSetting * src)>(0x448590);
 	static const auto EBPalSettingsMix     = reinterpret_cast<void(*)(EBPalSetting * dest, EBPalSetting * src1, EBPalSetting * src2)>(0x4485b0);
 	static const auto EBPalSettingsAreSame = reinterpret_cast<BOOL(*)(EBPalSetting * ebPalSet1, EBPalSetting * ebPalSet2)>(0x448630);
-	static const auto EBPalAdd             = reinterpret_cast<void(*)(EBPal * ebPal, uint32_t red, uint32_t green, uint32_t blue)>(0x448650);
-	static const auto EBPalMul             = reinterpret_cast<void(*)(EBPal * ebPal, uint32_t red, uint32_t green, uint32_t blue)>(0x4486a0);
+	static const auto EBPalAdd             = reinterpret_cast<void(*)(EBPal * ebPal, RGB color)>(0x448650);
+	static const auto EBPalMul             = reinterpret_cast<void(*)(EBPal * ebPal, RGB color)>(0x4486a0);
 	static const auto EBPalInvertAll       = reinterpret_cast<void(*)(EBPal * ebPal, BOOL invert)>(0x448700);
 	static const auto EBPalColorBal        = reinterpret_cast<void(*)(EBPal * ebPal, uint32_t colorBalance)>(0x448730);
 
@@ -120,19 +122,19 @@ namespace mugen20414::pallete {
 	static const auto MasterPalProcessChanges = reinterpret_cast<void(*)(void)>(0x448800);
 	static const auto MasterPalFinishedDraw   = reinterpret_cast<void(*)(void)>(0x448830);
 	static const auto MasterPalReset          = reinterpret_cast<void(*)(void)>(0x448860);
-	static const auto MasterPalAdd            = reinterpret_cast<void(*)(uint32_t red, uint32_t green, uint32_t blue)>(0x4488a0);
-	static const auto MasterPalMul            = reinterpret_cast<void(*)(uint32_t red, uint32_t green, uint32_t blue)>(0x4488f0);
+	static const auto MasterPalAdd            = reinterpret_cast<void(*)(RGB color)>(0x4488a0);
+	static const auto MasterPalMul            = reinterpret_cast<void(*)(RGB color)>(0x4488f0);
 	static const auto MasterPalInvertAll      = reinterpret_cast<void(*)(BOOL invert)>(0x448940);
 	static const auto MasterPalColorBal       = reinterpret_cast<void(*)(uint32_t colorBalance)>(0x448970);
-	static const auto MasterPalConvertCol16   = reinterpret_cast<void(*)(Pal4 * palData)>(0x4489a0);
+	static const auto MasterPalConvertCol16   = reinterpret_cast<uint32_t(*)(Pal4 * palData)>(0x4489a0);
 
 	static const auto Pal3toPal4         = reinterpret_cast<void(*)(Pal4 * dest, Pal3 * src, size_t length, uint32_t alpha)> (0x448a00);
 	static const auto Pal4Copy           = reinterpret_cast<void(*)(Pal4 * dest, Pal4 * src, uint32_t startIndex, size_t size)> (0x448a60);
-	static const auto Pal4SetSingle      = reinterpret_cast<void(*)(Pal4 * pal4Data, uint32_t colNo, uint32_t red, uint32_t green, uint32_t blue)> (0x448aa0);
+	static const auto Pal4SetSingle      = reinterpret_cast<void(*)(Pal4 * pal4Data, uint32_t colNo, RGB color)> (0x448aa0);
 	static const auto Pal4Contrast       = reinterpret_cast<void(*)(Pal4 * src, Pal4 * dest, uint32_t contrast, uint32_t startIndex, size_t length)> (0x448ad0);
-	static const auto Pal4ContrastRGB    = reinterpret_cast<void(*)(Pal4 * src, Pal4 * dest, uint32_t red, uint32_t green, uint32_t blue, uint32_t startIndex, size_t length)> (0x448ba0);
+	static const auto Pal4ContrastRGB    = reinterpret_cast<void(*)(Pal4 * src, Pal4 * dest, RGB color, uint32_t startIndex, size_t length)> (0x448ba0);
 	static const auto Pal4Brightness     = reinterpret_cast<void(*)(Pal4 * src, Pal4 * dest, uint32_t brightness, uint32_t startIndex, size_t length)> (0x448c80);
-	static const auto Pal4BrightnessRGB  = reinterpret_cast<void(*)(Pal4 * src, Pal4 * dest, uint32_t red, uint32_t green, uint32_t blue, uint32_t startIndex, size_t length)> (0x448d50);
+	static const auto Pal4BrightnessRGB  = reinterpret_cast<void(*)(Pal4 * src, Pal4 * dest, RGB color, uint32_t startIndex, size_t length)> (0x448d50);
 	static const auto Pal4ColorBal       = reinterpret_cast<void(*)(Pal4 * src, Pal4 * dest, uint32_t colorBalance, uint32_t startIndex, size_t length)> (0x448e40);
 	static const auto Pal4InvertAll      = reinterpret_cast<void(*)(Pal4 * src, Pal4 * dest, uint32_t startIndex, size_t length)> (0x448ff0);
 	static const auto Pal4Read3File      = reinterpret_cast<BOOL(*)(Pal4 * pal4Data, const char* filename)> (0x449040);

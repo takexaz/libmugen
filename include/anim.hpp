@@ -28,7 +28,7 @@ namespace mugen20414::anim {
 
 	struct PRSprite {
 		int32_t priority;
-		Sprite* sprite;
+		SpriteArrayEx* sprArrayEx;
 		int32_t curSprIdx;
 		EBPal* ebPal;
 		int32_t posX;
@@ -107,13 +107,15 @@ namespace mugen20414::anim {
 		AnimPersistentArray* animPerArray;
 	};
 
+
+
 	static const auto AnimRCReadFile    = reinterpret_cast<AnimRCArrayEx * (*)(char* path)>(0x401770);
 	static const auto AnimRCReadFileTP  = reinterpret_cast<AnimRCArrayEx * (*)(TPFile * tpf)>(0x401830);
 	static const auto AnimElemParseLine = reinterpret_cast<BOOL(*)(char* elem, int* dest, char* group, int elemNo)>(0x4023b0);
 	static const auto AnimRCFree        = reinterpret_cast<void (*)(AnimRCArrayEx * animRCArrayEx)>(0x4026d0);
 
-	static const auto AnimNew                = reinterpret_cast<Anim * (*)(AnimRCArrayEx * animRCArrayEx, Sprite * sprite)>(0x4027a0);
-	static const auto AnimSet                = reinterpret_cast<void (*)(Anim * anim, AnimRCArrayEx * animRCArrayEx, Sprite * sprite)>(0x4027e0);
+	static const auto AnimNew                = reinterpret_cast<Anim * (*)(AnimRCArrayEx * animRCArrayEx, SpriteArrayEx * sprArrayEx)>(0x4027a0);
+	static const auto AnimSet                = reinterpret_cast<void (*)(Anim * anim, AnimRCArrayEx * animRCArrayEx, SpriteArrayEx * sprArrayEx)>(0x4027e0);
 	static const auto AnimCopy               = reinterpret_cast<void (*)(Anim * dest, Anim * src)>(0x402800);
 	static const auto AnimFree               = reinterpret_cast<void (*)(Anim * anim)>(0x402820);
 	static const auto AnimUpdate             = reinterpret_cast<Anim * (*)(Anim * anim)>(0x402850);
@@ -156,7 +158,7 @@ namespace mugen20414::anim {
 	static const auto AnimPerDrawScale         = reinterpret_cast<void (*)(AnimPersistent * animPer, int32_t offsetX, int32_t offsetY, float scale)>(0x404d20);
 	static const auto AnimPerArrayNew          = reinterpret_cast<AnimPersistentArrayEx * (*)(size_t num)>(0x404d80);
 	static const auto AnimPerArrayFree         = reinterpret_cast<void (*)(AnimPersistentArrayEx * animPerArrayEx)>(0x404dd0);
-	static const auto AnimPerArrayAdd          = reinterpret_cast<int32_t(*)(AnimPersistentArrayEx * animPerArrayEx, Anim * anim, Sprite * sprite, int32_t groupNo, int32_t itemNo, int32_t posX, int32_t posY, FlipFlag flip, DrawType transType)>(0x404df0);
+	static const auto AnimPerArrayAdd          = reinterpret_cast<int32_t(*)(AnimPersistentArrayEx * animPerArrayEx, Anim * anim, SpriteArrayEx * sprArrayEx, int32_t groupNo, int32_t itemNo, int32_t posX, int32_t posY, FlipFlag flip, DrawType transType)>(0x404df0);
 	static const auto AnimPerArraySetNo        = reinterpret_cast<void (*)(AnimPersistentArrayEx * animPerArrayEx, int32_t index, undefined4 no)>(0x404f80);
 	static const auto AnimPerArrayDelete       = reinterpret_cast<void (*)(AnimPersistentArrayEx * animPerArrayEx, int32_t index)>(0x404fa0);
 	static const auto AnimPerArrayClear        = reinterpret_cast<void (*)(AnimPersistentArrayEx * animPerArrayEx)>(0x404fc0);
@@ -168,7 +170,7 @@ namespace mugen20414::anim {
 
 	static const auto FlipFlagMix = reinterpret_cast<FlipFlag(*)(FlipFlag flip1, FlipFlag flip2)>(0x405200);
 
-	static const auto AnimDrawSprFlip = reinterpret_cast<void (*)(Sprite * sprite, int32_t index, int32_t posX, int32_t posY, FlipFlag flip, Trans trans)>(0x405210);
-	static const auto AnimScaleSpr_S  = reinterpret_cast<void (*)(Sprite * sprite, int32_t index, int32_t posX, int32_t posY, float scaleX, float scaleY, Trans trans)>(0x4054e0);
-	static const auto AnimRotateSpr   = reinterpret_cast<void (*)(Sprite * sprite, int32_t index, int posX, int posY, float angle, float scaleX, float scaleY, float param_8, float param_9, Trans trans)>(0x4055d0);
+	static const auto AnimDrawSprFlip = reinterpret_cast<void (*)(SpriteArrayEx * sprArrayEx, int32_t index, int32_t posX, int32_t posY, FlipFlag flip, Trans trans)>(0x405210);
+	static const auto AnimScaleSpr_S  = reinterpret_cast<void (*)(SpriteArrayEx * sprArrayEx, int32_t index, int32_t posX, int32_t posY, float scaleX, float scaleY, Trans trans)>(0x4054e0);
+	static const auto AnimRotateSpr   = reinterpret_cast<void (*)(SpriteArrayEx * sprArrayEx, int32_t index, int posX, int posY, float angle, float scaleX, float scaleY, float pivotX, float pivotY, Trans trans)>(0x4055d0);
 }

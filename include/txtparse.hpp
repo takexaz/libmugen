@@ -52,7 +52,7 @@ namespace mugen20414::txtparse {
 	static const auto TPGetValueNext     = reinterpret_cast<char* (*)(TPFile * tpf, const char* valueName)>(0x483d50);
 	static const auto TPGetValueFloat    = reinterpret_cast<BOOL(*)(TPFile * tpf, const char* valueName, float* f)>(0x483e50);
 	static const auto TPGetValueInt      = reinterpret_cast<BOOL(*)(TPFile * tpf, const char* valueName, int32_t * i)>(0x483e80);
-	static const auto TPScanf            = reinterpret_cast<void (*)(TPFile * tpf, const char* valueName, const char* format, ...)>(0x483eb0);
+	static const auto TPScanf            = reinterpret_cast<int32_t(*)(TPFile * tpf, const char* valueName, const char* format, ...)>(0x483eb0);
 	static const auto TPAccessReset      = reinterpret_cast<void (*)(TPFile * tpf)>(0x483ee0);
 	static const auto TPAccessFirstLine  = reinterpret_cast<char* (*)(TPFile * tpf)>(0x483f10);
 	static const auto TPReaccessCurLine  = reinterpret_cast<int32_t(*)(TPFile * tpf)>(0x483f70);
