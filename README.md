@@ -3,10 +3,6 @@ libmugen
 mugenの構造体、グローバル変数、関数などを定義したC++用のライブラリ
 更新が滞っているので公開
 
-## Requirements
-
-## Installation
-
 ## License
 * [MIT](LICENSE)
 
