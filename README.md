@@ -4,7 +4,7 @@ mugenの構造体、グローバル変数、関数などを定義したC++用の
 更新が滞っているので公開
 
 ## License
-* [MIT](LICENSE)
+* [MIT](LICENSE.txt)
 
 ## Credits
 - MUGEN Address Table
