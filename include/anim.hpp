@@ -107,8 +107,6 @@ namespace mugen20414::anim {
 		AnimPersistentArray* animPerArray;
 	};
 
-
-
 	static const auto AnimRCReadFile    = reinterpret_cast<AnimRCArrayEx * (*)(char* path)>(0x401770);
 	static const auto AnimRCReadFileTP  = reinterpret_cast<AnimRCArrayEx * (*)(TPFile * tpf)>(0x401830);
 	static const auto AnimElemParseLine = reinterpret_cast<BOOL(*)(char* elem, int* dest, char* group, int elemNo)>(0x4023b0);
