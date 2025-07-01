@@ -4,21 +4,21 @@
 #undef main
 namespace mugen20414::main {
 	enum class GameMode {
-		kArcade = 0,
-		kVersus = 1,
-		kTeamArcade = 2,
-		kTeamVersus = 3,
-		kTeamCoop = 4,
-		kSurvival = 5,
-		kSurvivalCoop = 6,
-		kTraining = 7,
-		kWatch = 8,
+		kGModeArcade = 0,
+		kGModeVersus = 1,
+		kGModeTeamArcade = 2,
+		kGModeTeamVersus = 3,
+		kGModeTeamCoop = 4,
+		kGModeSurvival = 5,
+		kGModeSurvivalCoop = 6,
+		kGModeTraining = 7,
+		kGModeWatch = 8,
 	};
 	enum class ScreenMode {
-		kMenuVersus = 0,
-		kMatch = 4,
-		kArcadeWin = 5,
-		kSurvivalLose = 6,
-		kCharSelect = 7,
+		kSModeMenuVersus = 0,
+		kSModeMatch = 4,
+		kSModeArcadeWin = 5,
+		kSModeSurvivalLose = 6,
+		kSModeCharSelect = 7,
 	};
 }

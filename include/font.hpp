@@ -6,8 +6,8 @@ namespace mugen20414::font {
 	using namespace mugen20414::sprite;
 
 	enum class FontType {
-		kFixed = 0,
-		kVariable = 1,
+		kFontFixed = 0,
+		kFontVariable = 1,
 	};
 
 	struct FontParam

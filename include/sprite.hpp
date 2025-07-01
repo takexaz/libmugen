@@ -9,9 +9,9 @@ namespace mugen20414::sprite {
 	using namespace mugen20414::pallete;
 
 	enum class FlipFlag {
-		kNone = 0,
-		kHorizontal = 1,
-		kVertical = 2
+		kFlipNone = 0,
+		kFlipHorizontal = 1,
+		kFlipVertical = 2
 	};
 
 	struct SpriteParam {

@@ -12,27 +12,27 @@ namespace mugen20414::bg {
     
 
     enum class BGCtrlType {
-        kNull = 0,
-        kVisible = 1,
-        kEnable = 2,
-        kPosSet = 3,
-        kVelSet = 4,
-        kPosAdd = 5,
-        kVelAdd = 6,
-        kUnknown1 = 7,
-        kAnim = 8,
-        kUnknown2 = 9,
-        kUnknown3 = 10,
-        kSinX = 11,
-        kSinY = 12,
-        kUnknown4 = 13,
-        kUnknown5 = 14,
-        kUnknown6 = 15,
-        kUnknown7 = 16,
-        kUnknown8 = 17,
-        kUnknown9 = 18,
-        kUnknown10 = 19,
-        kDummy = 20,
+        kBgCtrlNull = 0,
+        kBgCtrlVisible = 1,
+        kBgCtrlEnable = 2,
+        kBgCtrlPosSet = 3,
+        kBgCtrlVelSet = 4,
+        kBgCtrlPosAdd = 5,
+        kBgCtrlVelAdd = 6,
+        kBgCtrlUnknown1 = 7,
+        kBgCtrlAnim = 8,
+        kBgCtrlUnknown2 = 9,
+        kBgCtrlUnknown3 = 10,
+        kBgCtrlSinX = 11,
+        kBgCtrlSinY = 12,
+        kBgCtrlUnknown4 = 13,
+        kBgCtrlUnknown5 = 14,
+        kBgCtrlUnknown6 = 15,
+        kBgCtrlUnknown7 = 16,
+        kBgCtrlUnknown8 = 17,
+        kBgCtrlUnknown9 = 18,
+        kBgCtrlUnknown10 = 19,
+        kBgCtrlDummy = 20,
     };
     struct BGCtrl {
         int32_t ctrlId[10];
@@ -57,17 +57,17 @@ namespace mugen20414::bg {
     };
 
     enum class BGType {
-        kNormal = 0,
-        kParallax = 1,
-        kH = 2,
-        kAnim = 3,
-        kUnknown1 = 4,
-        kUnknown2 = 5,
-        kUnknown3 = 6,
-        kUnknown4 = 7,
-        kUnknown5 = 8,
-        kUnknown6 = 9,
-        kDummy = 10
+        kBgTypeNormal = 0,
+        kBgTypeParallax = 1,
+        kBgTypeH = 2,
+        kBgTypeAnim = 3,
+        kBgTypeUnknown1 = 4,
+        kBgTypeUnknown2 = 5,
+        kBgTypeUnknown3 = 6,
+        kBgTypeUnknown4 = 7,
+        kBgTypeUnknown5 = 8,
+        kBgTypeUnknown6 = 9,
+        kBgTypeDummy = 10
     };
     // 0x100
     struct BG {

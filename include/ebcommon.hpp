@@ -5,10 +5,10 @@
 
 namespace mugen20414::ebcommon::debug {
 	enum class ErrorCode {
-		kLoadFonts = 1,
-		kInitSound = 2,
-		kInitGraphics = 3,
-		kChangeVideoMode = 4,
+		kErrLoadFonts = 1,
+		kErrInitSound = 2,
+		kErrInitGraphics = 3,
+		kErrChangeVideoMode = 4,
 	};
 	static volatile const auto TempStore    = reinterpret_cast<ErrorCode*>(0x4b54ec);
 	static volatile const auto ErrorMessage = reinterpret_cast<char*>(0x4b6c60);
@@ -32,16 +32,16 @@ namespace mugen20414::ebcommon::memory {
 namespace mugen20414::ebcommon::io {
 	using namespace zlib::unzip;
 	enum class Extension {
-		kNone = 0,
-		kPcx = 1,
-		kSff = 2,
-		kWav = 3,
-		kSnd = 4,
-		kMp3 = 5,
-		kMid = 6,
-		kModS3mXm = 7,
-		kDa = 8,
-		kZip = 9,
+		kExtNone = 0,
+		kExtPcx = 1,
+		kExtSff = 2,
+		kExtWav = 3,
+		kExtSnd = 4,
+		kExtMp3 = 5,
+		kExtMid = 6,
+		kExtModS3mXm = 7,
+		kExtDa = 8,
+		kExtZip = 9,
 	};
 	static const auto CheckExtension = reinterpret_cast<Extension(*)(const char* filename)>(0x418250);
 
@@ -59,9 +59,9 @@ namespace mugen20414::ebcommon::io {
 	static const auto getfileonly   = reinterpret_cast<char* (*)(const char* path)>(0x418f50);
 
 	enum class MFOpenType {
-		kOpenFile = 1,
-		kOpenMemory = 2,
-		kOpenZipFile = 3
+		kMFOpenFile = 1,
+		kMFOpenMemory = 2,
+		kMFOpenZipFile = 3
 	};
 	struct MFile {
 		MFOpenType mfOpenType;

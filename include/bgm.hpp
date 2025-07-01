@@ -12,11 +12,11 @@ namespace mugen20414::bgm {
 
 	enum class BGMFileFormat
 	{
-		kNone = 0,
-		kMid = 1,
-		kModS3mXm = 2,
-		kMp3 = 3,
-		kCda = 4,
+		kBgmNone = 0,
+		kBgmMid = 1,
+		kBgmModS3mXm = 2,
+		kBgmMp3 = 3,
+		kBgmCda = 4,
 	};
 
 	// todo

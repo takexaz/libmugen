@@ -3,15 +3,15 @@
 
 namespace mugen20414::joystick {
 	enum class JoystickType {
-		kDisable = 0,
-		kAutodetect = 1,
-		kFourButton = 4,
-		kSixButton = 6,
-		kEightButton = 8,
-		kSidewinder = 20,
-		kSNES = 21,
-		kPSX = 22,
-		kN64 = 23,
+		kJoyDisable = 0,
+		kJoyAutodetect = 1,
+		kJoyFourButton = 4,
+		kJoySixButton = 6,
+		kJoyEightButton = 8,
+		kJoySidewinder = 20,
+		kJoySNES = 21,
+		kJoyPSX = 22,
+		kJoyN64 = 23,
 	};
 
 }

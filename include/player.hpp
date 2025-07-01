@@ -30,37 +30,32 @@ namespace mugen20414::player {
 	using namespace mugen20414::clipboard;
 
 
-	enum class ProjContactType {
-		kNone = 0,
-		kGuarded = 1,
-		kHit = 2,
-		kCancel = 3
-	};
-	enum class MoveContactType {
-		kNone     = 0,
-		kGuarded  = 1,
-		kHit      = 2,
-		kReversed = 4
+	enum class ContactType {
+		kContactNone     = 0,
+		kContactGuarded  = 1,
+		kContactHit      = 2,
+		kContactCancel   = 3,
+		kContactReversed = 4
 	};
 	enum class StateType {
-		kUnchanged = -1,
-		kStand      = 1,
-		kCrouch     = 2,
-		kAir        = 3,
-		kLying_Down = 4,
+		kStateUnchanged = -1,
+		kStateStand      = 1,
+		kStateCrouch     = 2,
+		kStateAir        = 3,
+		kStateLying_Down = 4,
 	};
 	enum class MoveType {
-		kUnchanged = -1,
-		kIdle       = 0,
-		kAttack     = 1,
-		kHit        = 2,
+		kMoveUnchanged = -1,
+		kMoveIdle       = 0,
+		kMoveAttack     = 1,
+		kMoveHit        = 2,
 	};
 	enum class Physics {
-		kUnchanged = -1,
-		kNone       = 0,
-		kStand      = 1,
-		kCrouch     = 2,
-		kAir        = 3,
+		kPhysicsUnchanged = -1,
+		kPhysicsNone       = 0,
+		kPhysicsStand      = 1,
+		kPhysicsCrouch     = 2,
+		kPhysicsAir        = 3,
 	};
 
 	struct Player;
@@ -155,7 +150,7 @@ namespace mugen20414::player {
 		uint8_t noShadow;
 		uint8_t noJuggleCheck;
 		uint8_t noWalk;
-		uint8_t noUnguardable;
+		uint8_t unguardable;
 		uint8_t invisible;
 		uint8_t _padding[3];
 	};
@@ -246,8 +241,8 @@ namespace mugen20414::player {
 		uint32_t teamSide;
 		uint32_t turnCharsetIdx;
 		uint32_t turnsNo;
-		uint32_t isPartner;
-		uint32_t isHelper;
+		BOOL isPartner;
+		BOOL isHelper;
 		char debugName[48];
 		Constants consts;
 		uint32_t playerExist;
@@ -265,12 +260,12 @@ namespace mugen20414::player {
 		float attackMul;
 		float defenceMul;
 		int32_t facing;
-		int32_t turnFlag;
-		uint32_t isVisible;
-		float screenPosX;
-		float posY;
-		float posZ;
-		float viewScreenPosX;
+		BOOL turnFlag;
+		BOOL isVisible;
+		float stagePosX;
+		float stagePosY;
+		float stagePosZ;
+		float viewPosX;
 		float viewPosY;
 		float viewPosZ;
 		float velX;
@@ -295,7 +290,7 @@ namespace mugen20414::player {
 		int32_t widthPlayerBack;
 		PlayerSpecialFlags specialFlags;
 		int32_t projContactId;
-		ProjContactType projContactType;
+		ContactType projContactType;
 		int32_t projContactTime;
 		ProjectileArrayEx* projectiles;
 		TargetArray* targets;
@@ -329,7 +324,7 @@ namespace mugen20414::player {
 		int32_t alive;
 		int32_t timeSinceDeath;
 		int32_t gameTime;
-		MoveContactType moveContactType;
+		ContactType moveContactType;
 		int32_t moveContactTime;
 		uint32_t attackHitTime; // 攻撃を当てた時間？ コンボ表示に使われている(0x443e04)
 		uint32_t hasValidStateNo;

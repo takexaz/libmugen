@@ -12,13 +12,13 @@ namespace mugen20414::anim {
 	using namespace mugen20414::collision;
 
 	enum class DrawType {
-		kError          = -2,
-		kDefault        = -1,
-		kNone           = 0,
-		kAdd            = 1,
-		kSub            = 2,
-		kAdd1           = 3,
-		kAddAlpha       = 3,
+		kDrawError          = -2,
+		kDrawDefault        = -1,
+		kDrawNone           = 0,
+		kDrawAdd            = 1,
+		kDrawSub            = 2,
+		kDrawAdd1           = 3,
+		kDrawAddAlpha       = 3,
 	};
 	struct Trans {
 		DrawType type;
@@ -67,7 +67,7 @@ namespace mugen20414::anim {
 		int32_t totalElems;
 		int32_t totalFrames;
 		int32_t loopStartFrame;
-		undefined4 _unknown_1;
+		int32_t loopStartElem; /* 未使用 */
 	};
 	using AnimRCArray = Array<AnimRC>;
 	struct AnimRCArrayEx

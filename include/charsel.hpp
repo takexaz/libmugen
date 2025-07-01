@@ -11,15 +11,15 @@ namespace mugen20414::charsel {
 	using namespace mugen20414::explod;
 
 	enum class SelectMode {
-		kVersus = 0,
-		kSurvival = 1,
-		kWatch = 2,
-		kTraining = 3,
+		kSelVersus = 0,
+		kSelSurvival = 1,
+		kSelWatch = 2,
+		kSelTraining = 3,
 	};
 	enum class TeamMode {
-		kSingle = 0,
-		kSimul = 1,
-		kTurns = 2,
+		kTeamSingle = 0,
+		kTeamSimul = 1,
+		kTeamTurns = 2,
 	};
 	
 

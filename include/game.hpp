@@ -695,10 +695,10 @@ namespace mugen20414::game {
 		int32_t roundState;
 		uint32_t winTeam;
 		enum class SettledType {
-			kNone = 0,
-			kKO = 1,
-			kDoubleKO = 2,
-			kTimeOver = 3,
+			kSettleNone = 0,
+			kSettleKO = 1,
+			kSettleDoubleKO = 2,
+			kSettleTimeOver = 3,
 		} settledType;
 
 		int32_t roundStateElapsedTime;
@@ -709,15 +709,15 @@ namespace mugen20414::game {
 		BOOL roundOverFlag;
 
 		enum class WinType {
-			kNormal = 0,
-			kSpecial = 1,
-			kHyper = 2,
-			kThrow = 3,
-			kTimeOver = 4,
-			kCheese = 5,
-			kSuicide = 6,
-			kTeamSuicide = 7,
-			kPerfect = 8,
+			kWinNormal = 0,
+			kWinSpecial = 1,
+			kWinHyper = 2,
+			kWinThrow = 3,
+			kWinTimeOver = 4,
+			kWinCheese = 5,
+			kWinSuicide = 6,
+			kWinTeamSuicide = 7,
+			kWinPerfect = 8,
 		} p1WinType[10];
 		WinType p2WinType[10];
 		WinType p1SubWinType[10]; // Perfect
@@ -832,37 +832,37 @@ namespace mugen20414::game {
 			BOOL isTrainingMenu;
 
 			enum class DummyControl {
-				kCooperative = 0,
-				kAI = 1,
-				kManual = 2,
+				kControlCooperative = 0,
+				kControlAI = 1,
+				kControlManual = 2,
 			} dummyControl;
 
 			int32_t unknown_1; // page?
 			enum class GuardMode {
-				kNone = 0,
-				kAuto = 1,
+				kGuardNone = 0,
+				kGuardAuto = 1,
 			} guardMode;
 			enum class DummyMode {
-				kStand = 0,
-				kCrouch = 1,
-				kJump = 2,
-				kWJump = 3,
+				kDummyStand = 0,
+				kDummyCrouch = 1,
+				kDummyJump = 2,
+				kDummyWJump = 3,
 			} dummyMode;
 			enum class Distance {
-				kAny = 0,
-				kClose = 1,
-				kMedium = 2,
-				kFar = 3,
+				kDistAny = 0,
+				kDistClose = 1,
+				kDistMedium = 2,
+				kDistFar = 3,
 			} distance;
 			enum class ButtonJam {
-				kNone = 0,
-				kA = 1,
-				kB = 2,
-				kC = 3,
-				kX = 4,
-				kY = 5,
-				kZ = 6,
-				kStart = 7,
+				kJamNone = 0,
+				kJamA = 1,
+				kJamB = 2,
+				kJamC = 3,
+				kJamX = 4,
+				kJamY = 5,
+				kJamZ = 6,
+				kJamStart = 7,
 			} buttonJam;
 
 			int32_t unknown_2; // page?
@@ -888,9 +888,9 @@ namespace mugen20414::game {
 		uint32_t allowDebugMode;
 		uint32_t allowDebugKeys;
 		enum class ClsnDebugMode {
-			kNone = 0,
-			kBoxFrame = 1,
-			kRectangle = 2,
+			kClsnNone = 0,
+			kClsnBoxFrame = 1,
+			kClsnRectangle = 2,
 		} clsnDebugMode;
 		Clipboard* warningClipboard;
 		char errorMessage[1024];

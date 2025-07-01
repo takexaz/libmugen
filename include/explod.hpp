@@ -11,9 +11,9 @@ namespace mugen20414::explod {
 	using namespace mugen20414::anim;
 
 	enum class ExplodType {
-		kAnim = 1,
-		kSprite = 2,
-		kFont = 3,
+		kExplAnim = 1,
+		kExplSprite = 2,
+		kExplFont = 3,
 	};
 	
 	struct ExplodStub {

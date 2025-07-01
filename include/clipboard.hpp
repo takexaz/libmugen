@@ -5,7 +5,7 @@ namespace mugen20414::clipboard {
 	struct Clipboard
 	{
 		char** messages; /* Ring buffer */
-		char* _unknown;
+		char* fullText;
 		int32_t charsPerLine;
 		int32_t lines;
 		int32_t firstMessageIndex;
