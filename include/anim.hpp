@@ -78,7 +78,7 @@ namespace mugen20414::anim {
 
 	struct Anim
 	{
-		AnimRC* useAnimRC;
+		AnimRCArrayEx* useAnimRCArrayEx;
 		SpriteArrayEx* sprite;
 		BOOL isOwnSprite;
 		int32_t currentAnimIndex;

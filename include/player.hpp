@@ -224,7 +224,7 @@ namespace mugen20414::player {
 		CommandElem commands;
 		StatedefArrayEx* statedefArray;
 		SpriteArrayEx* spriteArrayEx;
-		AnimRC* animArrayEx;
+		AnimRCArrayEx* animRCArrayEx;
 		int32_t volume;
 		SoundArrayEx* soundArrayEx;
 		char aiPath[512];
